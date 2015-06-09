@@ -1,0 +1,29 @@
+//
+//  SchoolMatePrefixHeader.pch
+//  SchoolMate
+//
+//  Created by libiwu on 15/6/8.
+//  Copyright (c) 2015年 libiwu. All rights reserved.
+//
+
+#ifndef SchoolMate_SchoolMatePrefixHeader_pch
+#define SchoolMate_SchoolMatePrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#import "BlocksKit.h"
+#import "BlocksKit+UIKit.h"
+#import "BlocksKit+MessageUI.h"
+#import "MJExtension.h"
+#import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
+#import "TMCache.h"
+#import "MBProgressHUD.h"
+
+#import "ClassDefinition.h"
+#import "MacroDefinition.h"
+
+#import "NSString+Addition.h"
+#endif

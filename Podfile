@@ -1,0 +1,8 @@
+platform :ios, '7.0'
+pod 'SDWebImage'
+pod 'MBProgressHUD'
+pod 'MJRefresh'
+pod 'BlocksKit'
+pod 'MJExtension'
+pod 'TMCache'
+pod 'AFNetworking'

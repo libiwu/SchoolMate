@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,13 +17,39 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
+    LoginViewController *login = [[LoginViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:YES];
+    
+    UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:login];
+    
+#ifdef __IPHONE_8_0
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeBadge)];
+    UIApplication* myapp = [UIApplication sharedApplication];
+    myapp.idleTimerDisabled = YES;
+#endif
+    
+    self.window.rootViewController = nav;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
-
+#ifdef __IPHONE_8_0
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    NSLog(@"register Remote");
+    [application registerForRemoteNotifications];
+}
+#endif
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {

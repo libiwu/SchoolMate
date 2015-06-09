@@ -1,0 +1,64 @@
+PODS:
+  - AFNetworking (2.5.4):
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
+  - AFNetworking/NSURLConnection (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - AFNetworking/UIKit (2.5.4):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - MBProgressHUD (0.9.1)
+  - MJExtension (2.3.0)
+  - MJRefresh (1.4.7)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core (= 3.7.2)
+  - SDWebImage/Core (3.7.2)
+  - TMCache (2.1.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - BlocksKit
+  - MBProgressHUD
+  - MJExtension
+  - MJRefresh
+  - SDWebImage
+  - TMCache
+
+SPEC CHECKSUMS:
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MJExtension: 7e618f22fc77f9432ab3c413c31c7cf2a99e70b3
+  MJRefresh: 6b140993028fa30f1fcb88e82925a7c7911415cf
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
+
+COCOAPODS: 0.37.2

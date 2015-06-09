@@ -7,39 +7,69 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2720ECAD1B254A7F0063DB79 /* FindSMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECAC1B254A7F0063DB79 /* FindSMViewController.m */; };
+		2720ECB91B257B810063DB79 /* SCTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECB81B257B810063DB79 /* SCTabViewController.m */; };
+		2720ECBB1B257F310063DB79 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2720ECBA1B257F310063DB79 /* Default-568h@2x.png */; };
+		2720ECBE1B25871A0063DB79 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECBD1B25871A0063DB79 /* Tools.m */; };
+		2720ECC21B2587990063DB79 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECC11B2587990063DB79 /* NSString+Addition.m */; };
+		2720ECC71B258DF40063DB79 /* SMCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECC61B258DF40063DB79 /* SMCircleCell.m */; };
+		2720ECCB1B2599D60063DB79 /* SMCircleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2720ECCA1B2599D60063DB79 /* SMCircleCell.xib */; };
 		277905F61B252E0100ECC732 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 277905F51B252E0100ECC732 /* main.m */; };
 		277905F91B252E0100ECC732 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 277905F81B252E0100ECC732 /* AppDelegate.m */; };
-		277905FC1B252E0100ECC732 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277905FB1B252E0100ECC732 /* ViewController.m */; };
-		277905FF1B252E0100ECC732 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 277905FD1B252E0100ECC732 /* Main.storyboard */; };
 		277906011B252E0100ECC732 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277906001B252E0100ECC732 /* Images.xcassets */; };
 		277906041B252E0100ECC732 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 277906021B252E0100ECC732 /* LaunchScreen.xib */; };
-		277906101B252E0100ECC732 /* SchoolMateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779060F1B252E0100ECC732 /* SchoolMateTests.m */; };
+		2779061F1B253E2500ECC732 /* SCBasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779061E1B253E2500ECC732 /* SCBasicViewController.m */; };
+		277906291B253E9F00ECC732 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277906271B253E9F00ECC732 /* LoginViewController.m */; };
+		2779062C1B253EAB00ECC732 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779062B1B253EAB00ECC732 /* RegisterViewController.m */; };
+		2779062E1B25475600ECC732 /* 同学圈主界面.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2779062D1B25475600ECC732 /* 同学圈主界面.jpg */; };
+		277906361B2548FF00ECC732 /* BBNewspaperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277906351B2548FF00ECC732 /* BBNewspaperViewController.m */; };
+		2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779063B1B25492B00ECC732 /* MoreViewController.m */; };
+		2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779063E1B25495800ECC732 /* SMCircleViewController.m */; };
+		277906421B25496500ECC732 /* WhisperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277906411B25496500ECC732 /* WhisperViewController.m */; };
+		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		2779060A1B252E0100ECC732 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 277905E81B252E0100ECC732 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 277905EF1B252E0100ECC732;
-			remoteInfo = SchoolMate;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		22250F62B24FB1257E6E234A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		2720ECAB1B254A7F0063DB79 /* FindSMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindSMViewController.h; sourceTree = "<group>"; };
+		2720ECAC1B254A7F0063DB79 /* FindSMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindSMViewController.m; sourceTree = "<group>"; };
+		2720ECAE1B2577370063DB79 /* SchoolMatePrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchoolMatePrefixHeader.pch; sourceTree = "<group>"; };
+		2720ECB51B25792E0063DB79 /* ClassDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassDefinition.h; sourceTree = "<group>"; };
+		2720ECB61B25792E0063DB79 /* MacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
+		2720ECB71B257B810063DB79 /* SCTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTabViewController.h; sourceTree = "<group>"; };
+		2720ECB81B257B810063DB79 /* SCTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTabViewController.m; sourceTree = "<group>"; };
+		2720ECBA1B257F310063DB79 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2720ECBC1B25871A0063DB79 /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
+		2720ECBD1B25871A0063DB79 /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
+		2720ECC01B2587990063DB79 /* NSString+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Addition.h"; sourceTree = "<group>"; };
+		2720ECC11B2587990063DB79 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
+		2720ECC51B258DF40063DB79 /* SMCircleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCircleCell.h; sourceTree = "<group>"; };
+		2720ECC61B258DF40063DB79 /* SMCircleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCircleCell.m; sourceTree = "<group>"; };
+		2720ECCA1B2599D60063DB79 /* SMCircleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMCircleCell.xib; sourceTree = "<group>"; };
 		277905F01B252E0100ECC732 /* SchoolMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277905F41B252E0100ECC732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277905F51B252E0100ECC732 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		277905F71B252E0100ECC732 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		277905F81B252E0100ECC732 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		277905FA1B252E0100ECC732 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		277905FB1B252E0100ECC732 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		277905FE1B252E0100ECC732 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		277906001B252E0100ECC732 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		277906031B252E0100ECC732 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		277906091B252E0100ECC732 /* SchoolMateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchoolMateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2779060E1B252E0100ECC732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2779060F1B252E0100ECC732 /* SchoolMateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchoolMateTests.m; sourceTree = "<group>"; };
+		2779061D1B253E2500ECC732 /* SCBasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBasicViewController.h; sourceTree = "<group>"; };
+		2779061E1B253E2500ECC732 /* SCBasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBasicViewController.m; sourceTree = "<group>"; };
+		277906261B253E9F00ECC732 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		277906271B253E9F00ECC732 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2779062A1B253EAB00ECC732 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		2779062B1B253EAB00ECC732 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		2779062D1B25475600ECC732 /* 同学圈主界面.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "同学圈主界面.jpg"; sourceTree = "<group>"; };
+		277906341B2548FF00ECC732 /* BBNewspaperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBNewspaperViewController.h; sourceTree = "<group>"; };
+		277906351B2548FF00ECC732 /* BBNewspaperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNewspaperViewController.m; sourceTree = "<group>"; };
+		2779063A1B25492B00ECC732 /* MoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreViewController.h; sourceTree = "<group>"; };
+		2779063B1B25492B00ECC732 /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreViewController.m; sourceTree = "<group>"; };
+		2779063D1B25495800ECC732 /* SMCircleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCircleViewController.h; sourceTree = "<group>"; };
+		2779063E1B25495800ECC732 /* SMCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCircleViewController.m; sourceTree = "<group>"; };
+		277906401B25496500ECC732 /* WhisperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhisperViewController.h; sourceTree = "<group>"; };
+		277906411B25496500ECC732 /* WhisperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhisperViewController.m; sourceTree = "<group>"; };
+		88CE2707A443E72094D81713 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,25 +77,106 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		277906061B252E0100ECC732 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				597262C962F123EAB325DDF1 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2492F14EFB6B2270593DBF6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88CE2707A443E72094D81713 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2720ECAF1B2578FE0063DB79 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				2720ECBF1B2587870063DB79 /* Category */,
+				2720ECB01B2578FE0063DB79 /* Other */,
+				2720ECB11B2578FE0063DB79 /* Tool */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		2720ECB01B2578FE0063DB79 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		2720ECB11B2578FE0063DB79 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				2720ECBC1B25871A0063DB79 /* Tools.h */,
+				2720ECBD1B25871A0063DB79 /* Tools.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		2720ECB21B2578FE0063DB79 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				2720ECB51B25792E0063DB79 /* ClassDefinition.h */,
+				2720ECB61B25792E0063DB79 /* MacroDefinition.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		2720ECB31B2578FE0063DB79 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2720ECB41B2578FE0063DB79 /* Other */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2720ECB41B2578FE0063DB79 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		2720ECBF1B2587870063DB79 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2720ECC01B2587990063DB79 /* NSString+Addition.h */,
+				2720ECC11B2587990063DB79 /* NSString+Addition.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		2720ECC31B258DCD0063DB79 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2720ECC51B258DF40063DB79 /* SMCircleCell.h */,
+				2720ECC61B258DF40063DB79 /* SMCircleCell.m */,
+				2720ECCA1B2599D60063DB79 /* SMCircleCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		2720ECC41B258DCD0063DB79 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		277905E71B252E0100ECC732 = {
 			isa = PBXGroup;
 			children = (
+				2720ECBA1B257F310063DB79 /* Default-568h@2x.png */,
+				2779062D1B25475600ECC732 /* 同学圈主界面.jpg */,
 				277905F21B252E0100ECC732 /* SchoolMate */,
-				2779060C1B252E0100ECC732 /* SchoolMateTests */,
 				277905F11B252E0100ECC732 /* Products */,
+				CA5534FB21DF9B06CB92725E /* Pods */,
+				2492F14EFB6B2270593DBF6E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				277905F01B252E0100ECC732 /* SchoolMate.app */,
-				277906091B252E0100ECC732 /* SchoolMateTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,9 +193,9 @@
 			children = (
 				277905F71B252E0100ECC732 /* AppDelegate.h */,
 				277905F81B252E0100ECC732 /* AppDelegate.m */,
-				277905FA1B252E0100ECC732 /* ViewController.h */,
-				277905FB1B252E0100ECC732 /* ViewController.m */,
-				277905FD1B252E0100ECC732 /* Main.storyboard */,
+				277906191B252F4F00ECC732 /* AppContent */,
+				2779061A1B252F5000ECC732 /* Third */,
+				2779061B1B252F5000ECC732 /* Utility */,
 				277906001B252E0100ECC732 /* Images.xcassets */,
 				277906021B252E0100ECC732 /* LaunchScreen.xib */,
 				277905F31B252E0100ECC732 /* Supporting Files */,
@@ -98,25 +208,142 @@
 			children = (
 				277905F41B252E0100ECC732 /* Info.plist */,
 				277905F51B252E0100ECC732 /* main.m */,
+				2720ECAE1B2577370063DB79 /* SchoolMatePrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2779060C1B252E0100ECC732 /* SchoolMateTests */ = {
+		277906191B252F4F00ECC732 /* AppContent */ = {
 			isa = PBXGroup;
 			children = (
-				2779060F1B252E0100ECC732 /* SchoolMateTests.m */,
-				2779060D1B252E0100ECC732 /* Supporting Files */,
+				2779061C1B253E2500ECC732 /* BaseViewController */,
+				277906201B253E5C00ECC732 /* LoginAndRegister */,
+				277906211B253E5C00ECC732 /* TabbarViewController */,
 			);
-			path = SchoolMateTests;
+			path = AppContent;
 			sourceTree = "<group>";
 		};
-		2779060D1B252E0100ECC732 /* Supporting Files */ = {
+		2779061A1B252F5000ECC732 /* Third */ = {
 			isa = PBXGroup;
 			children = (
-				2779060E1B252E0100ECC732 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = Third;
+			sourceTree = "<group>";
+		};
+		2779061B1B252F5000ECC732 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				2720ECC31B258DCD0063DB79 /* Cell */,
+				2720ECC41B258DCD0063DB79 /* Model */,
+				2720ECAF1B2578FE0063DB79 /* Class */,
+				2720ECB21B2578FE0063DB79 /* Macro */,
+				2720ECB31B2578FE0063DB79 /* View */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		2779061C1B253E2500ECC732 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2720ECB71B257B810063DB79 /* SCTabViewController.h */,
+				2720ECB81B257B810063DB79 /* SCTabViewController.m */,
+				2779061D1B253E2500ECC732 /* SCBasicViewController.h */,
+				2779061E1B253E2500ECC732 /* SCBasicViewController.m */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		277906201B253E5C00ECC732 /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				277906251B253E9F00ECC732 /* Login */,
+				277906281B253E9F00ECC732 /* Register */,
+			);
+			path = LoginAndRegister;
+			sourceTree = "<group>";
+		};
+		277906211B253E5C00ECC732 /* TabbarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				277906321B2548E900ECC732 /* SchoolMateCircle */,
+				277906301B2548E900ECC732 /* FindSchoolMate */,
+				277906331B2548E900ECC732 /* Whisper */,
+				2779062F1B2548E900ECC732 /* BlackboardNewspaper */,
+				277906311B2548E900ECC732 /* More */,
+			);
+			path = TabbarViewController;
+			sourceTree = "<group>";
+		};
+		277906251B253E9F00ECC732 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				277906261B253E9F00ECC732 /* LoginViewController.h */,
+				277906271B253E9F00ECC732 /* LoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		277906281B253E9F00ECC732 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				2779062A1B253EAB00ECC732 /* RegisterViewController.h */,
+				2779062B1B253EAB00ECC732 /* RegisterViewController.m */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		2779062F1B2548E900ECC732 /* BlackboardNewspaper */ = {
+			isa = PBXGroup;
+			children = (
+				277906341B2548FF00ECC732 /* BBNewspaperViewController.h */,
+				277906351B2548FF00ECC732 /* BBNewspaperViewController.m */,
+			);
+			path = BlackboardNewspaper;
+			sourceTree = "<group>";
+		};
+		277906301B2548E900ECC732 /* FindSchoolMate */ = {
+			isa = PBXGroup;
+			children = (
+				2720ECAB1B254A7F0063DB79 /* FindSMViewController.h */,
+				2720ECAC1B254A7F0063DB79 /* FindSMViewController.m */,
+			);
+			path = FindSchoolMate;
+			sourceTree = "<group>";
+		};
+		277906311B2548E900ECC732 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				2779063A1B25492B00ECC732 /* MoreViewController.h */,
+				2779063B1B25492B00ECC732 /* MoreViewController.m */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		277906321B2548E900ECC732 /* SchoolMateCircle */ = {
+			isa = PBXGroup;
+			children = (
+				2779063D1B25495800ECC732 /* SMCircleViewController.h */,
+				2779063E1B25495800ECC732 /* SMCircleViewController.m */,
+			);
+			path = SchoolMateCircle;
+			sourceTree = "<group>";
+		};
+		277906331B2548E900ECC732 /* Whisper */ = {
+			isa = PBXGroup;
+			children = (
+				277906401B25496500ECC732 /* WhisperViewController.h */,
+				277906411B25496500ECC732 /* WhisperViewController.m */,
+			);
+			path = Whisper;
+			sourceTree = "<group>";
+		};
+		CA5534FB21DF9B06CB92725E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */,
+				22250F62B24FB1257E6E234A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,9 +353,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 277906131B252E0100ECC732 /* Build configuration list for PBXNativeTarget "SchoolMate" */;
 			buildPhases = (
+				4A6A12E217639C4A56504DC0 /* Check Pods Manifest.lock */,
 				277905EC1B252E0100ECC732 /* Sources */,
 				277905ED1B252E0100ECC732 /* Frameworks */,
 				277905EE1B252E0100ECC732 /* Resources */,
+				FD8B73D7EE478D095A26D557 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -138,24 +367,6 @@
 			productName = SchoolMate;
 			productReference = 277905F01B252E0100ECC732 /* SchoolMate.app */;
 			productType = "com.apple.product-type.application";
-		};
-		277906081B252E0100ECC732 /* SchoolMateTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 277906161B252E0100ECC732 /* Build configuration list for PBXNativeTarget "SchoolMateTests" */;
-			buildPhases = (
-				277906051B252E0100ECC732 /* Sources */,
-				277906061B252E0100ECC732 /* Frameworks */,
-				277906071B252E0100ECC732 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2779060B1B252E0100ECC732 /* PBXTargetDependency */,
-			);
-			name = SchoolMateTests;
-			productName = SchoolMateTests;
-			productReference = 277906091B252E0100ECC732 /* SchoolMateTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -168,10 +379,6 @@
 				TargetAttributes = {
 					277905EF1B252E0100ECC732 = {
 						CreatedOnToolsVersion = 6.3;
-					};
-					277906081B252E0100ECC732 = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 277905EF1B252E0100ECC732;
 					};
 				};
 			};
@@ -189,7 +396,6 @@
 			projectRoot = "";
 			targets = (
 				277905EF1B252E0100ECC732 /* SchoolMate */,
-				277906081B252E0100ECC732 /* SchoolMateTests */,
 			);
 		};
 /* End PBXProject section */
@@ -199,59 +405,74 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				277905FF1B252E0100ECC732 /* Main.storyboard in Resources */,
+				2720ECCB1B2599D60063DB79 /* SMCircleCell.xib in Resources */,
+				2779062E1B25475600ECC732 /* 同学圈主界面.jpg in Resources */,
+				2720ECBB1B257F310063DB79 /* Default-568h@2x.png in Resources */,
 				277906041B252E0100ECC732 /* LaunchScreen.xib in Resources */,
 				277906011B252E0100ECC732 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		277906071B252E0100ECC732 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A6A12E217639C4A56504DC0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		FD8B73D7EE478D095A26D557 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		277905EC1B252E0100ECC732 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				277905FC1B252E0100ECC732 /* ViewController.m in Sources */,
+				2720ECC21B2587990063DB79 /* NSString+Addition.m in Sources */,
+				2779062C1B253EAB00ECC732 /* RegisterViewController.m in Sources */,
+				2720ECAD1B254A7F0063DB79 /* FindSMViewController.m in Sources */,
+				277906421B25496500ECC732 /* WhisperViewController.m in Sources */,
+				2720ECBE1B25871A0063DB79 /* Tools.m in Sources */,
+				2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */,
+				2720ECB91B257B810063DB79 /* SCTabViewController.m in Sources */,
+				277906291B253E9F00ECC732 /* LoginViewController.m in Sources */,
 				277905F91B252E0100ECC732 /* AppDelegate.m in Sources */,
+				2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */,
+				2779061F1B253E2500ECC732 /* SCBasicViewController.m in Sources */,
+				277906361B2548FF00ECC732 /* BBNewspaperViewController.m in Sources */,
 				277905F61B252E0100ECC732 /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		277906051B252E0100ECC732 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				277906101B252E0100ECC732 /* SchoolMateTests.m in Sources */,
+				2720ECC71B258DF40063DB79 /* SMCircleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		2779060B1B252E0100ECC732 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 277905EF1B252E0100ECC732 /* SchoolMate */;
-			targetProxy = 2779060A1B252E0100ECC732 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		277905FD1B252E0100ECC732 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				277905FE1B252E0100ECC732 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		277906021B252E0100ECC732 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -345,55 +566,29 @@
 		};
 		277906141B252E0100ECC732 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijie Wang (279X77QYCE)";
+				GCC_PREFIX_HEADER = SchoolMate/SchoolMatePrefixHeader.pch;
 				INFOPLIST_FILE = SchoolMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8be5bba2-3d70-4187-917e-f4d18a74ccf4";
 			};
 			name = Debug;
 		};
 		277906151B252E0100ECC732 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22250F62B24FB1257E6E234A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijie Wang (279X77QYCE)";
+				GCC_PREFIX_HEADER = SchoolMate/SchoolMatePrefixHeader.pch;
 				INFOPLIST_FILE = SchoolMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		277906171B252E0100ECC732 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SchoolMateTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SchoolMate.app/SchoolMate";
-			};
-			name = Debug;
-		};
-		277906181B252E0100ECC732 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SchoolMateTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SchoolMate.app/SchoolMate";
+				PROVISIONING_PROFILE = "8be5bba2-3d70-4187-917e-f4d18a74ccf4";
 			};
 			name = Release;
 		};
@@ -416,14 +611,7 @@
 				277906151B252E0100ECC732 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		277906161B252E0100ECC732 /* Build configuration list for PBXNativeTarget "SchoolMateTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				277906171B252E0100ECC732 /* Debug */,
-				277906181B252E0100ECC732 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
