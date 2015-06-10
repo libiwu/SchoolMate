@@ -55,16 +55,16 @@
 {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    self.view.backgroundColor = RGBACOLOR(234.0, 234.0, 234.0, 1.0);
     
     if ([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         } else {
             if (__IPHONE_7_0) {
-                self.navigationController.navigationBar.barTintColor = RGBACOLOR(101.0, 174.0, 214.0, 1.0);
+                self.navigationController.navigationBar.barTintColor = RGBACOLOR(110.0, 200.0, 243.0, 1.0);
 //                [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavigationImage.png"] forBarMetrics:UIBarMetricsDefault];
             }else{
-                self.navigationController.navigationBar.tintColor = RGBACOLOR(101.0, 174.0, 214.0, 1.0);
+                self.navigationController.navigationBar.tintColor = RGBACOLOR(110.0, 200.0, 243.0, 1.0);
 //                [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"NavigationImage.png"] forBarMetrics:UIBarMetricsDefault];
 
             }
@@ -101,7 +101,7 @@
         
         UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
         backButton.frame = CGRectMake(0.0, 11.5, 24.0, 21.0);
-        [backButton setBackgroundImage:[UIImage imageNamed:@"navigation_back.png"] forState:UIControlStateNormal];
+        [backButton setBackgroundImage:[UIImage imageNamed:@"fanhui.png"] forState:UIControlStateNormal];
         
         backButton.backgroundColor=[UIColor clearColor];
         backButton.exclusiveTouch = YES;
@@ -131,6 +131,8 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
+    [GlobalManager shareGlobalManager].currentViewController = self;
+    
     self.navigationController.navigationBar.hidden = _hiddenNavBar;
     
     self.navigationController.view.userInteractionEnabled = YES;
@@ -213,10 +215,7 @@
             UIButton *titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             [titleBtn setBackgroundColor:[UIColor clearColor]];
             [titleBtn bk_addEventHandler:^(id sender) {
-                [MBProgressHUD showHUDAddedTo:AppWindow animated:YES];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [MBProgressHUD hideHUDForView:AppWindow animated:YES];
-                });
+                [self navigationClick:sender];
             } forControlEvents:UIControlEventTouchUpInside];
             
             CGSize size = [lablel.text newSizeWithFont:lablel.font
@@ -244,6 +243,9 @@
         default:
             break;
     }
+}
+- (void)navigationClick:(UIButton *)btn {
+    
 }
 - (void)setLeftMenuTitle:(NSString *)leftMenuTitle andnorImage:(NSString *)norImage selectedImage:(NSString *)selectedimage
 {

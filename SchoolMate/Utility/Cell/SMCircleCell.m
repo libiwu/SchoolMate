@@ -7,6 +7,7 @@
 //
 
 #import "SMCircleCell.h"
+#import "SMCircleDetailViewController.h"
 
 @interface SMCircleCell ()
 @property (nonatomic, strong) UIImageView  *backView;
@@ -116,7 +117,7 @@
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width * 3,
                                                self.scrollView.frame.size.height)];
     
-    [self setUpSupport:@"26" comment:@"310"];
+    [self setUpSupport:@"26" comment:@"310" broadcast:@"733"];
     
     self.backView.frame = CGRectMake(self.backView.frame.origin.x,
                                      self.backView.frame.origin.y,
@@ -125,12 +126,13 @@
     
     self.frame = CGRectMake(0.0, 0.0, KScreenWidth, CGRectGetMaxY(self.backView.frame));
 }
-- (void)setUpSupport:(NSString *)support comment:(NSString *)comment{
+- (void)setUpSupport:(NSString *)support comment:(NSString *)comment broadcast:(NSString *)broadcast{
     
     [self.supportAndCommentView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [obj removeFromSuperview];
     }];
     
+    //稀饭,点赞
     UIImageView *supportView = [[UIImageView alloc]init];
     [supportView setBackgroundColor:[UIColor redColor]];
     [supportView setFrame:CGRectMake(20.0, 10.0, 30.0, 20.0)];
@@ -150,10 +152,23 @@
     [ss setText:@"稀饭"];
     [ss setTextColor:[UIColor redColor]];
     
+    UIButton *supportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [supportBtn setFrame:CGRectMake(CGRectGetMaxX(ss.frame) + 10.0,
+                                    supportView.frame.origin.y,
+                                    CGRectGetMaxX(ss.frame) - CGRectGetMinX(supportView.frame),
+                                    ss.frame.size.height)];
+    [supportBtn setBackgroundColor:[UIColor clearColor]];
+    [supportBtn bk_addEventHandler:^(id sender) {
+        NSLog(@"稀饭");
+        SMCircleDetailViewController *view = [[SMCircleDetailViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+        [CurrentViewController.navigationController pushViewController:view animated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
     [self.supportAndCommentView addSubview:supportView];
     [self.supportAndCommentView addSubview:ss];
+    [self.supportAndCommentView addSubview:supportBtn];
     
-    
+    //评论
     UIImageView *commentView = [[UIImageView alloc]init];
     [commentView setBackgroundColor:[UIColor blueColor]];
     [commentView setFrame:CGRectMake(CGRectGetMaxX(ss.frame) + 10.0,
@@ -176,12 +191,66 @@
     [cc setText:@"评论"];
     [cc setTextColor:[UIColor blueColor]];
     
+    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [commentBtn setFrame:CGRectMake(CGRectGetMaxX(ss.frame) + 10.0,
+                                    commentView.frame.origin.y,
+                                    CGRectGetMaxX(cc.frame) - CGRectGetMinX(commentView.frame),
+                                    cc.frame.size.height)];
+    [commentBtn setBackgroundColor:[UIColor clearColor]];
+    [commentBtn bk_addEventHandler:^(id sender) {
+        NSLog(@"点击评论");
+        SMCircleDetailViewController *view = [[SMCircleDetailViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+        [CurrentViewController.navigationController pushViewController:view animated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
     [self.supportAndCommentView addSubview:commentView];
     [self.supportAndCommentView addSubview:cc];
+    [self.supportAndCommentView addSubview:commentBtn];
+    
+    //广播
+    UIImageView *broadcastView = [[UIImageView alloc]init];
+    [broadcastView setBackgroundColor:[UIColor greenColor]];
+    [broadcastView setFrame:CGRectMake(CGRectGetMaxX(cc.frame) + 10.0,
+                                     supportView.frame.origin.y,
+                                     supportView.frame.size.width,
+                                     supportView.frame.size.height)];
+    
+    UILabel *broadcastlabel = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, broadcastView.frame.size.width, broadcastView.frame.size.height)];
+    [broadcastlabel setText:broadcast];
+    [broadcastlabel setFont:[UIFont systemFontOfSize:12.0]];
+    [broadcastlabel setTextAlignment:NSTextAlignmentCenter];
+    [broadcastlabel setTextColor:[UIColor whiteColor]];
+    
+    [broadcastView addSubview:broadcastlabel];
+    
+    UILabel *dd = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(broadcastView.frame) + 5.0,
+                                                           broadcastView.frame.origin.y,
+                                                           40.0,
+                                                           broadcastView.frame.size.height)];
+    [dd setText:@"广播"];
+    [dd setTextColor:[UIColor greenColor]];
+    
+    UIButton *broadcastBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [broadcastBtn setFrame:CGRectMake(CGRectGetMaxX(ss.frame) + 10.0,
+                                    broadcastView.frame.origin.y,
+                                    CGRectGetMaxX(dd.frame) - CGRectGetMinX(broadcastView.frame),
+                                    dd.frame.size.height)];
+    [broadcastBtn setBackgroundColor:[UIColor clearColor]];
+    [broadcastBtn bk_addEventHandler:^(id sender) {
+        NSLog(@"点击广播");
+        SMCircleDetailViewController *view = [[SMCircleDetailViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+        [CurrentViewController.navigationController pushViewController:view animated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.supportAndCommentView addSubview:broadcastView];
+    [self.supportAndCommentView addSubview:dd];
+    [self.supportAndCommentView addSubview:broadcastBtn];
     
     self.supportAndCommentView.frame = CGRectMake(self.scrollView.frame.origin.x,
                                                   CGRectGetMaxY(self.scrollView.frame),
                                                   self.scrollView.frame.size.width,
-                                                  CGRectGetMaxY(cc.frame) + 10.0);
+                                                  CGRectGetMaxY(dd.frame) + 10.0);
+    
+    
 }
 @end

@@ -35,4 +35,6 @@ typedef NS_ENUM(NSUInteger, SCNavTitleType) {
 - (void)setNavTitle:(NSString *)title;
 
 - (void)setNavTitle:(NSString *)title type:(SCNavTitleType)type;
+
+- (void)navigationClick:(UIButton *)btn;
 @end

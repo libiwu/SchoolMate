@@ -13,7 +13,6 @@
 		2720ECBE1B25871A0063DB79 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECBD1B25871A0063DB79 /* Tools.m */; };
 		2720ECC21B2587990063DB79 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECC11B2587990063DB79 /* NSString+Addition.m */; };
 		2720ECC71B258DF40063DB79 /* SMCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECC61B258DF40063DB79 /* SMCircleCell.m */; };
-		2720ECCB1B2599D60063DB79 /* SMCircleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2720ECCA1B2599D60063DB79 /* SMCircleCell.xib */; };
 		277905F61B252E0100ECC732 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 277905F51B252E0100ECC732 /* main.m */; };
 		277905F91B252E0100ECC732 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 277905F81B252E0100ECC732 /* AppDelegate.m */; };
 		277906011B252E0100ECC732 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277906001B252E0100ECC732 /* Images.xcassets */; };
@@ -26,6 +25,10 @@
 		2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779063B1B25492B00ECC732 /* MoreViewController.m */; };
 		2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779063E1B25495800ECC732 /* SMCircleViewController.m */; };
 		277906421B25496500ECC732 /* WhisperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277906411B25496500ECC732 /* WhisperViewController.m */; };
+		27D5CF921B26E6DD003341F3 /* SMCircleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF911B26E6DD003341F3 /* SMCircleDetailViewController.m */; };
+		27D5CF981B26E9A0003341F3 /* SMCircleDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF971B26E9A0003341F3 /* SMCircleDetailCell.m */; };
+		27D5CF9B1B26FB7E003341F3 /* GlobalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF9A1B26FB7E003341F3 /* GlobalManager.m */; };
+		27D5CF9E1B26FFA5003341F3 /* SMNavigationPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */; };
 		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +48,6 @@
 		2720ECC11B2587990063DB79 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
 		2720ECC51B258DF40063DB79 /* SMCircleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCircleCell.h; sourceTree = "<group>"; };
 		2720ECC61B258DF40063DB79 /* SMCircleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCircleCell.m; sourceTree = "<group>"; };
-		2720ECCA1B2599D60063DB79 /* SMCircleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMCircleCell.xib; sourceTree = "<group>"; };
 		277905F01B252E0100ECC732 /* SchoolMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277905F41B252E0100ECC732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277905F51B252E0100ECC732 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 		2779063E1B25495800ECC732 /* SMCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCircleViewController.m; sourceTree = "<group>"; };
 		277906401B25496500ECC732 /* WhisperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhisperViewController.h; sourceTree = "<group>"; };
 		277906411B25496500ECC732 /* WhisperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhisperViewController.m; sourceTree = "<group>"; };
+		27D5CF901B26E6DD003341F3 /* SMCircleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCircleDetailViewController.h; sourceTree = "<group>"; };
+		27D5CF911B26E6DD003341F3 /* SMCircleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCircleDetailViewController.m; sourceTree = "<group>"; };
+		27D5CF961B26E9A0003341F3 /* SMCircleDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCircleDetailCell.h; sourceTree = "<group>"; };
+		27D5CF971B26E9A0003341F3 /* SMCircleDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCircleDetailCell.m; sourceTree = "<group>"; };
+		27D5CF991B26FB7E003341F3 /* GlobalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalManager.h; sourceTree = "<group>"; };
+		27D5CF9A1B26FB7E003341F3 /* GlobalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalManager.m; sourceTree = "<group>"; };
+		27D5CF9C1B26FFA4003341F3 /* SMNavigationPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNavigationPopView.h; sourceTree = "<group>"; };
+		27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNavigationPopView.m; sourceTree = "<group>"; };
 		88CE2707A443E72094D81713 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +115,8 @@
 		2720ECB01B2578FE0063DB79 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				27D5CF991B26FB7E003341F3 /* GlobalManager.h */,
+				27D5CF9A1B26FB7E003341F3 /* GlobalManager.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -138,6 +150,8 @@
 		2720ECB41B2578FE0063DB79 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				27D5CF9C1B26FFA4003341F3 /* SMNavigationPopView.h */,
+				27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -156,7 +170,8 @@
 			children = (
 				2720ECC51B258DF40063DB79 /* SMCircleCell.h */,
 				2720ECC61B258DF40063DB79 /* SMCircleCell.m */,
-				2720ECCA1B2599D60063DB79 /* SMCircleCell.xib */,
+				27D5CF961B26E9A0003341F3 /* SMCircleDetailCell.h */,
+				27D5CF971B26E9A0003341F3 /* SMCircleDetailCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -324,6 +339,8 @@
 			children = (
 				2779063D1B25495800ECC732 /* SMCircleViewController.h */,
 				2779063E1B25495800ECC732 /* SMCircleViewController.m */,
+				27D5CF901B26E6DD003341F3 /* SMCircleDetailViewController.h */,
+				27D5CF911B26E6DD003341F3 /* SMCircleDetailViewController.m */,
 			);
 			path = SchoolMateCircle;
 			sourceTree = "<group>";
@@ -405,7 +422,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2720ECCB1B2599D60063DB79 /* SMCircleCell.xib in Resources */,
 				2779062E1B25475600ECC732 /* 同学圈主界面.jpg in Resources */,
 				2720ECBB1B257F310063DB79 /* Default-568h@2x.png in Resources */,
 				277906041B252E0100ECC732 /* LaunchScreen.xib in Resources */,
@@ -455,12 +471,16 @@
 			files = (
 				2720ECC21B2587990063DB79 /* NSString+Addition.m in Sources */,
 				2779062C1B253EAB00ECC732 /* RegisterViewController.m in Sources */,
+				27D5CF9E1B26FFA5003341F3 /* SMNavigationPopView.m in Sources */,
 				2720ECAD1B254A7F0063DB79 /* FindSMViewController.m in Sources */,
 				277906421B25496500ECC732 /* WhisperViewController.m in Sources */,
+				27D5CF9B1B26FB7E003341F3 /* GlobalManager.m in Sources */,
+				27D5CF981B26E9A0003341F3 /* SMCircleDetailCell.m in Sources */,
 				2720ECBE1B25871A0063DB79 /* Tools.m in Sources */,
 				2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */,
 				2720ECB91B257B810063DB79 /* SCTabViewController.m in Sources */,
 				277906291B253E9F00ECC732 /* LoginViewController.m in Sources */,
+				27D5CF921B26E6DD003341F3 /* SMCircleDetailViewController.m in Sources */,
 				277905F91B252E0100ECC732 /* AppDelegate.m in Sources */,
 				2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */,
 				2779061F1B253E2500ECC732 /* SCBasicViewController.m in Sources */,
