@@ -195,6 +195,9 @@
         UIImageView *line2 = [[UIImageView alloc]initWithFrame:CGRectMake(wid * 2 - .5, 5.0, 1.0, 30.0)];
         [line2 setBackgroundColor:[UIColor lightGrayColor]];
         
+        UIImageView *line3 = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, backView.frame.size.height - .5, backView.frame.size.width, .5)];
+        [line2 setBackgroundColor:[UIColor lightGrayColor]];
+        
         [backView addSubview:gbLabel];
         [backView addSubview:zpLabel];
         [backView addSubview:dgLabel];
@@ -205,6 +208,7 @@
         
         [backView addSubview:line1];
         [backView addSubview:line2];
+        [backView addSubview:line3];
         
         
         [biji bk_addEventHandler:^(id sender) {

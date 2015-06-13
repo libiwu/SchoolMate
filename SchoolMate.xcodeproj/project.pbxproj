@@ -13,6 +13,8 @@
 		2720ECBE1B25871A0063DB79 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECBD1B25871A0063DB79 /* Tools.m */; };
 		2720ECC21B2587990063DB79 /* NSString+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECC11B2587990063DB79 /* NSString+Addition.m */; };
 		2720ECC71B258DF40063DB79 /* SMCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECC61B258DF40063DB79 /* SMCircleCell.m */; };
+		274E65181B2833FB00D1267B /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E65171B2833FB00D1267B /* UserInfoView.m */; };
+		274E651B1B2837A900D1267B /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E651A1B2837A900D1267B /* UserInfoCell.m */; };
 		277905F61B252E0100ECC732 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 277905F51B252E0100ECC732 /* main.m */; };
 		277905F91B252E0100ECC732 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 277905F81B252E0100ECC732 /* AppDelegate.m */; };
 		277906011B252E0100ECC732 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277906001B252E0100ECC732 /* Images.xcassets */; };
@@ -48,6 +50,10 @@
 		2720ECC11B2587990063DB79 /* NSString+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Addition.m"; sourceTree = "<group>"; };
 		2720ECC51B258DF40063DB79 /* SMCircleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCircleCell.h; sourceTree = "<group>"; };
 		2720ECC61B258DF40063DB79 /* SMCircleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCircleCell.m; sourceTree = "<group>"; };
+		274E65161B2833FB00D1267B /* UserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoView.h; sourceTree = "<group>"; };
+		274E65171B2833FB00D1267B /* UserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoView.m; sourceTree = "<group>"; };
+		274E65191B2837A900D1267B /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
+		274E651A1B2837A900D1267B /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
 		277905F01B252E0100ECC732 /* SchoolMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277905F41B252E0100ECC732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277905F51B252E0100ECC732 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -172,6 +178,8 @@
 				2720ECC61B258DF40063DB79 /* SMCircleCell.m */,
 				27D5CF961B26E9A0003341F3 /* SMCircleDetailCell.h */,
 				27D5CF971B26E9A0003341F3 /* SMCircleDetailCell.m */,
+				274E65191B2837A900D1267B /* UserInfoCell.h */,
+				274E651A1B2837A900D1267B /* UserInfoCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -330,6 +338,8 @@
 			children = (
 				2779063A1B25492B00ECC732 /* MoreViewController.h */,
 				2779063B1B25492B00ECC732 /* MoreViewController.m */,
+				274E65161B2833FB00D1267B /* UserInfoView.h */,
+				274E65171B2833FB00D1267B /* UserInfoView.m */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -477,6 +487,8 @@
 				27D5CF9B1B26FB7E003341F3 /* GlobalManager.m in Sources */,
 				27D5CF981B26E9A0003341F3 /* SMCircleDetailCell.m in Sources */,
 				2720ECBE1B25871A0063DB79 /* Tools.m in Sources */,
+				274E651B1B2837A900D1267B /* UserInfoCell.m in Sources */,
+				274E65181B2833FB00D1267B /* UserInfoView.m in Sources */,
 				2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */,
 				2720ECB91B257B810063DB79 /* SCTabViewController.m in Sources */,
 				277906291B253E9F00ECC732 /* LoginViewController.m in Sources */,
@@ -589,12 +601,12 @@
 			baseConfigurationReference = 890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijie Wang (279X77QYCE)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ultimate Gaming Europe AB";
 				GCC_PREFIX_HEADER = SchoolMate/SchoolMatePrefixHeader.pch;
 				INFOPLIST_FILE = SchoolMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8be5bba2-3d70-4187-917e-f4d18a74ccf4";
+				PROVISIONING_PROFILE = "7636ee38-b31a-4c85-9160-b018ba34c444";
 			};
 			name = Debug;
 		};
@@ -603,12 +615,12 @@
 			baseConfigurationReference = 22250F62B24FB1257E6E234A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijie Wang (279X77QYCE)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Ultimate Gaming Europe AB";
 				GCC_PREFIX_HEADER = SchoolMate/SchoolMatePrefixHeader.pch;
 				INFOPLIST_FILE = SchoolMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8be5bba2-3d70-4187-917e-f4d18a74ccf4";
+				PROVISIONING_PROFILE = "7636ee38-b31a-4c85-9160-b018ba34c444";
 			};
 			name = Release;
 		};

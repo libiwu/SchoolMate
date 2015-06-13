@@ -9,29 +9,29 @@
 #import "RegisterViewController.h"
 
 @interface RegisterViewController ()
-
+@property (nonatomic, strong) UIImageView *backImageView;
+//@property (nonatomic, strong) UITextField *phoneTextField;
+//@property (nonatomic, strong) UITextField *
 @end
 
 @implementation RegisterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setNavTitle:NSLocalizedString(@"注册", nil)];
+    
+    [self createContentView];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)createContentView {
+    
+    self.backImageView =
+    ({
+        UIImageView *backImage = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, KScreenWidth, KScreenHeight - 64.0)];
+        backImage.image = [UIImage imageNamed:@"registerBack.png"];
+        backImage.userInteractionEnabled = YES;
+        [self.view addSubview:backImage];
+        backImage;
+    });
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
