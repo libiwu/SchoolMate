@@ -10,6 +10,8 @@
 #import "SMCircleCell.h"
 #import "SMCircleDetailViewController.h"
 #import "SMNavigationPopView.h"
+#import "PublishNoteViewController.h"
+#import "SaySomethingViewController.h"
 
 @interface SMCircleViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -77,15 +79,18 @@
     UIButton *biji = [UIButton buttonWithType:UIButtonTypeCustom];
     [biji setBackgroundImage:[UIImage imageNamed:@"bijing.png"] forState:UIControlStateNormal];
     [biji setFrame:CGRectMake(0.0, 0.0, wid, backView.frame.size.height)];
+    WEAKSELF
     [biji bk_addEventHandler:^(id sender) {
-        
+        PublishNoteViewController *vc = [[PublishNoteViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+        [weakSelf.navigationController pushViewController:vc animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     //照片
     UIButton *zhaopian = [UIButton buttonWithType:UIButtonTypeCustom];
     [zhaopian setBackgroundImage:[UIImage imageNamed:@"zhaopian.png"] forState:UIControlStateNormal];
     [zhaopian setFrame:CGRectMake(wid, 0.0, wid, backView.frame.size.height)];
     [zhaopian bk_addEventHandler:^(id sender) {
-        
+        PublishNoteViewController *vc = [[PublishNoteViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+        [weakSelf.navigationController pushViewController:vc animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     //到过
     UIButton *daoguo = [UIButton buttonWithType:UIButtonTypeCustom];

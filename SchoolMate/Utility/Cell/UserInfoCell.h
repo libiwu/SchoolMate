@@ -20,6 +20,7 @@ typedef NS_ENUM(NSUInteger, UserInfoCellType) {
 @interface UserInfoCell : UITableViewCell
 
 @property (nonatomic, strong) UIImageView *avatarView;
+@property (nonatomic, strong) UILabel *contentLabel;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 

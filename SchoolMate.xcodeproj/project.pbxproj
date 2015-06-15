@@ -31,6 +31,23 @@
 		27AD44FA1B2E943B00C80C29 /* NickNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44F91B2E943B00C80C29 /* NickNameViewController.m */; };
 		27AD44FD1B2E944500C80C29 /* TrueNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44FC1B2E944500C80C29 /* TrueNameViewController.m */; };
 		27AD45001B2E976000C80C29 /* SMMessageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44FF1B2E976000C80C29 /* SMMessageHUD.m */; };
+		27AD45031B2E9D7400C80C29 /* SMDatePickPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45021B2E9D7400C80C29 /* SMDatePickPopView.m */; };
+		27AD45071B2EA8C000C80C29 /* PublishNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45061B2EA8C000C80C29 /* PublishNoteViewController.m */; };
+		27AD450A1B2EC02600C80C29 /* SaySomethingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45091B2EC02600C80C29 /* SaySomethingViewController.m */; };
+		27AD45151B2EC05B00C80C29 /* SCImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD450D1B2EC05B00C80C29 /* SCImageScrollView.m */; };
+		27AD45161B2EC05B00C80C29 /* SCImagesViewerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45101B2EC05B00C80C29 /* SCImagesViewerData.m */; };
+		27AD45171B2EC05B00C80C29 /* SCImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45121B2EC05B00C80C29 /* SCImageViewController.m */; };
+		27AD45181B2EC05B00C80C29 /* SCPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45141B2EC05B00C80C29 /* SCPageViewController.m */; };
+		27AD45281B2EC08500C80C29 /* SaySomethingPictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45221B2EC08500C80C29 /* SaySomethingPictureCell.m */; };
+		27AD45291B2EC08500C80C29 /* SaySomethingReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45241B2EC08500C80C29 /* SaySomethingReusableView.m */; };
+		27AD453B1B2EC14C00C80C29 /* AlbumContentsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD452C1B2EC14C00C80C29 /* AlbumContentsViewCell.m */; };
+		27AD453C1B2EC14C00C80C29 /* AlbumContentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD452E1B2EC14C00C80C29 /* AlbumContentsViewController.m */; };
+		27AD453D1B2EC14C00C80C29 /* AssetsGroupsTabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45301B2EC14C00C80C29 /* AssetsGroupsTabelView.m */; };
+		27AD453E1B2EC14C00C80C29 /* ImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45321B2EC14C00C80C29 /* ImageScrollView.m */; };
+		27AD453F1B2EC14C00C80C29 /* MyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45341B2EC14C00C80C29 /* MyPageViewController.m */; };
+		27AD45401B2EC14C00C80C29 /* PageViewControllerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45361B2EC14C00C80C29 /* PageViewControllerData.m */; };
+		27AD45411B2EC14C00C80C29 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45381B2EC14C00C80C29 /* PhotoViewController.m */; };
+		27AD45421B2EC14C00C80C29 /* SCImagesPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD453A1B2EC14C00C80C29 /* SCImagesPickerController.m */; };
 		27D5CF921B26E6DD003341F3 /* SMCircleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF911B26E6DD003341F3 /* SMCircleDetailViewController.m */; };
 		27D5CF981B26E9A0003341F3 /* SMCircleDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF971B26E9A0003341F3 /* SMCircleDetailCell.m */; };
 		27D5CF9B1B26FB7E003341F3 /* GlobalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF9A1B26FB7E003341F3 /* GlobalManager.m */; };
@@ -88,6 +105,41 @@
 		27AD44FC1B2E944500C80C29 /* TrueNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrueNameViewController.m; sourceTree = "<group>"; };
 		27AD44FE1B2E976000C80C29 /* SMMessageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMessageHUD.h; sourceTree = "<group>"; };
 		27AD44FF1B2E976000C80C29 /* SMMessageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMessageHUD.m; sourceTree = "<group>"; };
+		27AD45011B2E9D7400C80C29 /* SMDatePickPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMDatePickPopView.h; sourceTree = "<group>"; };
+		27AD45021B2E9D7400C80C29 /* SMDatePickPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDatePickPopView.m; sourceTree = "<group>"; };
+		27AD45051B2EA8C000C80C29 /* PublishNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishNoteViewController.h; sourceTree = "<group>"; };
+		27AD45061B2EA8C000C80C29 /* PublishNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishNoteViewController.m; sourceTree = "<group>"; };
+		27AD45081B2EC02600C80C29 /* SaySomethingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaySomethingViewController.h; sourceTree = "<group>"; };
+		27AD45091B2EC02600C80C29 /* SaySomethingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaySomethingViewController.m; sourceTree = "<group>"; };
+		27AD450C1B2EC05B00C80C29 /* SCImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageScrollView.h; sourceTree = "<group>"; };
+		27AD450D1B2EC05B00C80C29 /* SCImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageScrollView.m; sourceTree = "<group>"; };
+		27AD450E1B2EC05B00C80C29 /* SCImagesViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImagesViewer.h; sourceTree = "<group>"; };
+		27AD450F1B2EC05B00C80C29 /* SCImagesViewerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImagesViewerData.h; sourceTree = "<group>"; };
+		27AD45101B2EC05B00C80C29 /* SCImagesViewerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImagesViewerData.m; sourceTree = "<group>"; };
+		27AD45111B2EC05B00C80C29 /* SCImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageViewController.h; sourceTree = "<group>"; };
+		27AD45121B2EC05B00C80C29 /* SCImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageViewController.m; sourceTree = "<group>"; };
+		27AD45131B2EC05B00C80C29 /* SCPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPageViewController.h; sourceTree = "<group>"; };
+		27AD45141B2EC05B00C80C29 /* SCPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPageViewController.m; sourceTree = "<group>"; };
+		27AD45211B2EC08500C80C29 /* SaySomethingPictureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaySomethingPictureCell.h; sourceTree = "<group>"; };
+		27AD45221B2EC08500C80C29 /* SaySomethingPictureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaySomethingPictureCell.m; sourceTree = "<group>"; };
+		27AD45231B2EC08500C80C29 /* SaySomethingReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaySomethingReusableView.h; sourceTree = "<group>"; };
+		27AD45241B2EC08500C80C29 /* SaySomethingReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaySomethingReusableView.m; sourceTree = "<group>"; };
+		27AD452B1B2EC14C00C80C29 /* AlbumContentsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentsViewCell.h; sourceTree = "<group>"; };
+		27AD452C1B2EC14C00C80C29 /* AlbumContentsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentsViewCell.m; sourceTree = "<group>"; };
+		27AD452D1B2EC14C00C80C29 /* AlbumContentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumContentsViewController.h; sourceTree = "<group>"; };
+		27AD452E1B2EC14C00C80C29 /* AlbumContentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumContentsViewController.m; sourceTree = "<group>"; };
+		27AD452F1B2EC14C00C80C29 /* AssetsGroupsTabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsGroupsTabelView.h; sourceTree = "<group>"; };
+		27AD45301B2EC14C00C80C29 /* AssetsGroupsTabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetsGroupsTabelView.m; sourceTree = "<group>"; };
+		27AD45311B2EC14C00C80C29 /* ImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollView.h; sourceTree = "<group>"; };
+		27AD45321B2EC14C00C80C29 /* ImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollView.m; sourceTree = "<group>"; };
+		27AD45331B2EC14C00C80C29 /* MyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPageViewController.h; sourceTree = "<group>"; };
+		27AD45341B2EC14C00C80C29 /* MyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPageViewController.m; sourceTree = "<group>"; };
+		27AD45351B2EC14C00C80C29 /* PageViewControllerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewControllerData.h; sourceTree = "<group>"; };
+		27AD45361B2EC14C00C80C29 /* PageViewControllerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewControllerData.m; sourceTree = "<group>"; };
+		27AD45371B2EC14C00C80C29 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		27AD45381B2EC14C00C80C29 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		27AD45391B2EC14C00C80C29 /* SCImagesPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImagesPickerController.h; sourceTree = "<group>"; };
+		27AD453A1B2EC14C00C80C29 /* SCImagesPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImagesPickerController.m; sourceTree = "<group>"; };
 		27D5CF901B26E6DD003341F3 /* SMCircleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCircleDetailViewController.h; sourceTree = "<group>"; };
 		27D5CF911B26E6DD003341F3 /* SMCircleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCircleDetailViewController.m; sourceTree = "<group>"; };
 		27D5CF961B26E9A0003341F3 /* SMCircleDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCircleDetailCell.h; sourceTree = "<group>"; };
@@ -174,6 +226,8 @@
 			children = (
 				27D5CF9C1B26FFA4003341F3 /* SMNavigationPopView.h */,
 				27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */,
+				27AD45011B2E9D7400C80C29 /* SMDatePickPopView.h */,
+				27AD45021B2E9D7400C80C29 /* SMDatePickPopView.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -365,6 +419,7 @@
 		277906321B2548E900ECC732 /* SchoolMateCircle */ = {
 			isa = PBXGroup;
 			children = (
+				27AD45041B2EA8AE00C80C29 /* PublishNote */,
 				2779063D1B25495800ECC732 /* SMCircleViewController.h */,
 				2779063E1B25495800ECC732 /* SMCircleViewController.m */,
 				27D5CF901B26E6DD003341F3 /* SMCircleDetailViewController.h */,
@@ -398,6 +453,78 @@
 				27AD44F91B2E943B00C80C29 /* NickNameViewController.m */,
 			);
 			path = NickName;
+			sourceTree = "<group>";
+		};
+		27AD45041B2EA8AE00C80C29 /* PublishNote */ = {
+			isa = PBXGroup;
+			children = (
+				27AD452A1B2EC14C00C80C29 /* SCImagesPicker */,
+				27AD45191B2EC08500C80C29 /* UICollectionView */,
+				27AD450B1B2EC05B00C80C29 /* SCImagesViewer */,
+				27AD45081B2EC02600C80C29 /* SaySomethingViewController.h */,
+				27AD45091B2EC02600C80C29 /* SaySomethingViewController.m */,
+				27AD45051B2EA8C000C80C29 /* PublishNoteViewController.h */,
+				27AD45061B2EA8C000C80C29 /* PublishNoteViewController.m */,
+			);
+			path = PublishNote;
+			sourceTree = "<group>";
+		};
+		27AD450B1B2EC05B00C80C29 /* SCImagesViewer */ = {
+			isa = PBXGroup;
+			children = (
+				27AD450C1B2EC05B00C80C29 /* SCImageScrollView.h */,
+				27AD450D1B2EC05B00C80C29 /* SCImageScrollView.m */,
+				27AD450E1B2EC05B00C80C29 /* SCImagesViewer.h */,
+				27AD450F1B2EC05B00C80C29 /* SCImagesViewerData.h */,
+				27AD45101B2EC05B00C80C29 /* SCImagesViewerData.m */,
+				27AD45111B2EC05B00C80C29 /* SCImageViewController.h */,
+				27AD45121B2EC05B00C80C29 /* SCImageViewController.m */,
+				27AD45131B2EC05B00C80C29 /* SCPageViewController.h */,
+				27AD45141B2EC05B00C80C29 /* SCPageViewController.m */,
+			);
+			path = SCImagesViewer;
+			sourceTree = "<group>";
+		};
+		27AD45191B2EC08500C80C29 /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				27AD45201B2EC08500C80C29 /* SaySomethingView */,
+			);
+			path = UICollectionView;
+			sourceTree = "<group>";
+		};
+		27AD45201B2EC08500C80C29 /* SaySomethingView */ = {
+			isa = PBXGroup;
+			children = (
+				27AD45211B2EC08500C80C29 /* SaySomethingPictureCell.h */,
+				27AD45221B2EC08500C80C29 /* SaySomethingPictureCell.m */,
+				27AD45231B2EC08500C80C29 /* SaySomethingReusableView.h */,
+				27AD45241B2EC08500C80C29 /* SaySomethingReusableView.m */,
+			);
+			path = SaySomethingView;
+			sourceTree = "<group>";
+		};
+		27AD452A1B2EC14C00C80C29 /* SCImagesPicker */ = {
+			isa = PBXGroup;
+			children = (
+				27AD452B1B2EC14C00C80C29 /* AlbumContentsViewCell.h */,
+				27AD452C1B2EC14C00C80C29 /* AlbumContentsViewCell.m */,
+				27AD452D1B2EC14C00C80C29 /* AlbumContentsViewController.h */,
+				27AD452E1B2EC14C00C80C29 /* AlbumContentsViewController.m */,
+				27AD452F1B2EC14C00C80C29 /* AssetsGroupsTabelView.h */,
+				27AD45301B2EC14C00C80C29 /* AssetsGroupsTabelView.m */,
+				27AD45311B2EC14C00C80C29 /* ImageScrollView.h */,
+				27AD45321B2EC14C00C80C29 /* ImageScrollView.m */,
+				27AD45331B2EC14C00C80C29 /* MyPageViewController.h */,
+				27AD45341B2EC14C00C80C29 /* MyPageViewController.m */,
+				27AD45351B2EC14C00C80C29 /* PageViewControllerData.h */,
+				27AD45361B2EC14C00C80C29 /* PageViewControllerData.m */,
+				27AD45371B2EC14C00C80C29 /* PhotoViewController.h */,
+				27AD45381B2EC14C00C80C29 /* PhotoViewController.m */,
+				27AD45391B2EC14C00C80C29 /* SCImagesPickerController.h */,
+				27AD453A1B2EC14C00C80C29 /* SCImagesPickerController.m */,
+			);
+			path = SCImagesPicker;
 			sourceTree = "<group>";
 		};
 		CA5534FB21DF9B06CB92725E /* Pods */ = {
@@ -517,26 +644,43 @@
 			files = (
 				2720ECC21B2587990063DB79 /* NSString+Addition.m in Sources */,
 				2779062C1B253EAB00ECC732 /* RegisterViewController.m in Sources */,
+				27AD45031B2E9D7400C80C29 /* SMDatePickPopView.m in Sources */,
 				27D5CF9E1B26FFA5003341F3 /* SMNavigationPopView.m in Sources */,
+				27AD453D1B2EC14C00C80C29 /* AssetsGroupsTabelView.m in Sources */,
 				2720ECAD1B254A7F0063DB79 /* FindSMViewController.m in Sources */,
 				277906421B25496500ECC732 /* WhisperViewController.m in Sources */,
+				27AD45071B2EA8C000C80C29 /* PublishNoteViewController.m in Sources */,
 				27D5CF9B1B26FB7E003341F3 /* GlobalManager.m in Sources */,
+				27AD453E1B2EC14C00C80C29 /* ImageScrollView.m in Sources */,
 				27D5CF981B26E9A0003341F3 /* SMCircleDetailCell.m in Sources */,
 				2720ECBE1B25871A0063DB79 /* Tools.m in Sources */,
 				274E651B1B2837A900D1267B /* UserInfoCell.m in Sources */,
+				27AD45161B2EC05B00C80C29 /* SCImagesViewerData.m in Sources */,
+				27AD45411B2EC14C00C80C29 /* PhotoViewController.m in Sources */,
 				274E65181B2833FB00D1267B /* UserInfoView.m in Sources */,
 				2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */,
 				2720ECB91B257B810063DB79 /* SCTabViewController.m in Sources */,
 				277906291B253E9F00ECC732 /* LoginViewController.m in Sources */,
 				27D5CF921B26E6DD003341F3 /* SMCircleDetailViewController.m in Sources */,
 				277905F91B252E0100ECC732 /* AppDelegate.m in Sources */,
+				27AD453F1B2EC14C00C80C29 /* MyPageViewController.m in Sources */,
+				27AD45401B2EC14C00C80C29 /* PageViewControllerData.m in Sources */,
+				27AD45291B2EC08500C80C29 /* SaySomethingReusableView.m in Sources */,
+				27AD45181B2EC05B00C80C29 /* SCPageViewController.m in Sources */,
+				27AD45171B2EC05B00C80C29 /* SCImageViewController.m in Sources */,
+				27AD450A1B2EC02600C80C29 /* SaySomethingViewController.m in Sources */,
 				27AD44F51B2E8DCD00C80C29 /* CheckTools.m in Sources */,
 				27AD44FA1B2E943B00C80C29 /* NickNameViewController.m in Sources */,
+				27AD453C1B2EC14C00C80C29 /* AlbumContentsViewController.m in Sources */,
 				2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */,
+				27AD453B1B2EC14C00C80C29 /* AlbumContentsViewCell.m in Sources */,
+				27AD45151B2EC05B00C80C29 /* SCImageScrollView.m in Sources */,
 				27AD44FD1B2E944500C80C29 /* TrueNameViewController.m in Sources */,
+				27AD45421B2EC14C00C80C29 /* SCImagesPickerController.m in Sources */,
 				2779061F1B253E2500ECC732 /* SCBasicViewController.m in Sources */,
 				277906361B2548FF00ECC732 /* BBNewspaperViewController.m in Sources */,
 				277905F61B252E0100ECC732 /* main.m in Sources */,
+				27AD45281B2EC08500C80C29 /* SaySomethingPictureCell.m in Sources */,
 				2720ECC71B258DF40063DB79 /* SMCircleCell.m in Sources */,
 				27AD45001B2E976000C80C29 /* SMMessageHUD.m in Sources */,
 			);
