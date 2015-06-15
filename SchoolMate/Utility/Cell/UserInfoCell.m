@@ -12,7 +12,7 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIImageView *backImageView;
-@property (nonatomic, strong) UIImageView *avatarView;
+
 @property (nonatomic, strong) UIImageView *pictureView;
 @property (nonatomic, strong) UIImageView *arrowView;
 @property (nonatomic, strong) UIImageView *lineView;
@@ -40,7 +40,6 @@
     [self.contentLabel setBackgroundColor:[UIColor clearColor]];
     [self.contentLabel setTextAlignment:NSTextAlignmentRight];
     [self.contentLabel setTextColor:[UIColor grayColor]];
-    self.contentLabel.hidden = YES;
     
     CGFloat avatarH = self.frame.size.height - 10.0;
     
@@ -59,10 +58,11 @@
     self.arrowView.hidden = YES;
     
     self.lineView = [[UIImageView alloc]initWithFrame:CGRectMake(10.0, self.frame.size.height - .5, self.frame.size.width - 20.0, .5)];
-    self.lineView.backgroundColor = [UIColor grayColor];
+    self.lineView.backgroundColor = RGBACOLOR(228.0, 228.0, 228.0, 1.0);
     
     self.backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, self.frame.size.width, self.frame.size.height)];
-    self.backImageView.image = [UIImage imageNamed:@"cellBack.png"];
+//    self.backImageView.image = [UIImage imageNamed:@"cellBack.png"];
+    self.backImageView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
     
     [self.contentView addSubview:self.backImageView];
     [self.contentView addSubview:self.titleLabel];
@@ -86,6 +86,7 @@
                                                  self.frame.size.height)];
             
             [self.contentLabel setText:dic[@"content"]];
+            [self.contentLabel setHidden:NO];
             [self.contentLabel setFrame:CGRectMake(self.contentLabel.frame.origin.x,
                                                    self.contentLabel.frame.origin.y,
                                                    self.contentLabel.frame.size.width,
@@ -114,6 +115,7 @@
                                                  self.frame.size.height)];
             
             [self.contentLabel setText:dic[@"content"]];
+            [self.contentLabel setHidden:YES];
             [self.contentLabel setFrame:CGRectMake(self.contentLabel.frame.origin.x,
                                                    self.contentLabel.frame.origin.y,
                                                    self.contentLabel.frame.size.width,
@@ -121,6 +123,10 @@
             
             [self.avatarView setHidden:NO];
             [self.avatarView setImage:[UIImage imageNamed:@"headImage.png"]];
+            [self.avatarView setFrame:CGRectMake(self.frame.size.width - self.frame.size.height + 22.0 - 15.0,
+                                                 11.0,
+                                                 self.frame.size.height - 22.0,
+                                                 self.frame.size.height - 22.0)];
             
             [self.pictureView setHidden:YES];
             
@@ -143,6 +149,7 @@
                                                  self.frame.size.height)];
             
             [self.contentLabel setText:dic[@"content"]];
+            [self.contentLabel setHidden:YES];
             [self.contentLabel setFrame:CGRectMake(self.contentLabel.frame.origin.x,
                                                    self.contentLabel.frame.origin.y,
                                                    self.contentLabel.frame.size.width,
@@ -172,6 +179,7 @@
                                                  self.frame.size.height)];
             
             [self.contentLabel setText:dic[@"content"]];
+            [self.contentLabel setHidden:NO];
             [self.contentLabel setFrame:CGRectMake(self.contentLabel.frame.origin.x,
                                                    self.contentLabel.frame.origin.y,
                                                    self.contentLabel.frame.size.width,

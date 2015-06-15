@@ -73,7 +73,7 @@
         [loginBtn setBackgroundColor:[UIColor clearColor]];
         [loginBtn setFrame:CGRectMake(64.0, 366.0, 38.0, 42.0)];
         [loginBtn bk_addEventHandler:^(id sender) {
-            [self showMessage:NSLocalizedString(@"QQ 登录", nil)];
+            [SMMessageHUD showMessage:NSLocalizedString(@"QQ 登录", nil) afterDelay:1.0];
         } forControlEvents:UIControlEventTouchUpInside];
         [self.backImageView addSubview:loginBtn];
     }
@@ -84,7 +84,7 @@
         [loginBtn setBackgroundColor:[UIColor clearColor]];
         [loginBtn setFrame:CGRectMake(136.0, 366.0, 48.0, 42.0)];
         [loginBtn bk_addEventHandler:^(id sender) {
-            [self showMessage:NSLocalizedString(@"微信登录", nil)];
+            [SMMessageHUD showMessage:NSLocalizedString(@"微信登录", nil) afterDelay:1.0];
         } forControlEvents:UIControlEventTouchUpInside];
         [self.backImageView addSubview:loginBtn];
     }
@@ -95,7 +95,7 @@
         [loginBtn setBackgroundColor:[UIColor clearColor]];
         [loginBtn setFrame:CGRectMake(214.0, 366.0, 46.0, 42.0)];
         [loginBtn bk_addEventHandler:^(id sender) {
-            [self showMessage:NSLocalizedString(@"sina 登录", nil)];
+            [SMMessageHUD showMessage:NSLocalizedString(@"sina 登录", nil) afterDelay:1.0];
         } forControlEvents:UIControlEventTouchUpInside];
         [self.backImageView addSubview:loginBtn];
     }
@@ -106,7 +106,7 @@
         [loginBtn setBackgroundColor:[UIColor clearColor]];
         [loginBtn setFrame:CGRectMake(0.0, 458.0, 84.0, 30.0)];
         [loginBtn bk_addEventHandler:^(id sender) {
-            [self showMessage:NSLocalizedString(@"忘记密码", nil)];
+            [SMMessageHUD showMessage:NSLocalizedString(@"忘记密码", nil) afterDelay:1.0];
         } forControlEvents:UIControlEventTouchUpInside];
         [self.backImageView addSubview:loginBtn];
     }
@@ -128,16 +128,7 @@
     [self presentViewController:tab animated:NO completion:nil];
 }
 
-#pragma mark - MB HUD
-- (void)showMessage:(NSString *)string {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:AppWindow animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = string;
-    hud.margin = 10.f;
-//    hud.yOffset = 150.f;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
-}
+
 #pragma mark - Touches
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];

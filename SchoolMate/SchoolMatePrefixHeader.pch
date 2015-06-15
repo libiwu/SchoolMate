@@ -28,4 +28,8 @@
 #import "NSString+Addition.h"
 
 #import "GlobalManager.h"
+
+#import "Tools.h"
+#import "CheckTools.h"
+#import "SMMessageHUD.h"
 #endif

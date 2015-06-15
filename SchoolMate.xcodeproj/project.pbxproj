@@ -27,6 +27,10 @@
 		2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779063B1B25492B00ECC732 /* MoreViewController.m */; };
 		2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779063E1B25495800ECC732 /* SMCircleViewController.m */; };
 		277906421B25496500ECC732 /* WhisperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277906411B25496500ECC732 /* WhisperViewController.m */; };
+		27AD44F51B2E8DCD00C80C29 /* CheckTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44F41B2E8DCD00C80C29 /* CheckTools.m */; };
+		27AD44FA1B2E943B00C80C29 /* NickNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44F91B2E943B00C80C29 /* NickNameViewController.m */; };
+		27AD44FD1B2E944500C80C29 /* TrueNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44FC1B2E944500C80C29 /* TrueNameViewController.m */; };
+		27AD45001B2E976000C80C29 /* SMMessageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44FF1B2E976000C80C29 /* SMMessageHUD.m */; };
 		27D5CF921B26E6DD003341F3 /* SMCircleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF911B26E6DD003341F3 /* SMCircleDetailViewController.m */; };
 		27D5CF981B26E9A0003341F3 /* SMCircleDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF971B26E9A0003341F3 /* SMCircleDetailCell.m */; };
 		27D5CF9B1B26FB7E003341F3 /* GlobalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF9A1B26FB7E003341F3 /* GlobalManager.m */; };
@@ -76,6 +80,14 @@
 		2779063E1B25495800ECC732 /* SMCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCircleViewController.m; sourceTree = "<group>"; };
 		277906401B25496500ECC732 /* WhisperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhisperViewController.h; sourceTree = "<group>"; };
 		277906411B25496500ECC732 /* WhisperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhisperViewController.m; sourceTree = "<group>"; };
+		27AD44F31B2E8DCC00C80C29 /* CheckTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckTools.h; sourceTree = "<group>"; };
+		27AD44F41B2E8DCD00C80C29 /* CheckTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckTools.m; sourceTree = "<group>"; };
+		27AD44F81B2E943B00C80C29 /* NickNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NickNameViewController.h; sourceTree = "<group>"; };
+		27AD44F91B2E943B00C80C29 /* NickNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NickNameViewController.m; sourceTree = "<group>"; };
+		27AD44FB1B2E944500C80C29 /* TrueNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrueNameViewController.h; sourceTree = "<group>"; };
+		27AD44FC1B2E944500C80C29 /* TrueNameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrueNameViewController.m; sourceTree = "<group>"; };
+		27AD44FE1B2E976000C80C29 /* SMMessageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMessageHUD.h; sourceTree = "<group>"; };
+		27AD44FF1B2E976000C80C29 /* SMMessageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMessageHUD.m; sourceTree = "<group>"; };
 		27D5CF901B26E6DD003341F3 /* SMCircleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCircleDetailViewController.h; sourceTree = "<group>"; };
 		27D5CF911B26E6DD003341F3 /* SMCircleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCircleDetailViewController.m; sourceTree = "<group>"; };
 		27D5CF961B26E9A0003341F3 /* SMCircleDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCircleDetailCell.h; sourceTree = "<group>"; };
@@ -130,8 +142,12 @@
 		2720ECB11B2578FE0063DB79 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				27AD44F31B2E8DCC00C80C29 /* CheckTools.h */,
+				27AD44F41B2E8DCD00C80C29 /* CheckTools.m */,
 				2720ECBC1B25871A0063DB79 /* Tools.h */,
 				2720ECBD1B25871A0063DB79 /* Tools.m */,
+				27AD44FE1B2E976000C80C29 /* SMMessageHUD.h */,
+				27AD44FF1B2E976000C80C29 /* SMMessageHUD.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -336,6 +352,8 @@
 		277906311B2548E900ECC732 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				27AD44F71B2E942D00C80C29 /* NickName */,
+				27AD44F61B2E942600C80C29 /* TrueName */,
 				2779063A1B25492B00ECC732 /* MoreViewController.h */,
 				2779063B1B25492B00ECC732 /* MoreViewController.m */,
 				274E65161B2833FB00D1267B /* UserInfoView.h */,
@@ -362,6 +380,24 @@
 				277906411B25496500ECC732 /* WhisperViewController.m */,
 			);
 			path = Whisper;
+			sourceTree = "<group>";
+		};
+		27AD44F61B2E942600C80C29 /* TrueName */ = {
+			isa = PBXGroup;
+			children = (
+				27AD44FB1B2E944500C80C29 /* TrueNameViewController.h */,
+				27AD44FC1B2E944500C80C29 /* TrueNameViewController.m */,
+			);
+			path = TrueName;
+			sourceTree = "<group>";
+		};
+		27AD44F71B2E942D00C80C29 /* NickName */ = {
+			isa = PBXGroup;
+			children = (
+				27AD44F81B2E943B00C80C29 /* NickNameViewController.h */,
+				27AD44F91B2E943B00C80C29 /* NickNameViewController.m */,
+			);
+			path = NickName;
 			sourceTree = "<group>";
 		};
 		CA5534FB21DF9B06CB92725E /* Pods */ = {
@@ -494,11 +530,15 @@
 				277906291B253E9F00ECC732 /* LoginViewController.m in Sources */,
 				27D5CF921B26E6DD003341F3 /* SMCircleDetailViewController.m in Sources */,
 				277905F91B252E0100ECC732 /* AppDelegate.m in Sources */,
+				27AD44F51B2E8DCD00C80C29 /* CheckTools.m in Sources */,
+				27AD44FA1B2E943B00C80C29 /* NickNameViewController.m in Sources */,
 				2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */,
+				27AD44FD1B2E944500C80C29 /* TrueNameViewController.m in Sources */,
 				2779061F1B253E2500ECC732 /* SCBasicViewController.m in Sources */,
 				277906361B2548FF00ECC732 /* BBNewspaperViewController.m in Sources */,
 				277905F61B252E0100ECC732 /* main.m in Sources */,
 				2720ECC71B258DF40063DB79 /* SMCircleCell.m in Sources */,
+				27AD45001B2E976000C80C29 /* SMMessageHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,12 +641,12 @@
 			baseConfigurationReference = 890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ultimate Gaming Europe AB";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijie Wang (279X77QYCE)";
 				GCC_PREFIX_HEADER = SchoolMate/SchoolMatePrefixHeader.pch;
 				INFOPLIST_FILE = SchoolMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7636ee38-b31a-4c85-9160-b018ba34c444";
+				PROVISIONING_PROFILE = "8be5bba2-3d70-4187-917e-f4d18a74ccf4";
 			};
 			name = Debug;
 		};
@@ -615,12 +655,12 @@
 			baseConfigurationReference = 22250F62B24FB1257E6E234A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Ultimate Gaming Europe AB";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijie Wang (279X77QYCE)";
 				GCC_PREFIX_HEADER = SchoolMate/SchoolMatePrefixHeader.pch;
 				INFOPLIST_FILE = SchoolMate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7636ee38-b31a-4c85-9160-b018ba34c444";
+				PROVISIONING_PROFILE = "8be5bba2-3d70-4187-917e-f4d18a74ccf4";
 			};
 			name = Release;
 		};

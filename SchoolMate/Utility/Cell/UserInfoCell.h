@@ -19,6 +19,8 @@ typedef NS_ENUM(NSUInteger, UserInfoCellType) {
 
 @interface UserInfoCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *avatarView;
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
 - (void)setUserInfoModel:(id)object indexPath:(NSIndexPath *)indexPath cellType:(UserInfoCellType)type;
