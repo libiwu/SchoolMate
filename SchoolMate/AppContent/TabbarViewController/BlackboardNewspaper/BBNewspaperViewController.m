@@ -18,5 +18,12 @@
     [super viewDidLoad];
     
     [self setNavTitle:NSLocalizedString(@"黑板报", nil)];
+    
+    [self creatContentView];
 }
+
+- (void)creatContentView {
+    
+}
+
 @end
