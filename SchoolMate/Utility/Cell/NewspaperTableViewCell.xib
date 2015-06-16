@@ -56,11 +56,11 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image03" translatesAutoresizingMaskIntoConstraints="NO" id="R6m-cT-knd">
                                         <rect key="frame" x="7" y="4" width="199" height="105"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nz1-bg-L4G" customClass="CommentItemView">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nz1-bg-L4G">
                                         <rect key="frame" x="7" y="115" width="60" height="19"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJz-Yg-6us" customClass="CommentItemView">
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LJz-Yg-6us">
                                         <rect key="frame" x="84" y="115" width="60" height="19"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
@@ -73,10 +73,6 @@
                 </subviews>
                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="commentItemView" destination="LJz-Yg-6us" id="lod-hi-zc6"/>
-                <outlet property="likeItemView" destination="nz1-bg-L4G" id="fpH-k8-F4B"/>
-            </connections>
             <point key="canvasLocation" x="977" y="412"/>
         </tableViewCell>
     </objects>
