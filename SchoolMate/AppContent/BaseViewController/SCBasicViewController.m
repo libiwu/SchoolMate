@@ -124,6 +124,9 @@
     }
 }
 
+- (void)creatContentView {
+    
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
