@@ -1,5 +1,5 @@
 //
-//  commentItemView.h
+//  CommentItemView.h
 //  SchoolMate
 //
 //  Created by SuperDanny on 15/6/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface commentItemView : UIView
+@interface CommentItemView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel     *countLab;
 @property (weak, nonatomic) IBOutlet UILabel     *nameLab;

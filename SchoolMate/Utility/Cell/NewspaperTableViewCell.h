@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CommentItemView.h"
 
 @interface NewspaperTableViewCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet CommentItemView *likeItemView;
+@property (weak, nonatomic) IBOutlet CommentItemView *commentItemView;
 
 @end

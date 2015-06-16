@@ -2,37 +2,49 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommentItemView">
+            <connections>
+                <outlet property="backgroundImg" destination="Rtp-Zc-WS5" id="StR-Ye-UFB"/>
+                <outlet property="countLab" destination="Gby-nY-beF" id="gk2-w9-qLl"/>
+                <outlet property="nameLab" destination="0sh-SY-vKP" id="UYU-Tj-DEp"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="commentItemView">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="200" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="Rtp-Zc-WS5">
                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="HWc-S0-E5U"/>
+                        <constraint firstAttribute="width" secondItem="Rtp-Zc-WS5" secondAttribute="height" multiplier="1:1" id="9Pl-5o-PQj"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="稀饭" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sh-SY-vKP">
-                    <rect key="frame" x="72" y="0.0" width="128" height="60"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <rect key="frame" x="68" y="0.0" width="132" height="60"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.98431372549999996" green="0.47450980390000003" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gby-nY-beF">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gby-nY-beF">
                     <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="0sh-SY-vKP" firstAttribute="leading" secondItem="Gby-nY-beF" secondAttribute="trailing" constant="8" id="1Cj-LR-MjQ"/>
+                <constraint firstItem="Gby-nY-beF" firstAttribute="centerX" secondItem="Rtp-Zc-WS5" secondAttribute="centerX" id="7l6-Dn-jcg"/>
+                <constraint firstItem="Gby-nY-beF" firstAttribute="centerY" secondItem="Rtp-Zc-WS5" secondAttribute="centerY" id="Orl-gg-iHf"/>
+                <constraint firstItem="Gby-nY-beF" firstAttribute="height" secondItem="Rtp-Zc-WS5" secondAttribute="height" id="QDN-MM-8ut"/>
                 <constraint firstItem="0sh-SY-vKP" firstAttribute="leading" secondItem="Rtp-Zc-WS5" secondAttribute="trailing" constant="12" id="THR-2S-jmm"/>
                 <constraint firstAttribute="bottom" secondItem="0sh-SY-vKP" secondAttribute="bottom" id="bAp-D3-Zl4"/>
+                <constraint firstItem="Gby-nY-beF" firstAttribute="width" secondItem="Rtp-Zc-WS5" secondAttribute="width" id="hIN-mu-MhB"/>
                 <constraint firstItem="Rtp-Zc-WS5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hsM-iv-Suu"/>
                 <constraint firstItem="0sh-SY-vKP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lMj-W5-apB"/>
                 <constraint firstItem="Rtp-Zc-WS5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mWP-MO-pRh"/>
@@ -41,11 +53,11 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="backgroundImg" destination="Rtp-Zc-WS5" id="LL5-hX-k81"/>
-                <outlet property="countLab" destination="Gby-nY-beF" id="D5Q-sB-sTG"/>
-                <outlet property="nameLab" destination="0sh-SY-vKP" id="FJS-WO-iY1"/>
-            </connections>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="THR-2S-jmm"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="259" y="-41"/>
         </view>
     </objects>

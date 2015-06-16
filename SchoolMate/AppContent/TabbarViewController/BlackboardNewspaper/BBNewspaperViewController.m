@@ -28,9 +28,8 @@ static NSString *const reuseIdentity = @"Cell";
 }
 
 - (void)creatContentView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight-64)];
-    _tableView.rowHeight  = 135;
-    _tableView.delegate   = self;
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight-64-49)];
+    _tableView.rowHeight  = 150;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [_tableView registerNib:[UINib nibWithNibName:@"NewspaperTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentity];
@@ -44,6 +43,7 @@ static NSString *const reuseIdentity = @"Cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NewspaperTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentity forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

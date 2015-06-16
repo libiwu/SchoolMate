@@ -55,8 +55,8 @@
 		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
 		DFFF35181B2EFEF900480914 /* NewspaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFF35161B2EFEF900480914 /* NewspaperTableViewCell.m */; };
 		DFFF35191B2EFEF900480914 /* NewspaperTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFFF35171B2EFEF900480914 /* NewspaperTableViewCell.xib */; };
-		DFFF351C1B2F0AC300480914 /* commentItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFF351B1B2F0AC300480914 /* commentItemView.m */; };
-		DFFF351E1B2F0AE400480914 /* commentItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFFF351D1B2F0AE400480914 /* commentItemView.xib */; };
+		DFFF351C1B2F0AC300480914 /* CommentItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFF351B1B2F0AC300480914 /* CommentItemView.m */; };
+		DFFF351E1B2F0AE400480914 /* CommentItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFFF351D1B2F0AE400480914 /* CommentItemView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,9 +157,9 @@
 		DFFF35151B2EFEF900480914 /* NewspaperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewspaperTableViewCell.h; sourceTree = "<group>"; };
 		DFFF35161B2EFEF900480914 /* NewspaperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewspaperTableViewCell.m; sourceTree = "<group>"; };
 		DFFF35171B2EFEF900480914 /* NewspaperTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewspaperTableViewCell.xib; sourceTree = "<group>"; };
-		DFFF351A1B2F0AC300480914 /* commentItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentItemView.h; sourceTree = "<group>"; };
-		DFFF351B1B2F0AC300480914 /* commentItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentItemView.m; sourceTree = "<group>"; };
-		DFFF351D1B2F0AE400480914 /* commentItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commentItemView.xib; sourceTree = "<group>"; };
+		DFFF351A1B2F0AC300480914 /* CommentItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentItemView.h; sourceTree = "<group>"; };
+		DFFF351B1B2F0AC300480914 /* CommentItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentItemView.m; sourceTree = "<group>"; };
+		DFFF351D1B2F0AE400480914 /* CommentItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentItemView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,9 +238,9 @@
 				27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */,
 				27AD45011B2E9D7400C80C29 /* SMDatePickPopView.h */,
 				27AD45021B2E9D7400C80C29 /* SMDatePickPopView.m */,
-				DFFF351A1B2F0AC300480914 /* commentItemView.h */,
-				DFFF351B1B2F0AC300480914 /* commentItemView.m */,
-				DFFF351D1B2F0AE400480914 /* commentItemView.xib */,
+				DFFF351A1B2F0AC300480914 /* CommentItemView.h */,
+				DFFF351B1B2F0AC300480914 /* CommentItemView.m */,
+				DFFF351D1B2F0AE400480914 /* CommentItemView.xib */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -617,7 +617,7 @@
 				277906041B252E0100ECC732 /* LaunchScreen.xib in Resources */,
 				DFFF35191B2EFEF900480914 /* NewspaperTableViewCell.xib in Resources */,
 				277906011B252E0100ECC732 /* Images.xcassets in Resources */,
-				DFFF351E1B2F0AE400480914 /* commentItemView.xib in Resources */,
+				DFFF351E1B2F0AE400480914 /* CommentItemView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,7 +677,7 @@
 				27AD45161B2EC05B00C80C29 /* SCImagesViewerData.m in Sources */,
 				27AD45411B2EC14C00C80C29 /* PhotoViewController.m in Sources */,
 				274E65181B2833FB00D1267B /* UserInfoView.m in Sources */,
-				DFFF351C1B2F0AC300480914 /* commentItemView.m in Sources */,
+				DFFF351C1B2F0AC300480914 /* CommentItemView.m in Sources */,
 				2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */,
 				2720ECB91B257B810063DB79 /* SCTabViewController.m in Sources */,
 				277906291B253E9F00ECC732 /* LoginViewController.m in Sources */,
