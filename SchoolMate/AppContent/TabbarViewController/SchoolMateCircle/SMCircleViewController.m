@@ -11,7 +11,6 @@
 #import "SMCircleDetailViewController.h"
 #import "SMNavigationPopView.h"
 #import "PublishNoteViewController.h"
-#import "SaySomethingViewController.h"
 
 @interface SMCircleViewController ()<UITableViewDataSource, UITableViewDelegate>
 

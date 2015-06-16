@@ -1,23 +1,22 @@
 //
-//  NickNameViewController.m
+//  ChangeAccountViewController.m
 //  SchoolMate
 //
-//  Created by libiwu on 15/6/15.
+//  Created by libiwu on 15/6/16.
 //  Copyright (c) 2015年 libiwu. All rights reserved.
 //
 
-#import "NickNameViewController.h"
+#import "ChangeAccountViewController.h"
 
-@interface NickNameViewController ()
+@interface ChangeAccountViewController ()
 
 @end
 
-@implementation NickNameViewController
-
+@implementation ChangeAccountViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavTitle:NSLocalizedString(@"更改昵称", nil)];
+    [self setNavTitle:NSLocalizedString(@"更改账号", nil)];
     
     [self createContentView];
     
@@ -35,13 +34,13 @@
     leftView.backgroundColor = [UIColor clearColor];
     leftView.textAlignment = NSTextAlignmentCenter;
     leftView.textColor = [UIColor blackColor];
-    leftView.text = NSLocalizedString(@"昵称", nil);
+    leftView.text = NSLocalizedString(@"账号", nil);
     
     UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(0.0,
                                                                           0.0,
                                                                           backImage.frame.size.width,
                                                                           backImage.frame.size.height)];
-    textField.placeholder = NSLocalizedString(@"输入昵称", nil);
+    textField.placeholder = NSLocalizedString(@"输入账号", nil);
     textField.backgroundColor = [UIColor clearColor];
     textField.leftViewMode = UITextFieldViewModeAlways;
     textField.leftView = leftView;
@@ -55,7 +54,7 @@
     tipLabel.backgroundColor = [UIColor clearColor];
     tipLabel.font = [UIFont systemFontOfSize:14.0];
     tipLabel.textColor = [UIColor grayColor];
-    tipLabel.text = NSLocalizedString(@"好名字可以让你的朋友更容易记住你", nil);
+    tipLabel.text = NSLocalizedString(@"朋友可以通过账号搜索到你", nil);
     [self.view addSubview:tipLabel];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

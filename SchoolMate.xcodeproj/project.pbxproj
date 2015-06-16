@@ -33,7 +33,6 @@
 		27AD45001B2E976000C80C29 /* SMMessageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44FF1B2E976000C80C29 /* SMMessageHUD.m */; };
 		27AD45031B2E9D7400C80C29 /* SMDatePickPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45021B2E9D7400C80C29 /* SMDatePickPopView.m */; };
 		27AD45071B2EA8C000C80C29 /* PublishNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45061B2EA8C000C80C29 /* PublishNoteViewController.m */; };
-		27AD450A1B2EC02600C80C29 /* SaySomethingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45091B2EC02600C80C29 /* SaySomethingViewController.m */; };
 		27AD45151B2EC05B00C80C29 /* SCImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD450D1B2EC05B00C80C29 /* SCImageScrollView.m */; };
 		27AD45161B2EC05B00C80C29 /* SCImagesViewerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45101B2EC05B00C80C29 /* SCImagesViewerData.m */; };
 		27AD45171B2EC05B00C80C29 /* SCImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45121B2EC05B00C80C29 /* SCImageViewController.m */; };
@@ -52,6 +51,12 @@
 		27D5CF981B26E9A0003341F3 /* SMCircleDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF971B26E9A0003341F3 /* SMCircleDetailCell.m */; };
 		27D5CF9B1B26FB7E003341F3 /* GlobalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF9A1B26FB7E003341F3 /* GlobalManager.m */; };
 		27D5CF9E1B26FFA5003341F3 /* SMNavigationPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */; };
+		27DAE0841B2FF0E90070D812 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DAE0831B2FF0E90070D812 /* GroupViewController.m */; };
+		27DAE0871B2FFA010070D812 /* NoteTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DAE0861B2FFA010070D812 /* NoteTagViewController.m */; };
+		27DAE08A1B2FFC1D0070D812 /* SMNoteTagPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DAE0891B2FFC1D0070D812 /* SMNoteTagPopView.m */; };
+		27DAE08E1B300E170070D812 /* ChangeAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DAE08D1B300E170070D812 /* ChangeAccountViewController.m */; };
+		27DAE0921B30101F0070D812 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DAE0911B30101F0070D812 /* CompanyViewController.m */; };
+		27DAE0951B3021BA0070D812 /* BBNewspaperDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DAE0941B3021BA0070D812 /* BBNewspaperDetailViewController.m */; };
 		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
 		DFFF35181B2EFEF900480914 /* NewspaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFF35161B2EFEF900480914 /* NewspaperTableViewCell.m */; };
 		DFFF35191B2EFEF900480914 /* NewspaperTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFFF35171B2EFEF900480914 /* NewspaperTableViewCell.xib */; };
@@ -111,8 +116,6 @@
 		27AD45021B2E9D7400C80C29 /* SMDatePickPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDatePickPopView.m; sourceTree = "<group>"; };
 		27AD45051B2EA8C000C80C29 /* PublishNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishNoteViewController.h; sourceTree = "<group>"; };
 		27AD45061B2EA8C000C80C29 /* PublishNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishNoteViewController.m; sourceTree = "<group>"; };
-		27AD45081B2EC02600C80C29 /* SaySomethingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaySomethingViewController.h; sourceTree = "<group>"; };
-		27AD45091B2EC02600C80C29 /* SaySomethingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaySomethingViewController.m; sourceTree = "<group>"; };
 		27AD450C1B2EC05B00C80C29 /* SCImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageScrollView.h; sourceTree = "<group>"; };
 		27AD450D1B2EC05B00C80C29 /* SCImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageScrollView.m; sourceTree = "<group>"; };
 		27AD450E1B2EC05B00C80C29 /* SCImagesViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImagesViewer.h; sourceTree = "<group>"; };
@@ -150,6 +153,18 @@
 		27D5CF9A1B26FB7E003341F3 /* GlobalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalManager.m; sourceTree = "<group>"; };
 		27D5CF9C1B26FFA4003341F3 /* SMNavigationPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNavigationPopView.h; sourceTree = "<group>"; };
 		27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNavigationPopView.m; sourceTree = "<group>"; };
+		27DAE0821B2FF0E90070D812 /* GroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
+		27DAE0831B2FF0E90070D812 /* GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
+		27DAE0851B2FFA010070D812 /* NoteTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTagViewController.h; sourceTree = "<group>"; };
+		27DAE0861B2FFA010070D812 /* NoteTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTagViewController.m; sourceTree = "<group>"; };
+		27DAE0881B2FFC1D0070D812 /* SMNoteTagPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNoteTagPopView.h; sourceTree = "<group>"; };
+		27DAE0891B2FFC1D0070D812 /* SMNoteTagPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNoteTagPopView.m; sourceTree = "<group>"; };
+		27DAE08C1B300E170070D812 /* ChangeAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeAccountViewController.h; sourceTree = "<group>"; };
+		27DAE08D1B300E170070D812 /* ChangeAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeAccountViewController.m; sourceTree = "<group>"; };
+		27DAE0901B30101F0070D812 /* CompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyViewController.h; sourceTree = "<group>"; };
+		27DAE0911B30101F0070D812 /* CompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyViewController.m; sourceTree = "<group>"; };
+		27DAE0931B3021BA0070D812 /* BBNewspaperDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBNewspaperDetailViewController.h; sourceTree = "<group>"; };
+		27DAE0941B3021BA0070D812 /* BBNewspaperDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNewspaperDetailViewController.m; sourceTree = "<group>"; };
 		88CE2707A443E72094D81713 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DFFF35151B2EFEF900480914 /* NewspaperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewspaperTableViewCell.h; sourceTree = "<group>"; };
@@ -233,6 +248,11 @@
 				27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */,
 				27AD45011B2E9D7400C80C29 /* SMDatePickPopView.h */,
 				27AD45021B2E9D7400C80C29 /* SMDatePickPopView.m */,
+				DFFF351A1B2F0AC300480914 /* CommentItemView.h */,
+				DFFF351B1B2F0AC300480914 /* CommentItemView.m */,
+				DFFF351D1B2F0AE400480914 /* CommentItemView.xib */,
+				27DAE0881B2FFC1D0070D812 /* SMNoteTagPopView.h */,
+				27DAE0891B2FFC1D0070D812 /* SMNoteTagPopView.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -398,6 +418,8 @@
 			children = (
 				277906341B2548FF00ECC732 /* BBNewspaperViewController.h */,
 				277906351B2548FF00ECC732 /* BBNewspaperViewController.m */,
+				27DAE0931B3021BA0070D812 /* BBNewspaperDetailViewController.h */,
+				27DAE0941B3021BA0070D812 /* BBNewspaperDetailViewController.m */,
 			);
 			path = BlackboardNewspaper;
 			sourceTree = "<group>";
@@ -414,6 +436,8 @@
 		277906311B2548E900ECC732 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				27DAE08F1B3010140070D812 /* Company */,
+				27DAE08B1B300DF60070D812 /* Account */,
 				27AD44F71B2E942D00C80C29 /* NickName */,
 				27AD44F61B2E942600C80C29 /* TrueName */,
 				2779063A1B25492B00ECC732 /* MoreViewController.h */,
@@ -469,10 +493,12 @@
 				27AD452A1B2EC14C00C80C29 /* SCImagesPicker */,
 				27AD45191B2EC08500C80C29 /* UICollectionView */,
 				27AD450B1B2EC05B00C80C29 /* SCImagesViewer */,
-				27AD45081B2EC02600C80C29 /* SaySomethingViewController.h */,
-				27AD45091B2EC02600C80C29 /* SaySomethingViewController.m */,
 				27AD45051B2EA8C000C80C29 /* PublishNoteViewController.h */,
 				27AD45061B2EA8C000C80C29 /* PublishNoteViewController.m */,
+				27DAE0821B2FF0E90070D812 /* GroupViewController.h */,
+				27DAE0831B2FF0E90070D812 /* GroupViewController.m */,
+				27DAE0851B2FFA010070D812 /* NoteTagViewController.h */,
+				27DAE0861B2FFA010070D812 /* NoteTagViewController.m */,
 			);
 			path = PublishNote;
 			sourceTree = "<group>";
@@ -533,6 +559,24 @@
 				27AD453A1B2EC14C00C80C29 /* SCImagesPickerController.m */,
 			);
 			path = SCImagesPicker;
+			sourceTree = "<group>";
+		};
+		27DAE08B1B300DF60070D812 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				27DAE08C1B300E170070D812 /* ChangeAccountViewController.h */,
+				27DAE08D1B300E170070D812 /* ChangeAccountViewController.m */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		27DAE08F1B3010140070D812 /* Company */ = {
+			isa = PBXGroup;
+			children = (
+				27DAE0901B30101F0070D812 /* CompanyViewController.h */,
+				27DAE0911B30101F0070D812 /* CompanyViewController.m */,
+			);
+			path = Company;
 			sourceTree = "<group>";
 		};
 		CA5534FB21DF9B06CB92725E /* Pods */ = {
@@ -657,8 +701,10 @@
 				27AD45031B2E9D7400C80C29 /* SMDatePickPopView.m in Sources */,
 				27D5CF9E1B26FFA5003341F3 /* SMNavigationPopView.m in Sources */,
 				27AD453D1B2EC14C00C80C29 /* AssetsGroupsTabelView.m in Sources */,
+				27DAE0951B3021BA0070D812 /* BBNewspaperDetailViewController.m in Sources */,
 				2720ECAD1B254A7F0063DB79 /* FindSMViewController.m in Sources */,
 				277906421B25496500ECC732 /* WhisperViewController.m in Sources */,
+				27DAE0871B2FFA010070D812 /* NoteTagViewController.m in Sources */,
 				27AD45071B2EA8C000C80C29 /* PublishNoteViewController.m in Sources */,
 				27D5CF9B1B26FB7E003341F3 /* GlobalManager.m in Sources */,
 				27AD453E1B2EC14C00C80C29 /* ImageScrollView.m in Sources */,
@@ -679,10 +725,12 @@
 				27AD45291B2EC08500C80C29 /* SaySomethingReusableView.m in Sources */,
 				27AD45181B2EC05B00C80C29 /* SCPageViewController.m in Sources */,
 				27AD45171B2EC05B00C80C29 /* SCImageViewController.m in Sources */,
-				27AD450A1B2EC02600C80C29 /* SaySomethingViewController.m in Sources */,
 				27AD44F51B2E8DCD00C80C29 /* CheckTools.m in Sources */,
 				27AD44FA1B2E943B00C80C29 /* NickNameViewController.m in Sources */,
 				27AD453C1B2EC14C00C80C29 /* AlbumContentsViewController.m in Sources */,
+				27DAE0921B30101F0070D812 /* CompanyViewController.m in Sources */,
+				27DAE08E1B300E170070D812 /* ChangeAccountViewController.m in Sources */,
+				27DAE0841B2FF0E90070D812 /* GroupViewController.m in Sources */,
 				2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */,
 				27AD453B1B2EC14C00C80C29 /* AlbumContentsViewCell.m in Sources */,
 				27AD45151B2EC05B00C80C29 /* SCImageScrollView.m in Sources */,
@@ -694,6 +742,7 @@
 				27AD45281B2EC08500C80C29 /* SaySomethingPictureCell.m in Sources */,
 				2720ECC71B258DF40063DB79 /* SMCircleCell.m in Sources */,
 				27AD45001B2E976000C80C29 /* SMMessageHUD.m in Sources */,
+				27DAE08A1B2FFC1D0070D812 /* SMNoteTagPopView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,13 +845,13 @@
 			baseConfigurationReference = 890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijie Wang (279X77QYCE)";
 				GCC_PREFIX_HEADER = SchoolMate/SchoolMatePrefixHeader.pch;
 				INFOPLIST_FILE = SchoolMate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8be5bba2-3d70-4187-917e-f4d18a74ccf4";
 			};
 			name = Debug;
 		};
@@ -811,13 +860,13 @@
 			baseConfigurationReference = 22250F62B24FB1257E6E234A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijie Wang (279X77QYCE)";
 				GCC_PREFIX_HEADER = SchoolMate/SchoolMatePrefixHeader.pch;
 				INFOPLIST_FILE = SchoolMate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8be5bba2-3d70-4187-917e-f4d18a74ccf4";
 			};
 			name = Release;
 		};

@@ -15,7 +15,7 @@ typedef void(^tableViewSelectBlock)(NSUInteger index, NSString *string);
 @property (nonatomic, copy  ) tableViewSelectBlock  selectBlock;
 
 - (instancetype)initWithDataArray:(NSArray *)array;
-
+- (void)setTableViewCenter:(CGPoint)point;
 /**
  *  显示
  */
@@ -24,5 +24,6 @@ typedef void(^tableViewSelectBlock)(NSUInteger index, NSString *string);
  *  隐藏
  */
 - (void)dismiss;
+
 - (void)setTableViewSelectBlock:(tableViewSelectBlock)block;
 @end

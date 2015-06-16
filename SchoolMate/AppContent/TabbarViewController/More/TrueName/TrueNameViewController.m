@@ -57,7 +57,6 @@
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [btn bk_addEventHandler:^(id sender) {
             [SMMessageHUD showMessage:NSLocalizedString(@"不公开", nil) afterDelay:1.0];
-            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.navigationController popViewControllerAnimated:YES];
             });
@@ -75,7 +74,6 @@
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn bk_addEventHandler:^(id sender) {
             [SMMessageHUD showMessage:NSLocalizedString(@"公开", nil) afterDelay:1.0];
-            
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.navigationController popViewControllerAnimated:YES];
             });
