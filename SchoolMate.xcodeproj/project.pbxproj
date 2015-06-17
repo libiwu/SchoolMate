@@ -443,13 +443,8 @@
 		277906311B2548E900ECC732 /* More */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				DF7A4A831B31297A0058F8A6 /* Account */,
-				DF7A4A861B31297A0058F8A6 /* Company */,
-=======
 				27F8400C1B3130D4008D589C /* Account */,
 				27F8400F1B3130D4008D589C /* Company */,
->>>>>>> master
 				27AD44F71B2E942D00C80C29 /* NickName */,
 				27AD44F61B2E942600C80C29 /* TrueName */,
 				2779063A1B25492B00ECC732 /* MoreViewController.h */,
@@ -505,13 +500,6 @@
 				27AD452A1B2EC14C00C80C29 /* SCImagesPicker */,
 				27AD45191B2EC08500C80C29 /* UICollectionView */,
 				27AD450B1B2EC05B00C80C29 /* SCImagesViewer */,
-<<<<<<< HEAD
-				DF7A4A8B1B3129AE0058F8A6 /* GroupViewController.h */,
-				DF7A4A8C1B3129AE0058F8A6 /* GroupViewController.m */,
-				DF7A4A8D1B3129AE0058F8A6 /* NoteTagViewController.h */,
-				DF7A4A8E1B3129AE0058F8A6 /* NoteTagViewController.m */,
-=======
->>>>>>> master
 				27AD45051B2EA8C000C80C29 /* PublishNoteViewController.h */,
 				27AD45061B2EA8C000C80C29 /* PublishNoteViewController.m */,
 				27F840141B313124008D589C /* GroupViewController.h */,
@@ -764,10 +752,6 @@
 				27AD45291B2EC08500C80C29 /* SaySomethingReusableView.m in Sources */,
 				27AD45181B2EC05B00C80C29 /* SCPageViewController.m in Sources */,
 				27AD45171B2EC05B00C80C29 /* SCImageViewController.m in Sources */,
-<<<<<<< HEAD
-				DF7A4A901B3129AE0058F8A6 /* NoteTagViewController.m in Sources */,
-=======
->>>>>>> master
 				27AD44F51B2E8DCD00C80C29 /* CheckTools.m in Sources */,
 				27AD44FA1B2E943B00C80C29 /* NickNameViewController.m in Sources */,
 				DF7A4A8A1B31297A0058F8A6 /* CompanyViewController.m in Sources */,
