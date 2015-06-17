@@ -248,9 +248,6 @@
 				27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */,
 				27AD45011B2E9D7400C80C29 /* SMDatePickPopView.h */,
 				27AD45021B2E9D7400C80C29 /* SMDatePickPopView.m */,
-				DFFF351A1B2F0AC300480914 /* CommentItemView.h */,
-				DFFF351B1B2F0AC300480914 /* CommentItemView.m */,
-				DFFF351D1B2F0AE400480914 /* CommentItemView.xib */,
 				27DAE0881B2FFC1D0070D812 /* SMNoteTagPopView.h */,
 				27DAE0891B2FFC1D0070D812 /* SMNoteTagPopView.m */,
 			);
@@ -845,13 +842,13 @@
 			baseConfigurationReference = 890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijie Wang (279X77QYCE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 尚 吕 (Y684FVX974)";
 				GCC_PREFIX_HEADER = SchoolMate/SchoolMatePrefixHeader.pch;
 				INFOPLIST_FILE = SchoolMate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8be5bba2-3d70-4187-917e-f4d18a74ccf4";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -860,13 +857,13 @@
 			baseConfigurationReference = 22250F62B24FB1257E6E234A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Zhijie Wang (279X77QYCE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 尚 吕 (Y684FVX974)";
 				GCC_PREFIX_HEADER = SchoolMate/SchoolMatePrefixHeader.pch;
 				INFOPLIST_FILE = SchoolMate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8be5bba2-3d70-4187-917e-f4d18a74ccf4";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
