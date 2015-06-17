@@ -39,10 +39,17 @@
     } forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];
     
+    
+    CGFloat hei = 0;
+    if (self.dataArray.count > 7) {
+        hei = 280.0;
+    } else {
+        hei = 40.0 * self.dataArray.count;
+    }
     self.backView =
     ({
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(85.0, 70.0, 150.0, 280.0)];
-        imageView.backgroundColor = CurrentViewController.navigationController.navigationBar.barTintColor;
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(85.0, 70.0, 150.0, hei)];
+        imageView.backgroundColor = RGBACOLOR(110.0, 200.0, 243.0, 0.9);
         imageView.userInteractionEnabled = YES;
         imageView;
     });
@@ -58,6 +65,9 @@
         tableView.showsVerticalScrollIndicator = NO;
         [self.backView addSubview:tableView];
     }
+}
+- (void)setTableViewCenter:(CGPoint)point {
+    self.backView.center = point;
 }
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

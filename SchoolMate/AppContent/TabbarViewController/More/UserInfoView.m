@@ -16,7 +16,10 @@
 #import "NickNameViewController.h"
 #import "TrueNameViewController.h"
 #import "SMDatePickPopView.h"
+#import "CompanyViewController.h"
+#import "ChangeAccountViewController.h"
 
+#import "SMNavigationPopView.h"
 @interface UserInfoView ()<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *titleArray;
@@ -157,10 +160,28 @@
                     SMDatePickPopView *view = [[SMDatePickPopView alloc]init];
                     UserInfoCell *cell = (UserInfoCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
                     NSDateFormatter *ff = [[NSDateFormatter alloc]init];
-                    [ff setDateFormat:@"yyyy年mm月dd日"];
+                    [ff setDateFormat:@"yyyy年MM月dd日"];
                     [view.datePicker setDate:[ff dateFromString:cell.contentLabel.text] animated:NO];
                     [view setValueChange:^(UIDatePicker *datePicker) {
                         NSString *string = [ff stringFromDate:datePicker.date];
+                        cell.contentLabel.text = string;
+                    }];
+                    [view show];
+                }
+                    break;
+                case 4:
+                {
+                    ChangeAccountViewController *vc = [[ChangeAccountViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+                    [CurrentViewController.navigationController pushViewController:vc animated:YES];
+                }
+                    break;
+                case 5:
+                {
+                    UserInfoCell *cell = (UserInfoCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
+                    
+                    SMNavigationPopView *view = [[SMNavigationPopView alloc]initWithDataArray:@[@"男", @"女"]];
+                    [view setTableViewCenter:AppWindow.center];
+                    [view setTableViewSelectBlock:^(NSUInteger index, NSString *string) {
                         cell.contentLabel.text = string;
                     }];
                     [view show];
@@ -177,6 +198,12 @@
                 case 0:
                 {
                     
+                }
+                    break;
+                case 1:
+                {
+                    CompanyViewController *vc = [[CompanyViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+                    [CurrentViewController.navigationController pushViewController:vc animated:YES];
                 }
                     break;
                 default:

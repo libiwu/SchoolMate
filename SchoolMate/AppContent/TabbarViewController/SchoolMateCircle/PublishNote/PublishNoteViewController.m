@@ -11,6 +11,9 @@
 #import "SaySomethingPictureCell.h"
 #import "SCPageViewController.h"
 
+#import "GroupViewController.h"
+#import "NoteTagViewController.h"
+
 static NSString * kCollectionCellIdentifier = @"SaySomethingPictureCell";
 
 @interface PublishNoteViewController ()
@@ -27,12 +30,22 @@ SCImagesPickerControllerDelegate,
 SaySomethingPictureCellDelegate
 >
 
-@property (nonatomic, strong) NSMutableArray *imageArray;
+
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) NSMutableArray *imageArray;
+
+@property (nonatomic, strong) NSString *sendText;
+
+@property (nonatomic, strong) NSString *groupString;
+
+@property (nonatomic, strong) NSMutableArray *tagArray;
 @end
 
 @implementation PublishNoteViewController
-
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:@"groupString"];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -45,8 +58,19 @@ SaySomethingPictureCellDelegate
     [self createContentView];
 }
 - (void)rightMenuPressed:(id)sender {
+    
     [self.view endEditing:YES];
+    
+    if (self.sendText.length == 0 || [self.sendText isEqualToString:@"你在想什么...?"]) {
+        [SMMessageHUD showMessage:@"请输入笔记" afterDelay:1.0];
+        return;
+    } else if (self.imageArray.count == 0) {
+        [SMMessageHUD showMessage:@"请选择图片" afterDelay:1.0];
+        return;
+    }
+    
     [SMMessageHUD showMessage:NSLocalizedString(@"发表成功", nil) afterDelay:1.0];
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.navigationController popViewControllerAnimated:YES];
     });
@@ -57,6 +81,12 @@ SaySomethingPictureCellDelegate
     [self.tableView reloadData];
 }
 - (void)createContentView {
+    
+    self.tagArray = [NSMutableArray array];
+    WEAKSELF
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"groupString" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+        weakSelf.groupString = note.object;
+    }];
     
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, KScreenWidth, KScreenHeight - 64.0) style:UITableViewStylePlain];
     _tableView.delegate = self;
@@ -83,6 +113,10 @@ SaySomethingPictureCellDelegate
         textView.text = @"";
         textView.textColor = [UIColor blackColor];
     }
+    return YES;
+}
+- (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    self.sendText = textView.text;
     return YES;
 }
 #pragma mark - UITableViewDelegate
@@ -135,8 +169,13 @@ SaySomethingPictureCellDelegate
         UITextView *textView = [[UITextView alloc]initWithFrame:CGRectMake(10.0, 10.0, 300.0, 100.0)];
         textView.backgroundColor = [UIColor clearColor];
         textView.font = [UIFont systemFontOfSize:16.0];
-        textView.text = @"你在想什么...?";
-        textView.textColor = [UIColor lightGrayColor];
+        if (self.sendText) {
+            textView.text = self.sendText;
+            textView.textColor = [UIColor blackColor];
+        } else {
+            textView.text = @"你在想什么...?";
+            textView.textColor = [UIColor lightGrayColor];
+        }
         textView.delegate = self;
         textView.scrollEnabled = NO;
         [cell.contentView addSubview:textView];
@@ -189,9 +228,13 @@ SaySomethingPictureCellDelegate
     if (indexPath.section == 0 && indexPath.row == 2) {
         [SMMessageHUD showMessage:@"所在位置" afterDelay:1.0];
     } else if (indexPath.section == 1 && indexPath.row == 0) {
-        [SMMessageHUD showMessage:@"分组" afterDelay:1.0];
+        GroupViewController *vc = [[GroupViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+        vc.groupString = self.groupString;
+        [self.navigationController pushViewController:vc animated:YES];
     } else if (indexPath.section == 1 && indexPath.row == 1) {
-        [SMMessageHUD showMessage:@"标签" afterDelay:1.0];
+        NoteTagViewController *vc = [[NoteTagViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+        vc.tagArray = self.tagArray;
+        [self.navigationController pushViewController:vc animated:YES];
     } else {
         return;
     }
@@ -267,7 +310,17 @@ SaySomethingPictureCellDelegate
     }
     
     CGFloat arrowH = btn.frame.size.height - 22.0;
-    
+    {
+        UILabel *leftView = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(rect),
+                                                                      0.0,
+                                                                      btn.frame.size.width - CGRectGetMaxX(rect) - arrowH - 15.0 - 5.0,
+                                                                      44.0)];
+        leftView.backgroundColor = [UIColor clearColor];
+        leftView.textAlignment = NSTextAlignmentRight;
+        leftView.textColor = [UIColor blackColor];
+        leftView.text = self.groupString;
+        [btn addSubview:leftView];
+    }
     {
         UIImageView *arrowView = [[UIImageView alloc]initWithFrame:CGRectMake(btn.frame.size.width - arrowH - 15.0,
                                                                               11.0,
@@ -306,7 +359,25 @@ SaySomethingPictureCellDelegate
     }
     
     CGFloat arrowH = btn.frame.size.height - 22.0;
-    
+    {
+        __block NSString *string = @"";
+        [self.tagArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if (idx == 0) {
+                string = obj;
+            } else {
+                string = [NSString stringWithFormat:@"%@.%@",string,obj];
+            }
+        }];
+        UILabel *leftView = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(rect),
+                                                                      0.0,
+                                                                      btn.frame.size.width - CGRectGetMaxX(rect) - arrowH - 15.0 - 5.0,
+                                                                      44.0)];
+        leftView.backgroundColor = [UIColor clearColor];
+        leftView.textAlignment = NSTextAlignmentRight;
+        leftView.textColor = [UIColor blackColor];
+        leftView.text = string;
+        [btn addSubview:leftView];
+    }
     {
         UIImageView *arrowView = [[UIImageView alloc]initWithFrame:CGRectMake(btn.frame.size.width - arrowH - 15.0,
                                                                               11.0,
@@ -437,16 +508,6 @@ SaySomethingPictureCellDelegate
 - (void)imagesPickerControllerDidCancel:(SCImagesPickerController *)picker{
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
-
-#pragma mark - NotificationEvent
-
-- (void)handleTextViewTextDidChange:(NSNotification *)notif{
-//    UITextView *textView = (UITextView *)notif.object;
-//    self.currentText = textView.text;
-//    [self setSendButtonShouldEnable];
-}
-
-
 #pragma mark - Event
 //导航栏照相机按钮事件
 - (void)handlePlusButton:(id)sender{
@@ -457,22 +518,6 @@ SaySomethingPictureCellDelegate
                                          destructiveButtonTitle:nil
                                               otherButtonTitles:NSLocalizedString(@"拍照", nil),NSLocalizedString(@"从相册选择", nil), nil];
     [sheet showInView:self.view];
-}
-//发送按钮
-- (void)handleRightItem:(id)sender{
-    [self.view endEditing:YES];
-}
-//判断文本和图片不能同时为空
-- (void)setSendButtonShouldEnable{
-//    //文本不能是空格
-//    NSString *trimString = [self.currentText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-//    trimString = [trimString stringByReplacingOccurrencesOfString:@" " withString:@""];
-//    
-//    if (_imageArray.count == 0 && trimString.length == 0){
-//        self.sendItem.enabled = NO;
-//    }else{
-//        self.sendItem.enabled = YES;
-//    }
 }
 //拍照片
 - (BOOL) startCameraControllerFromViewController: (UIViewController*) controller
@@ -506,7 +551,7 @@ SaySomethingPictureCellDelegate
     }
     
     SCImagesPickerController *mediaUI = [[SCImagesPickerController alloc] init];
-    mediaUI.delegate = self;
+    mediaUI.delegates = self;
     mediaUI.maxPhotosCount = 9 - self.imageArray.count;
     [controller presentViewController:mediaUI animated:YES completion:nil];
     
