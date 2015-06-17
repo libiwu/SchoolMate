@@ -134,8 +134,9 @@
     
     //稀饭,点赞
     UIImageView *supportView = [[UIImageView alloc]init];
-    [supportView setBackgroundColor:[UIColor redColor]];
-    [supportView setFrame:CGRectMake(20.0, 10.0, 30.0, 20.0)];
+//    [supportView setBackgroundColor:[UIColor redColor]];
+    [supportView setImage:[UIImage imageNamed:@"2"]];
+    [supportView setFrame:CGRectMake(20.0, 10.0, 30.0, 22.0)];
     
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, supportView.frame.size.width, supportView.frame.size.height)];
     [label setText:support];
@@ -170,7 +171,8 @@
     
     //评论
     UIImageView *commentView = [[UIImageView alloc]init];
-    [commentView setBackgroundColor:[UIColor blueColor]];
+//    [commentView setBackgroundColor:[UIColor blueColor]];
+    [commentView setImage:[UIImage imageNamed:@"4"]];
     [commentView setFrame:CGRectMake(CGRectGetMaxX(ss.frame) + 10.0,
                                      supportView.frame.origin.y,
                                      supportView.frame.size.width,
@@ -209,7 +211,8 @@
     
     //广播
     UIImageView *broadcastView = [[UIImageView alloc]init];
-    [broadcastView setBackgroundColor:[UIColor greenColor]];
+//    [broadcastView setBackgroundColor:[UIColor greenColor]];
+    [broadcastView setImage:[UIImage imageNamed:@"5"]];
     [broadcastView setFrame:CGRectMake(CGRectGetMaxX(cc.frame) + 10.0,
                                      supportView.frame.origin.y,
                                      supportView.frame.size.width,

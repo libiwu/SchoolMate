@@ -250,7 +250,8 @@ SaySomethingPictureCellDelegate
     
     
     UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(20.0, 7.0, 30.0, 30.0)];
-    imageview.backgroundColor = [UIColor redColor];
+//    imageview.backgroundColor = [UIColor redColor];
+    [imageview setImage:[UIImage imageNamed:@"120"]];
     [btn addSubview:imageview];
     
     CGRect rect;
@@ -295,7 +296,8 @@ SaySomethingPictureCellDelegate
     [self.view addSubview:btn];
     
     UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(20.0, 7.0, 30.0, 30.0)];
-    imageview.backgroundColor = [UIColor redColor];
+//    imageview.backgroundColor = [UIColor redColor];
+    [imageview setImage:[UIImage imageNamed:@"21"]];
     [btn addSubview:imageview];
     
     CGRect rect;
@@ -344,7 +346,8 @@ SaySomethingPictureCellDelegate
     [self.view addSubview:btn];
     
     UIImageView *imageview = [[UIImageView alloc]initWithFrame:CGRectMake(20.0, 7.0, 30.0, 30.0)];
-    imageview.backgroundColor = [UIColor redColor];
+//    imageview.backgroundColor = [UIColor redColor];
+    [imageview setImage:[UIImage imageNamed:@"20"]];
     [btn addSubview:imageview];
     
     CGRect rect;
