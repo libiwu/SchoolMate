@@ -20,20 +20,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self setNavTitle:NSLocalizedString(@"同学会", nil) type:SCNavTitleTypeSelect];
+    /*
+     高三六班
+     初三六班
+     01计机一班
+     */
+    [self setNavTitle:NSLocalizedString(@"初三六班", nil) type:SCNavTitleTypeSelect];
     
     self.view.backgroundColor = RGBACOLOR(234.0, 234.0, 234.0, 1.0);
     
     
     UIButton *leftbtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [leftbtn setFrame:CGRectMake(0.0, 0.0, 40.0, 40.0)];
-    [leftbtn setImage:[UIImage imageNamed:@"zuo.png"] forState:UIControlStateNormal];
+    [leftbtn setImage:[UIImage imageNamed:@"26.png"] forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftbtn];
     
     UIButton *rightbtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightbtn setFrame:CGRectMake(0.0, 0.0, 40.0, 40.0)];
-    [rightbtn setImage:[UIImage imageNamed:@"you.png"] forState:UIControlStateNormal];
+    [rightbtn setImage:[UIImage imageNamed:@"27.png"] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightbtn];
     
     [self createContentView];
@@ -47,10 +51,18 @@
         tableView.separatorColor = [UIColor clearColor];
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.view addSubview:tableView];
+        
+        __block UITableView *ta = tableView;
+        [tableView addLegendHeaderWithRefreshingBlock:^{
+            [ta.header endRefreshing];
+        }];
+        [tableView addLegendFooterWithRefreshingBlock:^{
+            [ta.footer endRefreshing];
+        }];
     }
 }
 - (void)navigationClick:(UIButton *)btn {
-    SMNavigationPopView *view = [[SMNavigationPopView alloc]initWithDataArray:@[@"董藩",@"西方",@"南宫",@"慕容",@"欧阳",@"欧龙生",@"梁羽生",@"皇普奇"]];
+    SMNavigationPopView *view = [[SMNavigationPopView alloc]initWithDataArray:@[@"初三六班",@"高三六班",@"01计机一班"]];
     [view setTableViewSelectBlock:^(NSUInteger index, NSString *string) {
         [self setNavTitle:string type:SCNavTitleTypeSelect];
     }];
