@@ -58,6 +58,10 @@
 		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
 		DF7A4A7B1B3025690058F8A6 /* testView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF7A4A7A1B3025690058F8A6 /* testView.xib */; };
 		DF7A4A7E1B31244F0058F8A6 /* BBNewspaperDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A7D1B31244F0058F8A6 /* BBNewspaperDetailViewController.m */; };
+		DF7A4A891B31297A0058F8A6 /* ChangeAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A851B31297A0058F8A6 /* ChangeAccountViewController.m */; };
+		DF7A4A8A1B31297A0058F8A6 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A881B31297A0058F8A6 /* CompanyViewController.m */; };
+		DF7A4A8F1B3129AE0058F8A6 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A8C1B3129AE0058F8A6 /* GroupViewController.m */; };
+		DF7A4A901B3129AE0058F8A6 /* NoteTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A8E1B3129AE0058F8A6 /* NoteTagViewController.m */; };
 		DFFF35181B2EFEF900480914 /* NewspaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFF35161B2EFEF900480914 /* NewspaperTableViewCell.m */; };
 		DFFF35191B2EFEF900480914 /* NewspaperTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFFF35171B2EFEF900480914 /* NewspaperTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -166,6 +170,14 @@
 		DF7A4A7A1B3025690058F8A6 /* testView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = testView.xib; sourceTree = "<group>"; };
 		DF7A4A7C1B31244F0058F8A6 /* BBNewspaperDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBNewspaperDetailViewController.h; sourceTree = "<group>"; };
 		DF7A4A7D1B31244F0058F8A6 /* BBNewspaperDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNewspaperDetailViewController.m; sourceTree = "<group>"; };
+		DF7A4A841B31297A0058F8A6 /* ChangeAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeAccountViewController.h; sourceTree = "<group>"; };
+		DF7A4A851B31297A0058F8A6 /* ChangeAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeAccountViewController.m; sourceTree = "<group>"; };
+		DF7A4A871B31297A0058F8A6 /* CompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyViewController.h; sourceTree = "<group>"; };
+		DF7A4A881B31297A0058F8A6 /* CompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyViewController.m; sourceTree = "<group>"; };
+		DF7A4A8B1B3129AE0058F8A6 /* GroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
+		DF7A4A8C1B3129AE0058F8A6 /* GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
+		DF7A4A8D1B3129AE0058F8A6 /* NoteTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTagViewController.h; sourceTree = "<group>"; };
+		DF7A4A8E1B3129AE0058F8A6 /* NoteTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTagViewController.m; sourceTree = "<group>"; };
 		DFFF35151B2EFEF900480914 /* NewspaperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewspaperTableViewCell.h; sourceTree = "<group>"; };
 		DFFF35161B2EFEF900480914 /* NewspaperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewspaperTableViewCell.m; sourceTree = "<group>"; };
 		DFFF35171B2EFEF900480914 /* NewspaperTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewspaperTableViewCell.xib; sourceTree = "<group>"; };
@@ -583,6 +595,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DF7A4A831B31297A0058F8A6 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				DF7A4A841B31297A0058F8A6 /* ChangeAccountViewController.h */,
+				DF7A4A851B31297A0058F8A6 /* ChangeAccountViewController.m */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		DF7A4A861B31297A0058F8A6 /* Company */ = {
+			isa = PBXGroup;
+			children = (
+				DF7A4A871B31297A0058F8A6 /* CompanyViewController.h */,
+				DF7A4A881B31297A0058F8A6 /* CompanyViewController.m */,
+			);
+			path = Company;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -724,6 +754,8 @@
 				27AD45171B2EC05B00C80C29 /* SCImageViewController.m in Sources */,
 				27AD44F51B2E8DCD00C80C29 /* CheckTools.m in Sources */,
 				27AD44FA1B2E943B00C80C29 /* NickNameViewController.m in Sources */,
+				DF7A4A8A1B31297A0058F8A6 /* CompanyViewController.m in Sources */,
+				DF7A4A891B31297A0058F8A6 /* ChangeAccountViewController.m in Sources */,
 				27AD453C1B2EC14C00C80C29 /* AlbumContentsViewController.m in Sources */,
 				2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */,
 				27AD453B1B2EC14C00C80C29 /* AlbumContentsViewCell.m in Sources */,
@@ -731,6 +763,7 @@
 				27F840121B3130D4008D589C /* ChangeAccountViewController.m in Sources */,
 				27AD44FD1B2E944500C80C29 /* TrueNameViewController.m in Sources */,
 				27AD45421B2EC14C00C80C29 /* SCImagesPickerController.m in Sources */,
+				DF7A4A8F1B3129AE0058F8A6 /* GroupViewController.m in Sources */,
 				2779061F1B253E2500ECC732 /* SCBasicViewController.m in Sources */,
 				277906361B2548FF00ECC732 /* BBNewspaperViewController.m in Sources */,
 				277905F61B252E0100ECC732 /* main.m in Sources */,
