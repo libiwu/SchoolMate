@@ -43,12 +43,12 @@
 
 #pragma mark - 喜欢
 - (IBAction)likeAction:(id)sender {
-    NSLog(@"like");
+    [SMMessageHUD showMessage:@"稀饭" afterDelay:1.0];
 }
 
 #pragma mark - 评论
 - (IBAction)commentAction:(id)sender {
-    NSLog(@"comment");
+    [SMMessageHUD showMessage:@"评论" afterDelay:1.0];
 }
 
 @end
