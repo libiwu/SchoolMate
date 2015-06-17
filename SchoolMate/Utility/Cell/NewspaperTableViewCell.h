@@ -10,7 +10,4 @@
 
 @interface NewspaperTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *likeItemView;
-@property (weak, nonatomic) IBOutlet UIView *commentItemView;
-
 @end
