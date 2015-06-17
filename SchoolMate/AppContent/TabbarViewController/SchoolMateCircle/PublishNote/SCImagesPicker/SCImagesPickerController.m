@@ -136,14 +136,14 @@ NSString *kDidCanceledPickingImagesNotification = @"kDidCanceledPickingImagesNot
         [images addObject:fullScreenImage];
     }
 
-    if ([self.delegate respondsToSelector:@selector(imagesPickerController:didFinishPickingImages:)]) {
-        [self.delegate imagesPickerController:self didFinishPickingImages:images];
+    if ([self.delegates respondsToSelector:@selector(imagesPickerController:didFinishPickingImages:)]) {
+        [self.delegates imagesPickerController:self didFinishPickingImages:images];
     }
 }
 
 - (void)handleDidCanceledPickingImages:(NSNotification *)notif{
-    if ([self.delegate respondsToSelector:@selector(imagesPickerControllerDidCancel:)]) {
-        [self.delegate imagesPickerControllerDidCancel:self];
+    if ([self.delegates respondsToSelector:@selector(imagesPickerControllerDidCancel:)]) {
+        [self.delegates imagesPickerControllerDidCancel:self];
     }
 }
 

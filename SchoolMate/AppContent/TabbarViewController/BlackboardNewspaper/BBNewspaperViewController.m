@@ -9,6 +9,8 @@
 #import "BBNewspaperViewController.h"
 #import "NewspaperTableViewCell.h"
 
+#import "BBNewspaperDetailViewController.h"
+
 static NSString *const reuseIdentity = @"Cell";
 
 @interface BBNewspaperViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -32,10 +34,19 @@ static NSString *const reuseIdentity = @"Cell";
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight-64-49)];
     _tableView.rowHeight  = 150;
     _tableView.dataSource = self;
+    _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.tableHeaderView = [self configureHeaderView];
     [_tableView registerNib:[UINib nibWithNibName:@"NewspaperTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentity];
     [self.view addSubview:_tableView];
+    
+    WEAKSELF
+    [self.tableView addLegendHeaderWithRefreshingBlock:^{
+        [weakSelf.tableView.header endRefreshing];
+    }];
+    [self.tableView addLegendFooterWithRefreshingBlock:^{
+        [weakSelf.tableView.footer endRefreshing];
+    }];
 }
 
 - (UIView *)configureHeaderView {
@@ -55,10 +66,10 @@ static NSString *const reuseIdentity = @"Cell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
-
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    BBNewspaperDetailViewController *vc = [[BBNewspaperDetailViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
