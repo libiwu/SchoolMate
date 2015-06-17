@@ -53,6 +53,7 @@
 		27D5CF9B1B26FB7E003341F3 /* GlobalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF9A1B26FB7E003341F3 /* GlobalManager.m */; };
 		27D5CF9E1B26FFA5003341F3 /* SMNavigationPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */; };
 		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
+		DF7A4A7B1B3025690058F8A6 /* testView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF7A4A7A1B3025690058F8A6 /* testView.xib */; };
 		DFFF35181B2EFEF900480914 /* NewspaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFF35161B2EFEF900480914 /* NewspaperTableViewCell.m */; };
 		DFFF35191B2EFEF900480914 /* NewspaperTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFFF35171B2EFEF900480914 /* NewspaperTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -152,6 +153,7 @@
 		27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNavigationPopView.m; sourceTree = "<group>"; };
 		88CE2707A443E72094D81713 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DF7A4A7A1B3025690058F8A6 /* testView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = testView.xib; sourceTree = "<group>"; };
 		DFFF35151B2EFEF900480914 /* NewspaperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewspaperTableViewCell.h; sourceTree = "<group>"; };
 		DFFF35161B2EFEF900480914 /* NewspaperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewspaperTableViewCell.m; sourceTree = "<group>"; };
 		DFFF35171B2EFEF900480914 /* NewspaperTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewspaperTableViewCell.xib; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 				27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */,
 				27AD45011B2E9D7400C80C29 /* SMDatePickPopView.h */,
 				27AD45021B2E9D7400C80C29 /* SMDatePickPopView.m */,
+				DF7A4A7A1B3025690058F8A6 /* testView.xib */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				2720ECBB1B257F310063DB79 /* Default-568h@2x.png in Resources */,
 				277906041B252E0100ECC732 /* LaunchScreen.xib in Resources */,
 				DFFF35191B2EFEF900480914 /* NewspaperTableViewCell.xib in Resources */,
+				DF7A4A7B1B3025690058F8A6 /* testView.xib in Resources */,
 				277906011B252E0100ECC732 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

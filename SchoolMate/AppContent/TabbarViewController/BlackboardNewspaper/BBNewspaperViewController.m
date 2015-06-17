@@ -14,6 +14,7 @@ static NSString *const reuseIdentity = @"Cell";
 @interface BBNewspaperViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UILabel     *classNameLab;
 
 @end
 
@@ -32,8 +33,16 @@ static NSString *const reuseIdentity = @"Cell";
     _tableView.rowHeight  = 150;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.tableHeaderView = [self configureHeaderView];
     [_tableView registerNib:[UINib nibWithNibName:@"NewspaperTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentity];
     [self.view addSubview:_tableView];
+}
+
+- (UIView *)configureHeaderView {
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 100)];
+    UIImageView *image1 = [[UIImageView alloc] initWithFrame:CGRectMake(67, 0, 3, 100)];
+    image1.image = [[UIImage imageNamed:@"image04"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
+    return headerView;
 }
 
 #pragma mark - UITableViewDataSource
