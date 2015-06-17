@@ -5,9 +5,20 @@
       "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "3-part-vertical",
+        "center" : {
+          "mode" : "stretch",
+          "height" : 67
+        },
+        "capInsets" : {
+          "top" : 0,
+          "bottom" : 3
+        }
+      },
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "image04@2x.png"
+      "filename" : "image04@2x.png",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
