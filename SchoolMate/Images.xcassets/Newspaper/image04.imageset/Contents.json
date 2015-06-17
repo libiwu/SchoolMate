@@ -17,12 +17,8 @@
         }
       },
       "idiom" : "universal",
-<<<<<<< HEAD
       "filename" : "image04@2x.png",
       "scale" : "2x"
-=======
-      "scale" : "2x",
->>>>>>> master
     },
     {
       "idiom" : "universal",
