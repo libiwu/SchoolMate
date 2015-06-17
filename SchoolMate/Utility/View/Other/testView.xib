@@ -14,9 +14,15 @@
                     <rect key="frame" x="67" y="0.0" width="3" height="100"/>
                     <color key="backgroundColor" red="0.51372549020000002" green="0.80784313730000001" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image05" translatesAutoresizingMaskIntoConstraints="NO" id="COt-6s-z6B">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="28" translatesAutoresizingMaskIntoConstraints="NO" id="COt-6s-z6B">
                     <rect key="frame" x="73" y="12" width="220" height="35"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="初三五班" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5g-3d-GkV">
+                    <rect key="frame" x="95" y="16" width="183" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.396078431372549" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -25,7 +31,7 @@
         </view>
     </objects>
     <resources>
-        <image name="image04" width="17" height="41"/>
-        <image name="image05" width="370" height="54"/>
+        <image name="28" width="244" height="37"/>
+        <image name="image04" width="17" height="104"/>
     </resources>
 </document>
