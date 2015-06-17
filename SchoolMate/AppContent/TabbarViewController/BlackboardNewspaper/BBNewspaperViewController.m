@@ -8,7 +8,7 @@
 
 #import "BBNewspaperViewController.h"
 #import "NewspaperTableViewCell.h"
-
+#import "SMNavigationPopView.h"
 #import "BBNewspaperDetailViewController.h"
 
 static NSString *const reuseIdentity = @"Cell";
@@ -25,7 +25,7 @@ static NSString *const reuseIdentity = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavTitle:NSLocalizedString(@"黑板报", nil)];
+    [self setNavTitle:NSLocalizedString(@"一班", nil) type:SCNavTitleTypeSelect];
     
     [self creatContentView];
 }
@@ -48,19 +48,26 @@ static NSString *const reuseIdentity = @"Cell";
         [weakSelf.tableView.footer endRefreshing];
     }];
 }
-
+- (void)navigationClick:(UIButton *)btn {
+    SMNavigationPopView *view = [[SMNavigationPopView alloc]initWithDataArray:@[@"一班",@"二班",@"三班",@"四班"]];
+    [view setTableViewSelectBlock:^(NSUInteger index, NSString *string) {
+        [self setNavTitle:string type:SCNavTitleTypeSelect];
+    }];
+    [view show];
+}
 - (UIView *)configureHeaderView {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 100)];
     UIImageView *image1 = [[UIImageView alloc] initWithFrame:CGRectMake(67, 0, 3, 100)];
     image1.image = [[UIImage imageNamed:@"image04"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
     return headerView;
 }
-
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 10;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 5.0;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NewspaperTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentity forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

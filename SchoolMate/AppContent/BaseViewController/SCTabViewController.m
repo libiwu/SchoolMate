@@ -29,29 +29,29 @@
 
     UINavigationController *smNav = [self createNavigationControllerWithRootController:[SMCircleViewController class]
                                                                            tabBarTitle:NSLocalizedString(@"同学圈", nil)
-                                                                            imageNamed:@"tabbar"
-                                                                    selectedImageNamed:@"tabbar_hl"];
+                                                                            imageNamed:@"10.png"
+                                                                    selectedImageNamed:@"11.png"];
     
     
     UINavigationController *fsmNav = [self createNavigationControllerWithRootController:[FindSMViewController class]
                                                                             tabBarTitle:NSLocalizedString(@"找同学", nil)
-                                                                             imageNamed:@"tabbar"
-                                                                     selectedImageNamed:@"tabbar_hl"];
+                                                                             imageNamed:@"13"
+                                                                     selectedImageNamed:@"12"];
     
     UINavigationController *wNav = [self createNavigationControllerWithRootController:[WhisperViewController class]
                                                                           tabBarTitle:NSLocalizedString(@"悄悄话", nil)
-                                                                           imageNamed:@"tabbar"
-                                                                   selectedImageNamed:@"tabbar_hl"];
+                                                                           imageNamed:@"14"
+                                                                   selectedImageNamed:@"15"];
     
     UINavigationController *bbNav = [self createNavigationControllerWithRootController:[BBNewspaperViewController class]
                                                                            tabBarTitle:NSLocalizedString(@"黑板报", nil)
-                                                                            imageNamed:@"tabbar"
-                                                                    selectedImageNamed:@"tabbar_hl"];
+                                                                            imageNamed:@"16"
+                                                                    selectedImageNamed:@"17"];
     
     UINavigationController *moreNav = [self createNavigationControllerWithRootController:[MoreViewController class]
                                                                              tabBarTitle:NSLocalizedString(@"更多", nil)
-                                                                              imageNamed:@"tabbar"
-                                                                      selectedImageNamed:@"tabbar_hl"];
+                                                                              imageNamed:@"19"
+                                                                      selectedImageNamed:@"18"];
 
     self.viewControllers = @[smNav, fsmNav, wNav, bbNav, moreNav];
     

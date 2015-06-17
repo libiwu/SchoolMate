@@ -16,14 +16,14 @@
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
         _imageView.tag = 800;
         _imageView.clipsToBounds = YES;
-        _imageView.backgroundColor = [UIColor greenColor];
+        _imageView.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:_imageView];
         
     }
     return self;
 }
 - (void)setPlusSymImage{
-    _imageView.image = [UIImage imageNamed:@"addPicture"];
+    _imageView.image = [UIImage imageNamed:@"22"];
     self.selectedBackgroundView = nil;
 }
 @end

@@ -222,7 +222,7 @@
             } forControlEvents:UIControlEventTouchUpInside];
             
             CGSize size = [lablel.text newSizeWithFont:lablel.font
-                                     constrainedToSize:CGSizeMake(200.0, 30.0)
+                                     constrainedToSize:CGSizeMake(2000.0, 30.0)
                                          lineBreakMode:NSLineBreakByCharWrapping];
             [lablel setFrame:CGRectMake(lablel.frame.origin.x,
                                         lablel.frame.origin.y,
@@ -230,6 +230,14 @@
                                         lablel.frame.size.height)];
             [titleView setFrame:lablel.frame];
             [titleView addSubview:lablel];
+            
+            UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(lablel.frame) + 4.0,
+                                                                                  5.0,
+                                                                                  20.0,
+                                                                                  20.0)];
+            [imageView setImage:[UIImage imageNamed:@"31"]];
+            [titleView addSubview:imageView];
+            [titleView setFrame:CGRectMake(0.0, 0.0, CGRectGetMaxX(imageView.frame), titleView.frame.size.height)];
             
             [backView setFrame:CGRectMake(0.0, 7.0, 200.0, 30.0)];
             [backView addSubview:titleView];

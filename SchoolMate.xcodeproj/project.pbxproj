@@ -33,7 +33,6 @@
 		27AD45001B2E976000C80C29 /* SMMessageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44FF1B2E976000C80C29 /* SMMessageHUD.m */; };
 		27AD45031B2E9D7400C80C29 /* SMDatePickPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45021B2E9D7400C80C29 /* SMDatePickPopView.m */; };
 		27AD45071B2EA8C000C80C29 /* PublishNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45061B2EA8C000C80C29 /* PublishNoteViewController.m */; };
-		27AD450A1B2EC02600C80C29 /* SaySomethingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45091B2EC02600C80C29 /* SaySomethingViewController.m */; };
 		27AD45151B2EC05B00C80C29 /* SCImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD450D1B2EC05B00C80C29 /* SCImageScrollView.m */; };
 		27AD45161B2EC05B00C80C29 /* SCImagesViewerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45101B2EC05B00C80C29 /* SCImagesViewerData.m */; };
 		27AD45171B2EC05B00C80C29 /* SCImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD45121B2EC05B00C80C29 /* SCImageViewController.m */; };
@@ -52,6 +51,10 @@
 		27D5CF981B26E9A0003341F3 /* SMCircleDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF971B26E9A0003341F3 /* SMCircleDetailCell.m */; };
 		27D5CF9B1B26FB7E003341F3 /* GlobalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF9A1B26FB7E003341F3 /* GlobalManager.m */; };
 		27D5CF9E1B26FFA5003341F3 /* SMNavigationPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */; };
+		27F840121B3130D4008D589C /* ChangeAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F8400E1B3130D4008D589C /* ChangeAccountViewController.m */; };
+		27F840131B3130D4008D589C /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F840111B3130D4008D589C /* CompanyViewController.m */; };
+		27F840181B313124008D589C /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F840151B313124008D589C /* GroupViewController.m */; };
+		27F840191B313124008D589C /* NoteTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F840171B313124008D589C /* NoteTagViewController.m */; };
 		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
 		DF7A4A7B1B3025690058F8A6 /* testView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF7A4A7A1B3025690058F8A6 /* testView.xib */; };
 		DF7A4A7E1B31244F0058F8A6 /* BBNewspaperDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A7D1B31244F0058F8A6 /* BBNewspaperDetailViewController.m */; };
@@ -113,8 +116,6 @@
 		27AD45021B2E9D7400C80C29 /* SMDatePickPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMDatePickPopView.m; sourceTree = "<group>"; };
 		27AD45051B2EA8C000C80C29 /* PublishNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishNoteViewController.h; sourceTree = "<group>"; };
 		27AD45061B2EA8C000C80C29 /* PublishNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishNoteViewController.m; sourceTree = "<group>"; };
-		27AD45081B2EC02600C80C29 /* SaySomethingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaySomethingViewController.h; sourceTree = "<group>"; };
-		27AD45091B2EC02600C80C29 /* SaySomethingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaySomethingViewController.m; sourceTree = "<group>"; };
 		27AD450C1B2EC05B00C80C29 /* SCImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImageScrollView.h; sourceTree = "<group>"; };
 		27AD450D1B2EC05B00C80C29 /* SCImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCImageScrollView.m; sourceTree = "<group>"; };
 		27AD450E1B2EC05B00C80C29 /* SCImagesViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCImagesViewer.h; sourceTree = "<group>"; };
@@ -152,6 +153,14 @@
 		27D5CF9A1B26FB7E003341F3 /* GlobalManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalManager.m; sourceTree = "<group>"; };
 		27D5CF9C1B26FFA4003341F3 /* SMNavigationPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNavigationPopView.h; sourceTree = "<group>"; };
 		27D5CF9D1B26FFA5003341F3 /* SMNavigationPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNavigationPopView.m; sourceTree = "<group>"; };
+		27F8400D1B3130D4008D589C /* ChangeAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeAccountViewController.h; sourceTree = "<group>"; };
+		27F8400E1B3130D4008D589C /* ChangeAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeAccountViewController.m; sourceTree = "<group>"; };
+		27F840101B3130D4008D589C /* CompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyViewController.h; sourceTree = "<group>"; };
+		27F840111B3130D4008D589C /* CompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyViewController.m; sourceTree = "<group>"; };
+		27F840141B313124008D589C /* GroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
+		27F840151B313124008D589C /* GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
+		27F840161B313124008D589C /* NoteTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTagViewController.h; sourceTree = "<group>"; };
+		27F840171B313124008D589C /* NoteTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTagViewController.m; sourceTree = "<group>"; };
 		88CE2707A443E72094D81713 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DF7A4A7A1B3025690058F8A6 /* testView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = testView.xib; sourceTree = "<group>"; };
@@ -422,6 +431,8 @@
 		277906311B2548E900ECC732 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				27F8400C1B3130D4008D589C /* Account */,
+				27F8400F1B3130D4008D589C /* Company */,
 				27AD44F71B2E942D00C80C29 /* NickName */,
 				27AD44F61B2E942600C80C29 /* TrueName */,
 				2779063A1B25492B00ECC732 /* MoreViewController.h */,
@@ -477,10 +488,12 @@
 				27AD452A1B2EC14C00C80C29 /* SCImagesPicker */,
 				27AD45191B2EC08500C80C29 /* UICollectionView */,
 				27AD450B1B2EC05B00C80C29 /* SCImagesViewer */,
-				27AD45081B2EC02600C80C29 /* SaySomethingViewController.h */,
-				27AD45091B2EC02600C80C29 /* SaySomethingViewController.m */,
 				27AD45051B2EA8C000C80C29 /* PublishNoteViewController.h */,
 				27AD45061B2EA8C000C80C29 /* PublishNoteViewController.m */,
+				27F840141B313124008D589C /* GroupViewController.h */,
+				27F840151B313124008D589C /* GroupViewController.m */,
+				27F840161B313124008D589C /* NoteTagViewController.h */,
+				27F840171B313124008D589C /* NoteTagViewController.m */,
 			);
 			path = PublishNote;
 			sourceTree = "<group>";
@@ -541,6 +554,24 @@
 				27AD453A1B2EC14C00C80C29 /* SCImagesPickerController.m */,
 			);
 			path = SCImagesPicker;
+			sourceTree = "<group>";
+		};
+		27F8400C1B3130D4008D589C /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				27F8400D1B3130D4008D589C /* ChangeAccountViewController.h */,
+				27F8400E1B3130D4008D589C /* ChangeAccountViewController.m */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		27F8400F1B3130D4008D589C /* Company */ = {
+			isa = PBXGroup;
+			children = (
+				27F840101B3130D4008D589C /* CompanyViewController.h */,
+				27F840111B3130D4008D589C /* CompanyViewController.m */,
+			);
+			path = Company;
 			sourceTree = "<group>";
 		};
 		CA5534FB21DF9B06CB92725E /* Pods */ = {
@@ -661,8 +692,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F840131B3130D4008D589C /* CompanyViewController.m in Sources */,
+				27F840191B313124008D589C /* NoteTagViewController.m in Sources */,
 				2720ECC21B2587990063DB79 /* NSString+Addition.m in Sources */,
 				2779062C1B253EAB00ECC732 /* RegisterViewController.m in Sources */,
+				27F840181B313124008D589C /* GroupViewController.m in Sources */,
 				27AD45031B2E9D7400C80C29 /* SMDatePickPopView.m in Sources */,
 				27D5CF9E1B26FFA5003341F3 /* SMNavigationPopView.m in Sources */,
 				27AD453D1B2EC14C00C80C29 /* AssetsGroupsTabelView.m in Sources */,
@@ -688,13 +722,13 @@
 				27AD45291B2EC08500C80C29 /* SaySomethingReusableView.m in Sources */,
 				27AD45181B2EC05B00C80C29 /* SCPageViewController.m in Sources */,
 				27AD45171B2EC05B00C80C29 /* SCImageViewController.m in Sources */,
-				27AD450A1B2EC02600C80C29 /* SaySomethingViewController.m in Sources */,
 				27AD44F51B2E8DCD00C80C29 /* CheckTools.m in Sources */,
 				27AD44FA1B2E943B00C80C29 /* NickNameViewController.m in Sources */,
 				27AD453C1B2EC14C00C80C29 /* AlbumContentsViewController.m in Sources */,
 				2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */,
 				27AD453B1B2EC14C00C80C29 /* AlbumContentsViewCell.m in Sources */,
 				27AD45151B2EC05B00C80C29 /* SCImageScrollView.m in Sources */,
+				27F840121B3130D4008D589C /* ChangeAccountViewController.m in Sources */,
 				27AD44FD1B2E944500C80C29 /* TrueNameViewController.m in Sources */,
 				27AD45421B2EC14C00C80C29 /* SCImagesPickerController.m in Sources */,
 				2779061F1B253E2500ECC732 /* SCBasicViewController.m in Sources */,
