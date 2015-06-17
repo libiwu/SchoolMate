@@ -58,6 +58,8 @@
 		DF7A4A7B1B3025690058F8A6 /* testView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF7A4A7A1B3025690058F8A6 /* testView.xib */; };
 		DF7A4A7E1B31244F0058F8A6 /* BBNewspaperDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A7D1B31244F0058F8A6 /* BBNewspaperDetailViewController.m */; };
 		DF7A4A941B3141ED0058F8A6 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A931B3141ED0058F8A6 /* CompanyViewController.m */; };
+		DF7A4A981B314C330058F8A6 /* BBPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A961B314C320058F8A6 /* BBPlaceViewController.m */; };
+		DF7A4A9C1B3151870058F8A6 /* BBPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A9B1B3151870058F8A6 /* BBPublishViewController.m */; };
 		DFFF35181B2EFEF900480914 /* NewspaperTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFFF35161B2EFEF900480914 /* NewspaperTableViewCell.m */; };
 		DFFF35191B2EFEF900480914 /* NewspaperTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFFF35171B2EFEF900480914 /* NewspaperTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -166,6 +168,10 @@
 		DF7A4A7D1B31244F0058F8A6 /* BBNewspaperDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNewspaperDetailViewController.m; sourceTree = "<group>"; };
 		DF7A4A921B3141ED0058F8A6 /* CompanyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyViewController.h; sourceTree = "<group>"; };
 		DF7A4A931B3141ED0058F8A6 /* CompanyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyViewController.m; sourceTree = "<group>"; };
+		DF7A4A951B314C320058F8A6 /* BBPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPlaceViewController.h; sourceTree = "<group>"; };
+		DF7A4A961B314C320058F8A6 /* BBPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPlaceViewController.m; sourceTree = "<group>"; };
+		DF7A4A9A1B3151870058F8A6 /* BBPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBPublishViewController.h; sourceTree = "<group>"; };
+		DF7A4A9B1B3151870058F8A6 /* BBPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBPublishViewController.m; sourceTree = "<group>"; };
 		DFFF35151B2EFEF900480914 /* NewspaperTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewspaperTableViewCell.h; sourceTree = "<group>"; };
 		DFFF35161B2EFEF900480914 /* NewspaperTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewspaperTableViewCell.m; sourceTree = "<group>"; };
 		DFFF35171B2EFEF900480914 /* NewspaperTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewspaperTableViewCell.xib; sourceTree = "<group>"; };
@@ -411,10 +417,14 @@
 		2779062F1B2548E900ECC732 /* BlackboardNewspaper */ = {
 			isa = PBXGroup;
 			children = (
-				DF7A4A7C1B31244F0058F8A6 /* BBNewspaperDetailViewController.h */,
-				DF7A4A7D1B31244F0058F8A6 /* BBNewspaperDetailViewController.m */,
 				277906341B2548FF00ECC732 /* BBNewspaperViewController.h */,
 				277906351B2548FF00ECC732 /* BBNewspaperViewController.m */,
+				DF7A4A9A1B3151870058F8A6 /* BBPublishViewController.h */,
+				DF7A4A9B1B3151870058F8A6 /* BBPublishViewController.m */,
+				DF7A4A7C1B31244F0058F8A6 /* BBNewspaperDetailViewController.h */,
+				DF7A4A7D1B31244F0058F8A6 /* BBNewspaperDetailViewController.m */,
+				DF7A4A951B314C320058F8A6 /* BBPlaceViewController.h */,
+				DF7A4A961B314C320058F8A6 /* BBPlaceViewController.m */,
 			);
 			path = BlackboardNewspaper;
 			sourceTree = "<group>";
@@ -698,6 +708,7 @@
 				27F840181B313124008D589C /* GroupViewController.m in Sources */,
 				27AD45031B2E9D7400C80C29 /* SMDatePickPopView.m in Sources */,
 				27D5CF9E1B26FFA5003341F3 /* SMNavigationPopView.m in Sources */,
+				DF7A4A981B314C330058F8A6 /* BBPlaceViewController.m in Sources */,
 				27AD453D1B2EC14C00C80C29 /* AssetsGroupsTabelView.m in Sources */,
 				2720ECAD1B254A7F0063DB79 /* FindSMViewController.m in Sources */,
 				277906421B25496500ECC732 /* WhisperViewController.m in Sources */,
@@ -737,6 +748,7 @@
 				27AD45281B2EC08500C80C29 /* SaySomethingPictureCell.m in Sources */,
 				DF7A4A7E1B31244F0058F8A6 /* BBNewspaperDetailViewController.m in Sources */,
 				2720ECC71B258DF40063DB79 /* SMCircleCell.m in Sources */,
+				DF7A4A9C1B3151870058F8A6 /* BBPublishViewController.m in Sources */,
 				27AD45001B2E976000C80C29 /* SMMessageHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
