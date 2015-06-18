@@ -5,24 +5,8 @@
       "scale" : "1x"
     },
     {
-      "resizing" : {
-        "mode" : "3-part-vertical",
-        "center" : {
-          "mode" : "stretch",
-          "height" : 67
-        },
-        "capInsets" : {
-          "top" : 0,
-          "bottom" : 3
-        }
-      },
       "idiom" : "universal",
-<<<<<<< HEAD
-      "filename" : "image04@2x.png",
       "scale" : "2x"
-=======
-      "scale" : "2x",
->>>>>>> master
     },
     {
       "idiom" : "universal",
