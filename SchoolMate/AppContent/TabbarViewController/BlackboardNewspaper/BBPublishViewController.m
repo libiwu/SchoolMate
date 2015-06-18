@@ -87,11 +87,61 @@ SaySomethingPictureCellDelegate
     self.placeString = @"";
     
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, KScreenWidth, KScreenHeight - 64.0) style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.delegate        = self;
+    _tableView.dataSource      = self;
+    _tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
+    _tableView.tableFooterView = [self configureFooterView];
     [self.view addSubview:_tableView];
 }
+
+#pragma mark - 配置底部视图
+- (UIView *)configureFooterView {
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 70)];
+    view.backgroundColor = [UIColor clearColor];
+    //现状
+    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn1 setTitle:NSLocalizedString(@"现状", nil) forState:UIControlStateNormal];
+    [btn1 setBackgroundImage:[UIImage imageNamed:@"24"] forState:UIControlStateNormal];
+    [btn1 setBackgroundImage:[UIImage imageNamed:@"image02"] forState:UIControlStateSelected];
+    [btn1 setTitleColor:[UIColor colorWithWhite:0.459 alpha:1.000] forState:UIControlStateNormal];
+    [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    
+    //怀旧
+    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn2 setTitle:NSLocalizedString(@"怀旧", nil) forState:UIControlStateNormal];
+    [btn2 setBackgroundImage:[UIImage imageNamed:@"24"] forState:UIControlStateNormal];
+    [btn2 setBackgroundImage:[UIImage imageNamed:@"25"] forState:UIControlStateSelected];
+    [btn2 setTitleColor:[UIColor colorWithWhite:0.459 alpha:1.000] forState:UIControlStateNormal];
+    [btn2 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    
+    [btn1 bk_addEventHandler:^(id sender) {
+        btn1.selected = !btn1.selected;
+        btn2.selected = !btn1.selected;
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [btn2 bk_addEventHandler:^(id sender) {
+        btn2.selected = !btn2.selected;
+        btn1.selected = !btn2.selected;
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    CGFloat leftEdge = 30;
+    CGFloat between  = 30;
+    CGFloat topEdge  = 30;
+    CGFloat btnWidth = (KScreenWidth-leftEdge*2-between)/2.0;
+    btn1.frame = CGRectMake(leftEdge,
+                            topEdge,
+                            btnWidth,
+                            35);
+    btn2.frame = CGRectMake(CGRectGetMaxX(btn1.frame)+between,
+                            topEdge,
+                            btnWidth,
+                            35);
+    
+    [view addSubview:btn1];
+    [view addSubview:btn2];
+    return view;
+}
+
 #pragma mark -
 - (void)setImagesArray:(NSMutableArray *)imagesArray{
     if (imagesArray != _imageArray) {
