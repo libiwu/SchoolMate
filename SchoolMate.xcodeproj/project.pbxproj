@@ -55,6 +55,7 @@
 		27F840181B313124008D589C /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F840151B313124008D589C /* GroupViewController.m */; };
 		27F840191B313124008D589C /* NoteTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F840171B313124008D589C /* NoteTagViewController.m */; };
 		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
+		DF098FFD1B37D1A300FA27D0 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF098FFC1B37D1A300FA27D0 /* UserInfoModel.m */; };
 		DF7A4A7B1B3025690058F8A6 /* testView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF7A4A7A1B3025690058F8A6 /* testView.xib */; };
 		DF7A4A7E1B31244F0058F8A6 /* BBNewspaperDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A7D1B31244F0058F8A6 /* BBNewspaperDetailViewController.m */; };
 		DF7A4A941B3141ED0058F8A6 /* CompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF7A4A931B3141ED0058F8A6 /* CompanyViewController.m */; };
@@ -163,6 +164,8 @@
 		27F840171B313124008D589C /* NoteTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTagViewController.m; sourceTree = "<group>"; };
 		88CE2707A443E72094D81713 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DF098FFB1B37D1A300FA27D0 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
+		DF098FFC1B37D1A300FA27D0 /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		DF7A4A7A1B3025690058F8A6 /* testView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = testView.xib; sourceTree = "<group>"; };
 		DF7A4A7C1B31244F0058F8A6 /* BBNewspaperDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBNewspaperDetailViewController.h; sourceTree = "<group>"; };
 		DF7A4A7D1B31244F0058F8A6 /* BBNewspaperDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNewspaperDetailViewController.m; sourceTree = "<group>"; };
@@ -283,13 +286,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		2720ECC41B258DCD0063DB79 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		277905E71B252E0100ECC732 = {
 			isa = PBXGroup;
 			children = (
@@ -355,8 +351,8 @@
 		2779061B1B252F5000ECC732 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				DF098FFA1B37D17A00FA27D0 /* Model */,
 				2720ECC31B258DCD0063DB79 /* Cell */,
-				2720ECC41B258DCD0063DB79 /* Model */,
 				2720ECAF1B2578FE0063DB79 /* Class */,
 				2720ECB21B2578FE0063DB79 /* Macro */,
 				2720ECB31B2578FE0063DB79 /* View */,
@@ -584,6 +580,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DF098FFA1B37D17A00FA27D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF098FFB1B37D1A300FA27D0 /* UserInfoModel.h */,
+				DF098FFC1B37D1A300FA27D0 /* UserInfoModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DF7A4A911B3141ED0058F8A6 /* Company */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +729,7 @@
 				2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */,
 				2720ECB91B257B810063DB79 /* SCTabViewController.m in Sources */,
 				277906291B253E9F00ECC732 /* LoginViewController.m in Sources */,
+				DF098FFD1B37D1A300FA27D0 /* UserInfoModel.m in Sources */,
 				27D5CF921B26E6DD003341F3 /* SMCircleDetailViewController.m in Sources */,
 				277905F91B252E0100ECC732 /* AppDelegate.m in Sources */,
 				27AD453F1B2EC14C00C80C29 /* MyPageViewController.m in Sources */,
