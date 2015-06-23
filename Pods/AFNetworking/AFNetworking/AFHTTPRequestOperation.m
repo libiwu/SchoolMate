@@ -118,12 +118,14 @@ static dispatch_group_t http_request_operation_completion_group() {
 
         dispatch_async(http_request_operation_processing_queue(), ^{
             if (self.error) {
+                NSLog(@"failure ---- %@",self.error);
                 if (failure) {
                     dispatch_group_async(self.completionGroup ?: http_request_operation_completion_group(), self.completionQueue ?: dispatch_get_main_queue(), ^{
                         failure(self, self.error);
                     });
                 }
             } else {
+                NSLog(@"responseObject ---- %@",self.responseObject);
                 id responseObject = self.responseObject;
                 if (self.error) {
                     if (failure) {

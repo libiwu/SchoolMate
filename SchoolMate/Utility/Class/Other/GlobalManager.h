@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserInfoModel.h"
 
 @interface GlobalManager : NSObject
 
 @property (nonatomic, weak) UIViewController *currentViewController;
 
+@property (nonatomic, strong) UserInfoModel *userInfo;
 + (instancetype)shareGlobalManager;
 @end

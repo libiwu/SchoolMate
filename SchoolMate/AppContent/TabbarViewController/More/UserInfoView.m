@@ -35,25 +35,13 @@
                           NSLocalizedString(@"昵称", nil),
                           NSLocalizedString(@"真实姓名", nil),
                           NSLocalizedString(@"生日", nil),
-                          NSLocalizedString(@"账号", nil),
-                          NSLocalizedString(@"性别", nil),
-                          NSLocalizedString(@"二维码名片", nil)],
+                          NSLocalizedString(@"性别", nil)],
                         @[NSLocalizedString(@"职位", nil),
                           NSLocalizedString(@"工作单位", nil),
                           NSLocalizedString(@"联系地址", nil),
                           NSLocalizedString(@"地区", nil)]];
-    
-    self.contentArray = @[@[NSLocalizedString(@"头像", nil),
-                            NSLocalizedString(@"同学科技", nil),
-                            NSLocalizedString(@"呆萌萌", nil),
-                            NSLocalizedString(@"1980年10月1日", nil),
-                            NSLocalizedString(@"tongxuekeji", nil),
-                            NSLocalizedString(@" 男", nil),
-                            NSLocalizedString(@"二维码名片", nil)],
-                          @[NSLocalizedString(@"漫画家", nil),
-                            NSLocalizedString(@"珠海同学科技有限公司", nil),
-                            NSLocalizedString(@"联系地址", nil),
-                            NSLocalizedString(@"广东 珠海", nil)]];
+
+    [self refreshContentArray];
     
     self.tableView =
     ({
@@ -66,7 +54,18 @@
         table;
     });
 }
-
+#pragma mark - Functions
+- (void)refreshContentArray {
+    self.contentArray = @[@[[GlobalManager shareGlobalManager].userInfo.headImageUrl,
+                            [GlobalManager shareGlobalManager].userInfo.nickName,
+                            [GlobalManager shareGlobalManager].userInfo.realName,
+                            [GlobalManager shareGlobalManager].userInfo.birthday,
+                            [GlobalManager shareGlobalManager].userInfo.gender],
+                          @[[GlobalManager shareGlobalManager].userInfo.occupation,
+                            [GlobalManager shareGlobalManager].userInfo.company,
+                            [GlobalManager shareGlobalManager].userInfo.position,
+                            [GlobalManager shareGlobalManager].userInfo.position]];
+}
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
@@ -110,13 +109,13 @@
     UserInfoCellType type = 0;
     if (indexPath.section == 0 && indexPath.row == 0) {
         type = UserInfoCellTypeAvatar;
-    } else if (indexPath.section == 0 && indexPath.row == 6) {
-        type = UserInfoCellTypeImage;
-    } else if (indexPath.section == 1 && indexPath.row == 2) {
+    }else if (indexPath.section == 1 && indexPath.row == 2) {
         type = UserInfoCellTypeDefault;
     } else {
         type = UserInfoCellTypeArrow;
     }
+    
+    [self refreshContentArray];
     
     [cell setUserInfoModel:@{@"title" : self.titleArray[indexPath.section][indexPath.row],
                              @"content" : self.contentArray[indexPath.section][indexPath.row]}
@@ -294,11 +293,11 @@
 // This method is called when an image has been chosen from the library or taken from the camera.
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    DLog(@"%@", info);
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    UIImage *theImage = nil;
     // 判断获取类型：图片
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]){
-        UIImage *theImage = nil;
+        
         // 判断，图片是否允许修改
         if ([picker allowsEditing]){
             //获取用户编辑之后的图像
@@ -313,8 +312,7 @@
     [CurrentViewController dismissViewControllerAnimated:YES completion:nil];
     
     //选取完头像就上传
-//    [self saveChange];
-
+    [self uploadAvatar:theImage];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
@@ -366,5 +364,41 @@
         default:
             break;
     }
+}
+
+#pragma mark - Request
+- (void)uploadAvatar:(UIImage *)image {
+    
+    NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
+    [myFormatter setDateFormat:@"yyyyMMddhhmmss"];
+    NSString *strTime = [myFormatter stringFromDate:[NSDate date]] ;
+    NSString *strName = [strTime stringByAppendingString:@".png"];
+    NSString *strPath = [CACHES_DIRECTORY stringByAppendingPathComponent:[@"/UserInfo" stringByAppendingPathComponent:strName]];
+    NSData *imageDatass = UIImagePNGRepresentation(image);
+    [imageDatass writeToFile:strPath atomically:YES];
+    
+    [[AFHTTPRequestOperationManager manager] POST:@"http://120.24.169.36:8080/classmate/m/user/uploadHeadImg"
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId}
+                        constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                            [formData appendPartWithFileData:UIImagePNGRepresentation(image)
+                                                        name:@"file"
+                                                    fileName:strName
+                                                    mimeType:@"image.png"];
+                        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                            if ([success isEqualToString:@"1"]) {
+                                [SMMessageHUD showMessage:@"上传成功" afterDelay:2.0];
+                                
+                                NSString *url = responseObject[@"data"][@"headImageUrl"];
+                                [GlobalManager shareGlobalManager].userInfo.headImageUrl = url;
+                                
+                                [self.tableView reloadData];
+                            } else {
+                                NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                [SMMessageHUD showMessage:string afterDelay:2.0];
+                            }
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                        }];
 }
 @end

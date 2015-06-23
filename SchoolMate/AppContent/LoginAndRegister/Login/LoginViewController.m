@@ -11,6 +11,8 @@
 #import "SCTabViewController.h"
 #import "RegisterViewController.h"
 
+#import "UserInfoModel.h"
+
 @interface LoginViewController ()<UITextFieldDelegate>
 @property (nonatomic, strong) UIImageView *backImageView;
 @property (nonatomic, strong) UITextField *phoneTextField;
@@ -23,7 +25,7 @@
     [super viewDidLoad];
     
     [self setNavTitle:NSLocalizedString(@"登录", nil)];
-    
+
     self.backImageView =
     ({
         UIImageView *backImage = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 0.0, KScreenWidth, KScreenHeight - 64.0)];
@@ -38,6 +40,7 @@
         UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(90.0, 180.0, 180.0, 35.0)];
         [textField setBackgroundColor:[UIColor clearColor]];
         [textField setDelegate:self];
+        [textField setText:@"18500191316"];
         [textField setPlaceholder:NSLocalizedString(@"手机/邮箱/用户名", nil)];
         [textField setClearButtonMode:UITextFieldViewModeWhileEditing];
         [self.backImageView addSubview:textField];
@@ -49,6 +52,7 @@
         UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(90.0, 225.0, 180.0, 35.0)];
         [textField setBackgroundColor:[UIColor clearColor]];
         [textField setDelegate:self];
+        [textField setText:@"111111"];
         [textField setPlaceholder:NSLocalizedString(@"密码", nil)];
         [textField setClearButtonMode:UITextFieldViewModeWhileEditing];
         [textField setSecureTextEntry:YES];
@@ -62,7 +66,15 @@
         [loginBtn setBackgroundColor:[UIColor clearColor]];
         [loginBtn setFrame:CGRectMake(40.0, 284.0, 240.0, 44.0)];
         [loginBtn bk_addEventHandler:^(id sender) {
-            [self jumpTabbar];
+            if (![CheckTools isValidateMobile:self.phoneTextField.text]) {
+                [SMMessageHUD showMessage:@"手机号格式不对" afterDelay:2.0];
+                return ;
+            } else if (![CheckTools isValidateKeyNum:self.pwdTextField.text]) {
+                [SMMessageHUD showMessage:@"密码格式不对" afterDelay:2.0];
+                return ;
+            } else {
+                [self requestLogin];
+            }
         } forControlEvents:UIControlEventTouchUpInside];
         [self.backImageView addSubview:loginBtn];
     }
@@ -123,6 +135,32 @@
         [self.backImageView addSubview:loginBtn];
     }
 }
+#pragma mark - Request
+- (void)requestLogin {
+    [[AFHTTPRequestOperationManager manager] POST:@"http://120.24.169.36:8080/classmate/m/user/login"
+                                       parameters:@{@"mobileNo" : self.phoneTextField.text,
+                                                    @"password" : self.pwdTextField.text}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  [SMMessageHUD showMessage:@"登录成功" afterDelay:2.0];
+                                                  
+                                                  UserInfoModel *model = [UserInfoModel objectWithKeyValues:responseObject[@"data"]];
+                                                  
+                                                  [GlobalManager shareGlobalManager].userInfo = model;
+                                                                                                    
+                                                  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                      [self jumpTabbar];
+                                                  });
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                          }];
+}
+#pragma mark - Function
 - (void)jumpTabbar {
     SCTabViewController *tab = [[SCTabViewController alloc]init];
     [self presentViewController:tab animated:NO completion:nil];

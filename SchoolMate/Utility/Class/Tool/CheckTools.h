@@ -66,7 +66,7 @@ typedef enum : NSUInteger {
  *
  *  @param str 手机号
  */
-+ (BOOL)isValidateMobileNumber: (NSString *)mobileNum countryCode: (NSString *)countryCode;
++ (BOOL)isValidateMobile:(NSString *)mobileNum;
 /**
  *  检测登陆用户名是否合法
  *

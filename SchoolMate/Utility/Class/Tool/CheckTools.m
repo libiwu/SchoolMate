@@ -70,11 +70,8 @@
 }
 
 + (BOOL)isValidateKeyNum:(NSString *)key{
-    NSString *keyRegex = @"[A-Z0-9a-z]{6,20}";
+    NSString *keyRegex = @"[A-Z0-9a-z]{6,12}";
     NSPredicate *keyTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", keyRegex];
-    if (![keyTest evaluateWithObject:key]) {
-//        [AutoColoseInfoDialog popUpDialog:NSLocalizedString(@"密碼格式不正确", nil) withView:AppWindow];
-    }
     return [keyTest evaluateWithObject:key];
 }
 
@@ -85,28 +82,13 @@
     
     return [emailTest evaluateWithObject:candidate];
 }
-
-+ (BOOL)isValidateMobileNumber: (NSString *)mobileNum countryCode: (NSString *)countryCode
++ (BOOL)isValidateMobile:(NSString *)mobile
 {
-    int maxLength = 0;
-    if ([countryCode isEqualToString:@"+86"]) {
-        maxLength = 11;
-    }else if ([countryCode isEqualToString:@"+852"]) {
-        maxLength = 8;
-    }else if ([countryCode isEqualToString:@"+853"]){
-        maxLength = 8;
-    }else{
-        maxLength = 11;
-    }
-
-    if (mobileNum.length != maxLength) {
-//        [AutoColoseInfoDialog popUpDialog:NSLocalizedString(@"手机号格式不对", nil) withView:AppWindow];
-        return NO;
-    }
-    
-    return YES;
+    //手机号以13， 15，18开头，八个 \d 数字字符
+    NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    return [phoneTest evaluateWithObject:mobile];
 }
-
 + (BOOL)isLoginAccount:(NSString *)account
 {
 //    NSString *countRegex = @"[[A-Z0-9a-z._%]@[A-Za-z0-9]]{0,20}";
