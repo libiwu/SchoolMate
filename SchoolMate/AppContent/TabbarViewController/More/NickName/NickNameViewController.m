@@ -42,6 +42,8 @@
                                                                           backImage.frame.size.width,
                                                                           backImage.frame.size.height)];
     textField.placeholder = NSLocalizedString(@"输入昵称", nil);
+    textField.text = [GlobalManager shareGlobalManager].userInfo.nickName;
+    [textField becomeFirstResponder];
     textField.backgroundColor = [UIColor clearColor];
     textField.leftViewMode = UITextFieldViewModeAlways;
     textField.leftView = leftView;
@@ -75,5 +77,25 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
+}
+
+- (void)requestChangeNickName {
+    [[AFHTTPRequestOperationManager manager] POST:@"http://120.24.169.36:8080/classmate/m/user/update"
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"nickName" :[GlobalManager shareGlobalManager].userInfo.nickName,
+                                                    @"realName" :[GlobalManager shareGlobalManager].userInfo.realName,
+                                                    @"birthday" : [GlobalManager shareGlobalManager].userInfo.birthday,
+                                                    @"userName" : [GlobalManager shareGlobalManager].userInfo.birthday,
+                                                    @"gender" : [GlobalManager shareGlobalManager].userInfo.birthday,
+                                                    @"occupation" : [GlobalManager shareGlobalManager].userInfo.birthday,
+                                                    @"company" : [GlobalManager shareGlobalManager].userInfo.birthday,
+                                                    @"address" : [GlobalManager shareGlobalManager].userInfo.birthday,
+                                                    @"address" : [GlobalManager shareGlobalManager].userInfo.birthday,
+                                                    @"address" : [GlobalManager shareGlobalManager].userInfo.birthday,}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              
+                                          }];
 }
 @end

@@ -21,6 +21,7 @@
 #import "UIImageView+WebCache.h"
 #import "TMCache.h"
 #import "MBProgressHUD.h"
+#import "AFNetworking.h"
 
 #import "ClassDefinition.h"
 #import "MacroDefinition.h"

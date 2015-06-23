@@ -122,7 +122,9 @@
                                                    self.frame.size.height)];
             
             [self.avatarView setHidden:NO];
-            [self.avatarView setImage:[UIImage imageNamed:@"headImage.png"]];
+            NSString *string = dic[@"content"];
+            string = [string stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            [self.avatarView sd_setImageWithURL:[NSURL URLWithString:string]];
             [self.avatarView setFrame:CGRectMake(self.frame.size.width - self.frame.size.height + 22.0 - 15.0,
                                                  11.0,
                                                  self.frame.size.height - 22.0,
@@ -177,8 +179,14 @@
                                                  self.titleLabel.frame.origin.y,
                                                  self.titleLabel.frame.size.width,
                                                  self.frame.size.height)];
-            
-            [self.contentLabel setText:dic[@"content"]];
+            NSString *string = nil;
+            if ([dic[@"content"] isKindOfClass:[NSString class]]) {
+                string = dic[@"content"];
+            } else {
+                NSNumber *numer = dic[@"content"];
+                string = [Tools stringFrom_SM_DBTimeInterval:numer.doubleValue];
+            }
+            [self.contentLabel setText:string];
             [self.contentLabel setHidden:NO];
             [self.contentLabel setFrame:CGRectMake(self.contentLabel.frame.origin.x,
                                                    self.contentLabel.frame.origin.y,

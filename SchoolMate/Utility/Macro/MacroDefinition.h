@@ -70,8 +70,6 @@
 
 #define PATH_TO_STORE_IMAGE             [[NSHomeDirectory() stringByAppendingPathComponent:@"/Library"] stringByAppendingPathComponent:@"/Caches/image"]
 #define PATH_TO_STORY_READ              [[NSHomeDirectory() stringByAppendingPathComponent:@"/Library"] stringByAppendingPathComponent:@"/Read.plist"]
-// Documents目录
-#define DOC_DIRECTORY                   [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]
 // tmp目录
 #define TMP_DIRECTORY                   [NSHomeDirectory() stringByAppendingPathComponent:@"tmp"]
 // caches目录
