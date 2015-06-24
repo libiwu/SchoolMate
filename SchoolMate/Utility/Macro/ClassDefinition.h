@@ -10,5 +10,7 @@
 #ifndef OShopping_ClassDefinition_h
 #define OShopping_ClassDefinition_h
 
+#define   kSMUrl(a)     [NSString stringWithFormat:@"http://120.24.169.36:8080%@",(a)]
+
 
 #endif

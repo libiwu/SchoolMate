@@ -65,6 +65,8 @@
                             [GlobalManager shareGlobalManager].userInfo.company,
                             [GlobalManager shareGlobalManager].userInfo.position,
                             [GlobalManager shareGlobalManager].userInfo.position]];
+    
+    [self.tableView reloadData];
 }
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -114,8 +116,6 @@
     } else {
         type = UserInfoCellTypeArrow;
     }
-    
-    [self refreshContentArray];
     
     [cell setUserInfoModel:@{@"title" : self.titleArray[indexPath.section][indexPath.row],
                              @"content" : self.contentArray[indexPath.section][indexPath.row]}
@@ -368,7 +368,6 @@
 
 #pragma mark - Request
 - (void)uploadAvatar:(UIImage *)image {
-    
     NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
     [myFormatter setDateFormat:@"yyyyMMddhhmmss"];
     NSString *strTime = [myFormatter stringFromDate:[NSDate date]] ;
@@ -377,7 +376,7 @@
     NSData *imageDatass = UIImagePNGRepresentation(image);
     [imageDatass writeToFile:strPath atomically:YES];
     
-    [[AFHTTPRequestOperationManager manager] POST:@"http://120.24.169.36:8080/classmate/m/user/uploadHeadImg"
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/uploadHeadImg")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId}
                         constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                             [formData appendPartWithFileData:UIImagePNGRepresentation(image)

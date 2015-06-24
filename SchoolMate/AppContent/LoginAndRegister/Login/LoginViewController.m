@@ -137,7 +137,7 @@
 }
 #pragma mark - Request
 - (void)requestLogin {
-    [[AFHTTPRequestOperationManager manager] POST:@"http://120.24.169.36:8080/classmate/m/user/login"
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/login")
                                        parameters:@{@"mobileNo" : self.phoneTextField.text,
                                                     @"password" : self.pwdTextField.text}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
