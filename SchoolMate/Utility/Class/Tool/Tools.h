@@ -29,21 +29,6 @@
 + (UIImage *)scaleToSize:(UIImage *)img size:(CGSize)size;
 
 /**
- *  转换数据库的时间格式   "2015-04-25T13:29:33.613"
- */
-+ (NSString *)stringFrom_OS_DBTimeString:(NSString *)string;
-
-/*
- *  时间戳装换成时间字符串
- */
-+ (NSString *)stringFrom_SM_DBTimeInterval:(NSTimeInterval)interval;
-
-/*
- *  字符串装换成时间戳
- */
-+ (NSTimeInterval)timeIntervalFrom_SM_TimeString:(NSString *)string;
-
-/**
  *  格式化手機號碼
  */
 + (NSString *)formatPhoneNumberFromString:(NSString *)string;

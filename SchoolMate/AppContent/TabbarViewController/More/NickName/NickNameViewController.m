@@ -84,16 +84,11 @@
                                                     @"nickName" :self.niceTextField.text,
                                                     @"realName" :[GlobalManager shareGlobalManager].userInfo.realName,
                                                     @"birthday" : [GlobalManager shareGlobalManager].userInfo.birthday,
-                                                    @"userName" : [GlobalManager shareGlobalManager].userInfo.mobileNo,
                                                     @"gender" : [GlobalManager shareGlobalManager].userInfo.gender,
-                                                    @"occupation" : [GlobalManager shareGlobalManager].userInfo.occupation,
                                                     @"company" : [GlobalManager shareGlobalManager].userInfo.company,
-                                                    @"address" : @"",
-                                                    @"province" : @"",
-                                                    @"city" : @"",
-                                                    @"postcode" : @"",
-                                                    @"email" : @"",
-                                                    @"signature" : [GlobalManager shareGlobalManager].userInfo.signature}
+                                                    @"email" : [GlobalManager shareGlobalManager].userInfo.email,
+                                                    @"signature" : [GlobalManager shareGlobalManager].userInfo.signature,
+                                                    @"position" : [GlobalManager shareGlobalManager].userInfo.position}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {

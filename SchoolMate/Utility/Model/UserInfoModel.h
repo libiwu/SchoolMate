@@ -8,7 +8,9 @@
 //  用户信息
 
 #import <Foundation/Foundation.h>
-
+/*
+ {"receiverName":"张三2","receiverMobileNo":"13868767777","receiverRegion":"广东 珠海 香洲区","receiverAddress":"东大新城2栋301","receiverPostcode":"59300"}
+ */
 @interface AddressModel : NSObject
 @property (nonatomic, copy  ) NSString *receiverName;
 @property (nonatomic, copy  ) NSString *receiverMobileNo;
@@ -18,35 +20,20 @@
 @end
 
 /*
- "userId":1,"mobileNo":
- "13802676527",
- "userName":"Tongxuekeji",
+ {
+ "userId":1,
+ "mobileNo":"13802676527",
  "email":"4555555@tx.com",
- "password":"e1adc3949ba59abbe56e057f2f883e",
- "registTime":1433518751000,
- "registIp":"192.168.1.105",
- "lastLoginTime":null,
- "lastLoginIp":null,
- "loginCount":0,
- "isLock":0,
- "lockStartime":null,
- "lockPeriod":null,
  "nickName":"同学科技",
  "realName":"布耀孝",
  "gender":"男",
- "headImageUrl":null,
- "backgroundImageUrl":null,
- "signature":"那年匆匆的岁月",
- "birthday":339177600000,
- "country":null,
- "province":"广东",
- "city":"珠海",
- "district":null,
- "address":"香洲区东大新村",
- "postcode":"59300",
+ "headImageUrl":"http://localhost:8080/classmate_file/user/headimages/1/20150605114332567_22.jpg",
+ "backgroundImageUrl":"http://localhost:8080/classmate_file/user/backgroundimages/1/20150605114801301_48.jpg",
+ "signature":"那年匆匆的岁月","birthday":1435161600000,
  "company":"珠海同学科技有限公司",
- "position":null,
- "occupation":"漫画家"
+ "position":"项目经理",
+ "address":{"receiverName":"张三2","receiverMobileNo":"13868767777","receiverRegion":"广东 珠海 香洲区","receiverAddress":"东大新城2栋301","receiverPostcode":"59300"}
+ }
  */
 @interface UserInfoModel : NSObject
 @property (nonatomic, strong) NSNumber *userId;
@@ -62,6 +49,5 @@
 @property (nonatomic, strong) AddressModel *address;
 @property (nonatomic, copy  ) NSString *company;
 @property (nonatomic, copy  ) NSString *position;
-@property (nonatomic, copy  ) NSString *occupation;
 @end
 

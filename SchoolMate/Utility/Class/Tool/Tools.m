@@ -59,42 +59,6 @@
     //返回新的改变大小后的图片
     return scaledImage;
 }
-#pragma mark 转换数据库的时间格式
-+ (NSString *)stringFrom_OS_DBTimeString:(NSString *)string
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    [formatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS"];
-    NSDate *date = [formatter dateFromString:string];
-    
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    NSString * newstr = [formatter stringFromDate:date];
-    return newstr;
-}
-#pragma mark 时间戳装换成时间字符串
-+ (NSString *)stringFrom_SM_DBTimeInterval:(NSTimeInterval)interval {
-    
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval/1000];
-    
-    NSTimeZone *zone = [NSTimeZone systemTimeZone];
-    NSTimeInterval value = [zone secondsFromGMTForDate: date];
-    NSDate *localeDate = [date  dateByAddingTimeInterval: value];
-    
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString * newstr = [formatter stringFromDate:localeDate];
-    return newstr;
-}
-#pragma mark 字符串装换成时间戳
-+ (NSTimeInterval)timeIntervalFrom_SM_TimeString:(NSString *)string {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSDate *date = [formatter dateFromString:string];
-    
-    NSTimeInterval interval = [date timeIntervalSince1970];
-    return interval;
-}
 #pragma mark - 格式化手機號碼
 + (NSString *)formatPhoneNumberFromString:(NSString *)string {
     /*

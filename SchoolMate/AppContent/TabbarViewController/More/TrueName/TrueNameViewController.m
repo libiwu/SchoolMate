@@ -9,7 +9,7 @@
 #import "TrueNameViewController.h"
 
 @interface TrueNameViewController ()
-
+@property (nonatomic, strong) UITextField *realTextField;
 @end
 
 @implementation TrueNameViewController
@@ -47,7 +47,7 @@
     textField.leftView = leftView;
     
     [backImage addSubview:textField];
-    
+    self.realTextField = textField;
     CGRect rect ;
     {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -57,9 +57,6 @@
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [btn bk_addEventHandler:^(id sender) {
             [SMMessageHUD showMessage:NSLocalizedString(@"不公开", nil) afterDelay:1.0];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.navigationController popViewControllerAnimated:YES];
-            });
         } forControlEvents:UIControlEventTouchUpInside];
         [btn setFrame:CGRectMake(30.0, CGRectGetMaxY(backImage.frame) + 25.0, 230.0/2, 30.0)];
         [self.view addSubview:btn];
@@ -73,10 +70,7 @@
         [btn setTitle:NSLocalizedString(@"公开", nil) forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn bk_addEventHandler:^(id sender) {
-            [SMMessageHUD showMessage:NSLocalizedString(@"公开", nil) afterDelay:1.0];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.navigationController popViewControllerAnimated:YES];
-            });
+            [self requestChangeRealName];
         } forControlEvents:UIControlEventTouchUpInside];
         [btn setFrame:CGRectMake(CGRectGetMaxX(rect) + 30.0, rect.origin.y, rect.size.width, rect.size.height)];
         [self.view addSubview:btn];
@@ -85,5 +79,33 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
+}
+
+- (void)requestChangeRealName {
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/update")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"nickName" :self.realTextField.text,
+                                                    @"realName" :[GlobalManager shareGlobalManager].userInfo.realName,
+                                                    @"birthday" : [GlobalManager shareGlobalManager].userInfo.birthday,
+                                                    @"gender" : [GlobalManager shareGlobalManager].userInfo.gender,
+                                                    @"company" : [GlobalManager shareGlobalManager].userInfo.company,
+                                                    @"email" : [GlobalManager shareGlobalManager].userInfo.email,
+                                                    @"signature" : [GlobalManager shareGlobalManager].userInfo.signature,
+                                                    @"position" : [GlobalManager shareGlobalManager].userInfo.position}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  [SMMessageHUD showMessage:@"修改成功" afterDelay:2.0];
+                                                  
+                                                  [GlobalManager shareGlobalManager].userInfo.realName = self.realTextField.text;
+                                                  
+                                                  [self.navigationController popViewControllerAnimated:YES];
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                          }];
 }
 @end

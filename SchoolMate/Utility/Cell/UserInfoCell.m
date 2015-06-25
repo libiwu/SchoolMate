@@ -184,7 +184,7 @@
                 string = dic[@"content"];
             } else {
                 NSNumber *numer = dic[@"content"];
-                string = [Tools stringFrom_SM_DBTimeInterval:numer.doubleValue];
+                string = [SMTimeTool stringFrom_SM_DBTimeInterval:numer.doubleValue dateFormat:@"yyyy年MM月dd日"];
             }
             [self.contentLabel setText:string];
             [self.contentLabel setHidden:NO];

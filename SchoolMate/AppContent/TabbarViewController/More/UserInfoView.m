@@ -20,6 +20,10 @@
 #import "ChangeAccountViewController.h"
 
 #import "SMNavigationPopView.h"
+
+
+#define kBirthdayDateFormat             @"yyyy年MM月dd日"
+
 @interface UserInfoView ()<UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *titleArray;
@@ -61,9 +65,9 @@
                             [GlobalManager shareGlobalManager].userInfo.realName,
                             [GlobalManager shareGlobalManager].userInfo.birthday,
                             [GlobalManager shareGlobalManager].userInfo.gender],
-                          @[[GlobalManager shareGlobalManager].userInfo.occupation,
+                          @[[GlobalManager shareGlobalManager].userInfo.position,
                             [GlobalManager shareGlobalManager].userInfo.company,
-                            [GlobalManager shareGlobalManager].userInfo.position,
+                            [GlobalManager shareGlobalManager].userInfo.address.receiverAddress,
                             [GlobalManager shareGlobalManager].userInfo.position]];
     
     [self.tableView reloadData];
@@ -159,29 +163,20 @@
                     SMDatePickPopView *view = [[SMDatePickPopView alloc]init];
                     UserInfoCell *cell = (UserInfoCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
                     NSDateFormatter *ff = [[NSDateFormatter alloc]init];
-                    [ff setDateFormat:@"yyyy年MM月dd日"];
+                    [ff setDateFormat:kBirthdayDateFormat];
                     [view.datePicker setDate:[ff dateFromString:cell.contentLabel.text] animated:NO];
                     [view setValueChange:^(UIDatePicker *datePicker) {
-                        NSString *string = [ff stringFromDate:datePicker.date];
-                        cell.contentLabel.text = string;
+                        [self requestChangeBirthday:datePicker.date indexPath:indexPath];
                     }];
                     [view show];
                 }
                     break;
                 case 4:
                 {
-                    ChangeAccountViewController *vc = [[ChangeAccountViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
-                    [CurrentViewController.navigationController pushViewController:vc animated:YES];
-                }
-                    break;
-                case 5:
-                {
-                    UserInfoCell *cell = (UserInfoCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
-                    
                     SMNavigationPopView *view = [[SMNavigationPopView alloc]initWithDataArray:@[@"男", @"女"]];
                     [view setTableViewCenter:AppWindow.center];
                     [view setTableViewSelectBlock:^(NSUInteger index, NSString *string) {
-                        cell.contentLabel.text = string;
+                        [self requestChangeGender:string indexPath:indexPath];
                     }];
                     [view show];
                 }
@@ -367,6 +362,7 @@
 }
 
 #pragma mark - Request
+#pragma mark 换头像
 - (void)uploadAvatar:(UIImage *)image {
     NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
     [myFormatter setDateFormat:@"yyyyMMddhhmmss"];
@@ -399,5 +395,67 @@
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                         }];
+}
+#pragma mark 换生日
+- (void)requestChangeBirthday:(NSDate *)date indexPath:(NSIndexPath *)indexPath {
+    NSTimeInterval timeInt = [SMTimeTool timeIntervalFrom_SM_Time:date];
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/update")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"nickName" :[GlobalManager shareGlobalManager].userInfo.nickName,
+                                                    @"realName" :[GlobalManager shareGlobalManager].userInfo.realName,
+                                                    @"birthday" : @(timeInt),
+                                                    @"gender" : [GlobalManager shareGlobalManager].userInfo.gender,
+                                                    @"company" : [GlobalManager shareGlobalManager].userInfo.company,
+                                                    @"email" : [GlobalManager shareGlobalManager].userInfo.email,
+                                                    @"signature" : [GlobalManager shareGlobalManager].userInfo.signature,
+                                                    @"position" : [GlobalManager shareGlobalManager].userInfo.position}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  [SMMessageHUD showMessage:@"修改成功" afterDelay:2.0];
+                                                  
+                                                  [GlobalManager shareGlobalManager].userInfo.birthday = @(timeInt);
+                                                  
+                                                  UserInfoCell *cell = (UserInfoCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+                                                  NSDateFormatter *ff = [[NSDateFormatter alloc]init];
+                                                  [ff setDateFormat:kBirthdayDateFormat];
+                                                  NSString *string = [ff stringFromDate:date];
+                                                  cell.contentLabel.text = string;
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                          }];
+}
+#pragma mark 换性别
+- (void)requestChangeGender:(NSString *)gender indexPath:(NSIndexPath *)indexPath {
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/update")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"nickName" :[GlobalManager shareGlobalManager].userInfo.nickName,
+                                                    @"realName" :[GlobalManager shareGlobalManager].userInfo.realName,
+                                                    @"birthday" : [GlobalManager shareGlobalManager].userInfo.birthday,
+                                                    @"gender" : gender,
+                                                    @"company" : [GlobalManager shareGlobalManager].userInfo.company,
+                                                    @"email" : [GlobalManager shareGlobalManager].userInfo.email,
+                                                    @"signature" : [GlobalManager shareGlobalManager].userInfo.signature,
+                                                    @"position" : [GlobalManager shareGlobalManager].userInfo.position}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  [SMMessageHUD showMessage:@"修改成功" afterDelay:2.0];
+                                                  
+                                                  [GlobalManager shareGlobalManager].userInfo.gender = gender;
+                                                  
+                                                  UserInfoCell *cell = (UserInfoCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+                                                  cell.contentLabel.text = gender;
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                          }];
 }
 @end

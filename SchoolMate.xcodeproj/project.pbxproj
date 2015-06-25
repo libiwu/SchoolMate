@@ -27,6 +27,8 @@
 		2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779063B1B25492B00ECC732 /* MoreViewController.m */; };
 		2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779063E1B25495800ECC732 /* SMCircleViewController.m */; };
 		277906421B25496500ECC732 /* WhisperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277906411B25496500ECC732 /* WhisperViewController.m */; };
+		278DDCF61B3BD67400EBC973 /* SMTimeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 278DDCF51B3BD67400EBC973 /* SMTimeTool.m */; };
+		278DDCF81B3BE35400EBC973 /* getorder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 278DDCF71B3BE35400EBC973 /* getorder@2x.png */; };
 		27AD44F51B2E8DCD00C80C29 /* CheckTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44F41B2E8DCD00C80C29 /* CheckTools.m */; };
 		27AD44FA1B2E943B00C80C29 /* NickNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44F91B2E943B00C80C29 /* NickNameViewController.m */; };
 		27AD44FD1B2E944500C80C29 /* TrueNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AD44FC1B2E944500C80C29 /* TrueNameViewController.m */; };
@@ -107,6 +109,9 @@
 		2779063E1B25495800ECC732 /* SMCircleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMCircleViewController.m; sourceTree = "<group>"; };
 		277906401B25496500ECC732 /* WhisperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhisperViewController.h; sourceTree = "<group>"; };
 		277906411B25496500ECC732 /* WhisperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhisperViewController.m; sourceTree = "<group>"; };
+		278DDCF41B3BD67400EBC973 /* SMTimeTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTimeTool.h; sourceTree = "<group>"; };
+		278DDCF51B3BD67400EBC973 /* SMTimeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTimeTool.m; sourceTree = "<group>"; };
+		278DDCF71B3BE35400EBC973 /* getorder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "getorder@2x.png"; sourceTree = "<group>"; };
 		27AD44F31B2E8DCC00C80C29 /* CheckTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckTools.h; sourceTree = "<group>"; };
 		27AD44F41B2E8DCD00C80C29 /* CheckTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckTools.m; sourceTree = "<group>"; };
 		27AD44F81B2E943B00C80C29 /* NickNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NickNameViewController.h; sourceTree = "<group>"; };
@@ -228,6 +233,8 @@
 				2720ECBD1B25871A0063DB79 /* Tools.m */,
 				27AD44FE1B2E976000C80C29 /* SMMessageHUD.h */,
 				27AD44FF1B2E976000C80C29 /* SMMessageHUD.m */,
+				278DDCF41B3BD67400EBC973 /* SMTimeTool.h */,
+				278DDCF51B3BD67400EBC973 /* SMTimeTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -289,6 +296,7 @@
 		277905E71B252E0100ECC732 = {
 			isa = PBXGroup;
 			children = (
+				278DDCF71B3BE35400EBC973 /* getorder@2x.png */,
 				2720ECBA1B257F310063DB79 /* Default-568h@2x.png */,
 				2779062D1B25475600ECC732 /* 同学圈主界面.jpg */,
 				277905F21B252E0100ECC732 /* SchoolMate */,
@@ -658,6 +666,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				278DDCF81B3BE35400EBC973 /* getorder@2x.png in Resources */,
 				2779062E1B25475600ECC732 /* 同学圈主界面.jpg in Resources */,
 				2720ECBB1B257F310063DB79 /* Default-568h@2x.png in Resources */,
 				277906041B252E0100ECC732 /* LaunchScreen.xib in Resources */,
@@ -711,6 +720,7 @@
 				2720ECC21B2587990063DB79 /* NSString+Addition.m in Sources */,
 				2779062C1B253EAB00ECC732 /* RegisterViewController.m in Sources */,
 				27F840181B313124008D589C /* GroupViewController.m in Sources */,
+				278DDCF61B3BD67400EBC973 /* SMTimeTool.m in Sources */,
 				27AD45031B2E9D7400C80C29 /* SMDatePickPopView.m in Sources */,
 				27D5CF9E1B26FFA5003341F3 /* SMNavigationPopView.m in Sources */,
 				DF7A4A981B314C330058F8A6 /* BBPlaceViewController.m in Sources */,
@@ -864,7 +874,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "51be0179-9f07-44ae-a029-3ab748b2afa6";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -879,7 +889,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "51be0179-9f07-44ae-a029-3ab748b2afa6";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
