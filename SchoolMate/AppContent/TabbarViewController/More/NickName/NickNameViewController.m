@@ -47,6 +47,7 @@
     textField.backgroundColor = [UIColor clearColor];
     textField.leftViewMode = UITextFieldViewModeAlways;
     textField.leftView = leftView;
+    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     
     self.niceTextField = textField;
     

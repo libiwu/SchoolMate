@@ -18,8 +18,10 @@
 #import "SMDatePickPopView.h"
 #import "CompanyViewController.h"
 #import "ChangeAccountViewController.h"
+#import "ContactAddressViewController.h"
 
 #import "SMNavigationPopView.h"
+#import "SchoolViewController.h"
 
 
 #define kBirthdayDateFormat             @"yyyy年MM月dd日"
@@ -43,7 +45,7 @@
                         @[NSLocalizedString(@"职位", nil),
                           NSLocalizedString(@"工作单位", nil),
                           NSLocalizedString(@"联系地址", nil),
-                          NSLocalizedString(@"地区", nil)]];
+                          NSLocalizedString(@"学校", nil)]];
 
     [self refreshContentArray];
     
@@ -197,6 +199,18 @@
                 case 1:
                 {
                     CompanyViewController *vc = [[CompanyViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+                    [CurrentViewController.navigationController pushViewController:vc animated:YES];
+                }
+                    break;
+                case 2:
+                {
+                    ContactAddressViewController *vc = [[ContactAddressViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+                    [CurrentViewController.navigationController pushViewController:vc animated:YES];
+                }
+                    break;
+                case 3:
+                {
+                    SchoolViewController *vc = [[SchoolViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
                     [CurrentViewController.navigationController pushViewController:vc animated:YES];
                 }
                     break;

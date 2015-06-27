@@ -124,7 +124,7 @@
     }
 }
 
-- (void)creatContentView {
+- (void)createContentView {
     
 }
 

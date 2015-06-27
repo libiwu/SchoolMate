@@ -15,6 +15,11 @@
 		2720ECC71B258DF40063DB79 /* SMCircleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2720ECC61B258DF40063DB79 /* SMCircleCell.m */; };
 		274E65181B2833FB00D1267B /* UserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E65171B2833FB00D1267B /* UserInfoView.m */; };
 		274E651B1B2837A900D1267B /* UserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E651A1B2837A900D1267B /* UserInfoCell.m */; };
+		2777658D1B3E4B4500E136A7 /* ContactAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2777658C1B3E4B4500E136A7 /* ContactAddressViewController.m */; };
+		277765911B3E6C3200E136A7 /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 277765901B3E6C3200E136A7 /* SchoolViewController.m */; };
+		277765941B3E6DA200E136A7 /* SchoolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 277765931B3E6DA200E136A7 /* SchoolModel.m */; };
+		277765A01B3E830900E136A7 /* EnterSchoolInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2777659D1B3E830900E136A7 /* EnterSchoolInfoViewController.m */; };
+		277765A11B3E830900E136A7 /* SchoolTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2777659F1B3E830900E136A7 /* SchoolTypeViewController.m */; };
 		277905F61B252E0100ECC732 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 277905F51B252E0100ECC732 /* main.m */; };
 		277905F91B252E0100ECC732 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 277905F81B252E0100ECC732 /* AppDelegate.m */; };
 		277906011B252E0100ECC732 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 277906001B252E0100ECC732 /* Images.xcassets */; };
@@ -87,6 +92,16 @@
 		274E65171B2833FB00D1267B /* UserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoView.m; sourceTree = "<group>"; };
 		274E65191B2837A900D1267B /* UserInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoCell.h; sourceTree = "<group>"; };
 		274E651A1B2837A900D1267B /* UserInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoCell.m; sourceTree = "<group>"; };
+		2777658B1B3E4B4500E136A7 /* ContactAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactAddressViewController.h; sourceTree = "<group>"; };
+		2777658C1B3E4B4500E136A7 /* ContactAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactAddressViewController.m; sourceTree = "<group>"; };
+		2777658F1B3E6C3200E136A7 /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
+		277765901B3E6C3200E136A7 /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
+		277765921B3E6DA200E136A7 /* SchoolModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolModel.h; sourceTree = "<group>"; };
+		277765931B3E6DA200E136A7 /* SchoolModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolModel.m; sourceTree = "<group>"; };
+		2777659C1B3E830900E136A7 /* EnterSchoolInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterSchoolInfoViewController.h; sourceTree = "<group>"; };
+		2777659D1B3E830900E136A7 /* EnterSchoolInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterSchoolInfoViewController.m; sourceTree = "<group>"; };
+		2777659E1B3E830900E136A7 /* SchoolTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolTypeViewController.h; sourceTree = "<group>"; };
+		2777659F1B3E830900E136A7 /* SchoolTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolTypeViewController.m; sourceTree = "<group>"; };
 		277905F01B252E0100ECC732 /* SchoolMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		277905F41B252E0100ECC732 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277905F51B252E0100ECC732 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -293,6 +308,36 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		2777658A1B3E4B2200E136A7 /* ContactAddress */ = {
+			isa = PBXGroup;
+			children = (
+				2777658B1B3E4B4500E136A7 /* ContactAddressViewController.h */,
+				2777658C1B3E4B4500E136A7 /* ContactAddressViewController.m */,
+			);
+			path = ContactAddress;
+			sourceTree = "<group>";
+		};
+		2777658E1B3E6BCA00E136A7 /* SchoolInfo */ = {
+			isa = PBXGroup;
+			children = (
+				2777659B1B3E830900E136A7 /* AddSchool */,
+				2777658F1B3E6C3200E136A7 /* SchoolViewController.h */,
+				277765901B3E6C3200E136A7 /* SchoolViewController.m */,
+			);
+			path = SchoolInfo;
+			sourceTree = "<group>";
+		};
+		2777659B1B3E830900E136A7 /* AddSchool */ = {
+			isa = PBXGroup;
+			children = (
+				2777659E1B3E830900E136A7 /* SchoolTypeViewController.h */,
+				2777659F1B3E830900E136A7 /* SchoolTypeViewController.m */,
+				2777659C1B3E830900E136A7 /* EnterSchoolInfoViewController.h */,
+				2777659D1B3E830900E136A7 /* EnterSchoolInfoViewController.m */,
+			);
+			path = AddSchool;
+			sourceTree = "<group>";
+		};
 		277905E71B252E0100ECC732 = {
 			isa = PBXGroup;
 			children = (
@@ -445,6 +490,8 @@
 		277906311B2548E900ECC732 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				2777658E1B3E6BCA00E136A7 /* SchoolInfo */,
+				2777658A1B3E4B2200E136A7 /* ContactAddress */,
 				DF7A4A911B3141ED0058F8A6 /* Company */,
 				27F8400C1B3130D4008D589C /* Account */,
 				27AD44F71B2E942D00C80C29 /* NickName */,
@@ -593,6 +640,8 @@
 			children = (
 				DF098FFB1B37D1A300FA27D0 /* UserInfoModel.h */,
 				DF098FFC1B37D1A300FA27D0 /* UserInfoModel.m */,
+				277765921B3E6DA200E136A7 /* SchoolModel.h */,
+				277765931B3E6DA200E136A7 /* SchoolModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -727,16 +776,20 @@
 				27AD453D1B2EC14C00C80C29 /* AssetsGroupsTabelView.m in Sources */,
 				2720ECAD1B254A7F0063DB79 /* FindSMViewController.m in Sources */,
 				277906421B25496500ECC732 /* WhisperViewController.m in Sources */,
+				2777658D1B3E4B4500E136A7 /* ContactAddressViewController.m in Sources */,
 				27AD45071B2EA8C000C80C29 /* PublishNoteViewController.m in Sources */,
 				27D5CF9B1B26FB7E003341F3 /* GlobalManager.m in Sources */,
 				27AD453E1B2EC14C00C80C29 /* ImageScrollView.m in Sources */,
 				27D5CF981B26E9A0003341F3 /* SMCircleDetailCell.m in Sources */,
+				277765911B3E6C3200E136A7 /* SchoolViewController.m in Sources */,
 				2720ECBE1B25871A0063DB79 /* Tools.m in Sources */,
 				274E651B1B2837A900D1267B /* UserInfoCell.m in Sources */,
+				277765A01B3E830900E136A7 /* EnterSchoolInfoViewController.m in Sources */,
 				27AD45161B2EC05B00C80C29 /* SCImagesViewerData.m in Sources */,
 				27AD45411B2EC14C00C80C29 /* PhotoViewController.m in Sources */,
 				274E65181B2833FB00D1267B /* UserInfoView.m in Sources */,
 				2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */,
+				277765941B3E6DA200E136A7 /* SchoolModel.m in Sources */,
 				2720ECB91B257B810063DB79 /* SCTabViewController.m in Sources */,
 				277906291B253E9F00ECC732 /* LoginViewController.m in Sources */,
 				DF098FFD1B37D1A300FA27D0 /* UserInfoModel.m in Sources */,
@@ -765,6 +818,7 @@
 				DF7A4A7E1B31244F0058F8A6 /* BBNewspaperDetailViewController.m in Sources */,
 				2720ECC71B258DF40063DB79 /* SMCircleCell.m in Sources */,
 				DF7A4A9C1B3151870058F8A6 /* BBPublishViewController.m in Sources */,
+				277765A11B3E830900E136A7 /* SchoolTypeViewController.m in Sources */,
 				27AD45001B2E976000C80C29 /* SMMessageHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -27,7 +27,7 @@
     [super viewWillAppear:animated];
     
     if (!self.userInfoView) {
-        UserInfoView *view = [[UserInfoView alloc]initWithFrame:CGRectMake(0.0, 0.0, KScreenWidth, KScreenHeight - 64.0 - 49.0)];
+        UserInfoView *view = [[UserInfoView alloc]initWithFrame:CGRectMake(0.0, 0.0, KScreenWidth, KScreenHeight - 64.0 - 49.0 - 1.0)];
         [view setUp];
         [self.view addSubview:view];
         
