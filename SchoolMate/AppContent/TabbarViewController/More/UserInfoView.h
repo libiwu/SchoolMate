@@ -13,4 +13,5 @@
 
 - (void)setUp;
 
+- (void)refreshContentArray;
 @end

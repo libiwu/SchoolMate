@@ -38,5 +38,5 @@ typedef NS_ENUM(NSUInteger, SCNavTitleType) {
 
 - (void)navigationClick:(UIButton *)btn;
 
-- (void)creatContentView;
+- (void)createContentView;
 @end

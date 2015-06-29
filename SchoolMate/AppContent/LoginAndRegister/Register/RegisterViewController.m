@@ -103,7 +103,7 @@
         return;
     }
     
-    [[AFHTTPRequestOperationManager manager] POST:@"http://120.24.169.36:8080/classmate/m/user/sendRegisterSecurityCode"
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/sendRegisterSecurityCode")
                                        parameters:@{@"mobileNo" : self.phoneTextField.text}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];

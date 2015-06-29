@@ -9,7 +9,7 @@
 #import "CompanyViewController.h"
 
 @interface CompanyViewController ()
-
+@property (nonatomic, strong) UITextField *companyTextField;
 @end
 
 @implementation CompanyViewController
@@ -41,11 +41,16 @@
                                                                           backImage.frame.size.width,
                                                                           backImage.frame.size.height)];
     textField.placeholder = NSLocalizedString(@"工作单位", nil);
+    textField.text = [GlobalManager shareGlobalManager].userInfo.company;
     textField.backgroundColor = [UIColor clearColor];
     textField.leftViewMode = UITextFieldViewModeAlways;
     textField.leftView = leftView;
+    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [textField becomeFirstResponder];
     
     [backImage addSubview:textField];
+    
+    self.companyTextField = textField;
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn.layer setCornerRadius:4.0];
@@ -53,10 +58,7 @@
     [btn setTitle:NSLocalizedString(@"保 存", nil) forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn bk_addEventHandler:^(id sender) {
-        [SMMessageHUD showMessage:NSLocalizedString(@"修改成功", nil) afterDelay:1.0];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.navigationController popViewControllerAnimated:YES];
-        });
+        [self requestChangeCompany];
     } forControlEvents:UIControlEventTouchUpInside];
     [btn setFrame:CGRectMake(40.0, CGRectGetMaxY(backImage.frame) + 20.0, KScreenWidth - 80.0, 35.0)];
     [self.view addSubview:btn];
@@ -64,5 +66,33 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
+}
+
+- (void)requestChangeCompany {
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/update")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"nickName" : [GlobalManager shareGlobalManager].userInfo.nickName,
+                                                    @"realName" :[GlobalManager shareGlobalManager].userInfo.realName,
+                                                    @"birthday" : [GlobalManager shareGlobalManager].userInfo.birthday,
+                                                    @"gender" : [GlobalManager shareGlobalManager].userInfo.gender,
+                                                    @"company" : self.companyTextField.text,
+                                                    @"email" : [GlobalManager shareGlobalManager].userInfo.email,
+                                                    @"signature" : [GlobalManager shareGlobalManager].userInfo.signature,
+                                                    @"position" : [GlobalManager shareGlobalManager].userInfo.position}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  [SMMessageHUD showMessage:@"修改成功" afterDelay:1.0];
+                                                  
+                                                  [GlobalManager shareGlobalManager].userInfo.company = self.companyTextField.text;
+                                                  
+                                                  [self.navigationController popViewControllerAnimated:YES];
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:1.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                          }];
 }
 @end

@@ -56,6 +56,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = RGBACOLOR(234.0, 234.0, 234.0, 1.0);
+    self.view.backgroundColor = [UIColor whiteColor];
     
     if ([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
@@ -124,7 +125,7 @@
     }
 }
 
-- (void)creatContentView {
+- (void)createContentView {
     
 }
 

@@ -128,7 +128,14 @@ static NSNumberFormatter *_numberFormatter;
                 if (newValue) value = newValue;
             }
             
-            if (!value || value == [NSNull null]) return;
+            if (!value || value == [NSNull null]) {
+                // 2.如果是模型属性
+                MJType *type = property.type;
+                Class typeClass = type.typeClass;
+                // 4.赋值
+                [property setValue:[[[typeClass class] alloc]init] forObject:self];
+                return;
+            }
                 
             // 2.如果是模型属性
             MJType *type = property.type;
@@ -142,7 +149,7 @@ static NSNumberFormatter *_numberFormatter;
             } else if (typeClass == [NSString class]) {
                 if ([value isKindOfClass:[NSNumber class]]) {
                     // NSNumber -> NSString
-                    value = [value description];
+                    value = [NSString stringWithFormat:@"%@",value];
                 } else if ([value isKindOfClass:[NSURL class]]) {
                     // NSURL -> NSString
                     value = [value absoluteString];
