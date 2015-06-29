@@ -29,7 +29,12 @@
     
     [self createContentView];
     
-    [self requestSchoolList];
+//    [self requestSchoolList];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.table.header beginRefreshing];
 }
 - (void)createContentView {
     {

@@ -68,7 +68,7 @@
                             [GlobalManager shareGlobalManager].userInfo.realName,
                             [GlobalManager shareGlobalManager].userInfo.birthday,
                             [GlobalManager shareGlobalManager].userInfo.gender],
-                          @[[GlobalManager shareGlobalManager].userInfo.position],
+                          @[[GlobalManager shareGlobalManager].userInfo.userClass.schoolName],
                           @[[GlobalManager shareGlobalManager].userInfo.position,
                             [GlobalManager shareGlobalManager].userInfo.company,
                             [GlobalManager shareGlobalManager].userInfo.address.receiverAddress]];
@@ -316,8 +316,6 @@
             // 照片的元数据参数
             theImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         }
-        UserInfoCell *cell = (UserInfoCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        cell.avatarView.image = theImage;
     }
     [CurrentViewController dismissViewControllerAnimated:YES completion:nil];
     
@@ -384,7 +382,7 @@
     NSString *strTime = [myFormatter stringFromDate:[NSDate date]] ;
     NSString *strName = [strTime stringByAppendingString:@".png"];
     NSString *strPath = [CACHES_DIRECTORY stringByAppendingPathComponent:[@"/UserInfo" stringByAppendingPathComponent:strName]];
-    NSData *imageDatass = UIImagePNGRepresentation(image);
+    NSData *imageDatass = UIImageJPEGRepresentation(image, .5);
     [imageDatass writeToFile:strPath atomically:YES];
     
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/uploadHeadImg")
@@ -393,7 +391,7 @@
                             [formData appendPartWithFileData:UIImagePNGRepresentation(image)
                                                         name:@"file"
                                                     fileName:strName
-                                                    mimeType:@"image.png"];
+                                                    mimeType:@"image.jpg"];
                         } success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                             if ([success isEqualToString:@"1"]) {
@@ -402,7 +400,8 @@
                                 NSString *url = responseObject[@"data"][@"headImageUrl"];
                                 [GlobalManager shareGlobalManager].userInfo.headImageUrl = url;
                                 
-                                [self.tableView reloadData];
+                                UserInfoCell *cell = (UserInfoCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+                                cell.avatarView.image = image;
                             } else {
                                 NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
                                 [SMMessageHUD showMessage:string afterDelay:2.0];

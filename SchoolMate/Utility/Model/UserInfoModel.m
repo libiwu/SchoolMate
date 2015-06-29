@@ -16,7 +16,7 @@ MJCodingImplementation
 @implementation UserInfoModel
 MJCodingImplementation
 + (NSDictionary *)objectClassInArray {
-    return @{@"AddressModel" : @"Address",
+    return @{@"AddressModel" : @"address",
              @"SchoolModel" : @"userClass"};
 }
 @end

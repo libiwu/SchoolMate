@@ -50,6 +50,6 @@
 @property (nonatomic, strong) AddressModel *address;
 @property (nonatomic, copy  ) NSString *company;
 @property (nonatomic, copy  ) NSString *position;
-@property (nonatomic, strong) SchoolModel *schoolModel;
+@property (nonatomic, strong) SchoolModel *userClass;
 @end
 
