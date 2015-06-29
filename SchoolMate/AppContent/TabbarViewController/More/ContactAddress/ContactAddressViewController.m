@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, strong) NSArray *placeholderArray;
+@property (nonatomic, strong) NSArray *contentArray;
 @end
 
 @implementation ContactAddressViewController
@@ -24,6 +25,12 @@
     
     self.titleArray = @[@"收货人", @"手机号码", @"地区信息", @"详细地址", @"邮政编码"];
     self.placeholderArray = @[@"姓名", @"11位手机号", @"地区信息", @"街道门牌信息", @"邮政编码"];
+    if (self.addressModel) {
+        self.contentArray = @[self.addressModel.receiverName, self.addressModel.receiverMobileNo, self.addressModel.receiverRegion, self.addressModel.receiverAddress, self.addressModel.receiverPostcode];
+    } else {
+        self.contentArray = @[@"", @"", @"", @"", @""];
+    }
+    
     
     self.view.backgroundColor = RGBCOLOR(255, 255, 255);
     
@@ -103,6 +110,7 @@
     field.leftViewMode = UITextFieldViewModeAlways;
     field.leftView = titleLabel;
     field.placeholder = self.placeholderArray[indexPath.row];
+    field.text = self.contentArray[indexPath.row];
     field.clearButtonMode = UITextFieldViewModeWhileEditing;
     if (indexPath.row == 1) {
         field.keyboardType = UIKeyboardTypeNumberPad;
@@ -121,6 +129,9 @@
     }
     
     return cell;
+}
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 #pragma mark - Function
 - (UITextField *)textFieldWithIndexPath:(NSIndexPath *)indexPath {

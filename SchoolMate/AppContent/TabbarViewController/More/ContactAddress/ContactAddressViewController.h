@@ -8,7 +8,8 @@
 //  联系地址
 
 #import "SCBasicViewController.h"
+#import "UserInfoModel.h"
 
 @interface ContactAddressViewController : SCBasicViewController
-
+@property (nonatomic, strong) AddressModel *addressModel;
 @end

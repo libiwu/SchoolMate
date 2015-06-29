@@ -35,6 +35,7 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
+  - IQKeyboardManager (3.2.4)
   - MBProgressHUD (0.9.1)
   - MJExtension (2.3.0)
   - MJRefresh (1.4.7)
@@ -46,6 +47,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - BlocksKit
+  - IQKeyboardManager
   - MBProgressHUD
   - MJExtension
   - MJRefresh
@@ -55,6 +57,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  IQKeyboardManager: 555b1231fefafb21b19278d7cca72986a27b748b
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MJExtension: 7e618f22fc77f9432ab3c413c31c7cf2a99e70b3
   MJRefresh: 6b140993028fa30f1fcb88e82925a7c7911415cf

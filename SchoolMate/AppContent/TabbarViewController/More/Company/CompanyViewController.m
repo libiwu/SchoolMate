@@ -46,6 +46,7 @@
     textField.leftViewMode = UITextFieldViewModeAlways;
     textField.leftView = leftView;
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [textField becomeFirstResponder];
     
     [backImage addSubview:textField];
     

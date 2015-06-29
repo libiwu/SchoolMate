@@ -107,23 +107,24 @@
     [type setTextColor:[UIColor grayColor]];
     [cell.contentView addSubview:type];
     
-    UILabel *school = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(type.frame), 10.0, KScreenWidth - CGRectGetMaxX(type.frame) - 60.0, 20.0)];
+    UILabel *school = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(type.frame) + 40.0, 10.0, KScreenWidth - CGRectGetMaxX(type.frame) - 60.0 - 40.0, 20.0)];
     [school setText:model.schoolName];
-    [school setTextAlignment:NSTextAlignmentCenter];
+    [school setTextAlignment:NSTextAlignmentLeft];
     [school setFont:[UIFont systemFontOfSize:14.0]];
     [school setBackgroundColor:[UIColor clearColor]];
     [cell.contentView addSubview:school];
     
     UILabel *class = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(school.frame), CGRectGetMaxY(school.frame), school.frame.size.width, 20.0)];
-    [class setText:model.schoolType.integerValue == 4 ? model.department : model.className];
-    [class setTextAlignment:NSTextAlignmentCenter];
+    NSString *classStr = model.schoolType.integerValue == 4 ? model.department : model.className;
+    [class setText:[NSString stringWithFormat:@"%@%@",classStr, @"毕业"]];
+    [class setTextAlignment:NSTextAlignmentLeft];
     [class setFont:[UIFont systemFontOfSize:14.0]];
     [class setBackgroundColor:[UIColor clearColor]];
     [cell.contentView addSubview:class];
     
     UILabel *graduation = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(class.frame), CGRectGetMaxY(class.frame), school.frame.size.width, 20.0)];
     [graduation setText:model.graduationYear];
-    [graduation setTextAlignment:NSTextAlignmentCenter];
+    [graduation setTextAlignment:NSTextAlignmentLeft];
     [graduation setBackgroundColor:[UIColor clearColor]];
     [graduation setFont:[UIFont systemFontOfSize:14.0]];
     [cell.contentView addSubview:graduation];
@@ -142,6 +143,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     EnterSchoolInfoViewController *view = [[EnterSchoolInfoViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+    view.viewtype = ViewTypeEdit;
     view.schoolModel = self.dataArray[indexPath.row];
     [self.navigationController pushViewController:view animated:YES];
 }
@@ -156,8 +158,7 @@
      district:香洲区
      */
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/class/list")
-                                       parameters:@{@"userid" : [GlobalManager shareGlobalManager].userInfo.userId,
-                                                    @"schoolType" : @""}
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {

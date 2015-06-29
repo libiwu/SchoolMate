@@ -61,6 +61,7 @@
 		27F840121B3130D4008D589C /* ChangeAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F8400E1B3130D4008D589C /* ChangeAccountViewController.m */; };
 		27F840181B313124008D589C /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F840151B313124008D589C /* GroupViewController.m */; };
 		27F840191B313124008D589C /* NoteTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F840171B313124008D589C /* NoteTagViewController.m */; };
+		43E967521B3FC2B900A3B7AA /* PositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E967511B3FC2B900A3B7AA /* PositionViewController.m */; };
 		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
 		DF098FFD1B37D1A300FA27D0 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF098FFC1B37D1A300FA27D0 /* UserInfoModel.m */; };
 		DF7A4A7B1B3025690058F8A6 /* testView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF7A4A7A1B3025690058F8A6 /* testView.xib */; };
@@ -182,6 +183,8 @@
 		27F840151B313124008D589C /* GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
 		27F840161B313124008D589C /* NoteTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTagViewController.h; sourceTree = "<group>"; };
 		27F840171B313124008D589C /* NoteTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTagViewController.m; sourceTree = "<group>"; };
+		43E967501B3FC2B900A3B7AA /* PositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionViewController.h; sourceTree = "<group>"; };
+		43E967511B3FC2B900A3B7AA /* PositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionViewController.m; sourceTree = "<group>"; };
 		88CE2707A443E72094D81713 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DF098FFB1B37D1A300FA27D0 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
@@ -490,6 +493,7 @@
 		277906311B2548E900ECC732 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				43E9674F1B3FC28500A3B7AA /* Position */,
 				2777658E1B3E6BCA00E136A7 /* SchoolInfo */,
 				2777658A1B3E4B2200E136A7 /* ContactAddress */,
 				DF7A4A911B3141ED0058F8A6 /* Company */,
@@ -624,6 +628,15 @@
 				27F8400E1B3130D4008D589C /* ChangeAccountViewController.m */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		43E9674F1B3FC28500A3B7AA /* Position */ = {
+			isa = PBXGroup;
+			children = (
+				43E967501B3FC2B900A3B7AA /* PositionViewController.h */,
+				43E967511B3FC2B900A3B7AA /* PositionViewController.m */,
+			);
+			path = Position;
 			sourceTree = "<group>";
 		};
 		CA5534FB21DF9B06CB92725E /* Pods */ = {
@@ -796,6 +809,7 @@
 				27D5CF921B26E6DD003341F3 /* SMCircleDetailViewController.m in Sources */,
 				277905F91B252E0100ECC732 /* AppDelegate.m in Sources */,
 				27AD453F1B2EC14C00C80C29 /* MyPageViewController.m in Sources */,
+				43E967521B3FC2B900A3B7AA /* PositionViewController.m in Sources */,
 				27AD45401B2EC14C00C80C29 /* PageViewControllerData.m in Sources */,
 				DFFF35181B2EFEF900480914 /* NewspaperTableViewCell.m in Sources */,
 				27AD45291B2EC08500C80C29 /* SaySomethingReusableView.m in Sources */,
@@ -928,7 +942,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "51be0179-9f07-44ae-a029-3ab748b2afa6";
 			};
 			name = Debug;
 		};
@@ -943,7 +957,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "51be0179-9f07-44ae-a029-3ab748b2afa6";
 			};
 			name = Release;
 		};

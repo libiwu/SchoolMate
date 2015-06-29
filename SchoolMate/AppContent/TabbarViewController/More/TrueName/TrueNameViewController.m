@@ -42,10 +42,12 @@
                                                                           backImage.frame.size.width,
                                                                           backImage.frame.size.height)];
     textField.placeholder = NSLocalizedString(@"输入姓名", nil);
+    textField.text = [GlobalManager shareGlobalManager].userInfo.realName;
     textField.backgroundColor = [UIColor clearColor];
     textField.leftViewMode = UITextFieldViewModeAlways;
     textField.leftView = leftView;
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    [textField becomeFirstResponder];
     
     [backImage addSubview:textField];
     self.realTextField = textField;

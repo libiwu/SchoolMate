@@ -19,6 +19,7 @@
 #import "CompanyViewController.h"
 #import "ChangeAccountViewController.h"
 #import "ContactAddressViewController.h"
+#import "PositionViewController.h"
 
 #import "SMNavigationPopView.h"
 #import "SchoolViewController.h"
@@ -42,10 +43,10 @@
                           NSLocalizedString(@"真实姓名", nil),
                           NSLocalizedString(@"生日", nil),
                           NSLocalizedString(@"性别", nil)],
+                        @[NSLocalizedString(@"学校", nil)],
                         @[NSLocalizedString(@"职位", nil),
                           NSLocalizedString(@"工作单位", nil),
-                          NSLocalizedString(@"联系地址", nil),
-                          NSLocalizedString(@"学校", nil)]];
+                          NSLocalizedString(@"联系地址", nil)]];
 
     [self refreshContentArray];
     
@@ -67,16 +68,16 @@
                             [GlobalManager shareGlobalManager].userInfo.realName,
                             [GlobalManager shareGlobalManager].userInfo.birthday,
                             [GlobalManager shareGlobalManager].userInfo.gender],
+                          @[[GlobalManager shareGlobalManager].userInfo.position],
                           @[[GlobalManager shareGlobalManager].userInfo.position,
                             [GlobalManager shareGlobalManager].userInfo.company,
-                            [GlobalManager shareGlobalManager].userInfo.address.receiverAddress,
-                            [GlobalManager shareGlobalManager].userInfo.position]];
+                            [GlobalManager shareGlobalManager].userInfo.address.receiverAddress]];
     
     [self.tableView reloadData];
 }
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.titleArray[section] count];
@@ -117,8 +118,6 @@
     UserInfoCellType type = 0;
     if (indexPath.section == 0 && indexPath.row == 0) {
         type = UserInfoCellTypeAvatar;
-    }else if (indexPath.section == 1 && indexPath.row == 2) {
-        type = UserInfoCellTypeDefault;
     } else {
         type = UserInfoCellTypeArrow;
     }
@@ -190,10 +189,17 @@
             break;
         case 1:
         {
+            SchoolViewController *vc = [[SchoolViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+            [CurrentViewController.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 2:
+        {
             switch (indexPath.row) {
                 case 0:
                 {
-                    
+                    PositionViewController *vc = [[PositionViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+                    [CurrentViewController.navigationController pushViewController:vc animated:YES];
                 }
                     break;
                 case 1:
@@ -205,12 +211,7 @@
                 case 2:
                 {
                     ContactAddressViewController *vc = [[ContactAddressViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
-                    [CurrentViewController.navigationController pushViewController:vc animated:YES];
-                }
-                    break;
-                case 3:
-                {
-                    SchoolViewController *vc = [[SchoolViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+                    vc.addressModel = [GlobalManager shareGlobalManager].userInfo.address;
                     [CurrentViewController.navigationController pushViewController:vc animated:YES];
                 }
                     break;

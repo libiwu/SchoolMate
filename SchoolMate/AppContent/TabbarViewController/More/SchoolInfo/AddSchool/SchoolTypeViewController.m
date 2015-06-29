@@ -80,6 +80,7 @@
     
     EnterSchoolInfoViewController *view = [[EnterSchoolInfoViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
     view.schoolType = self.dataArray[indexPath.row];
+    view.viewtype = ViewTypeAdd;
     [self.navigationController pushViewController:view animated:YES];
 }
 #pragma mark - Http

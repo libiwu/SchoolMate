@@ -8,6 +8,7 @@
 //  用户信息
 
 #import <Foundation/Foundation.h>
+#import "SchoolModel.h"
 /*
  {"receiverName":"张三2","receiverMobileNo":"13868767777","receiverRegion":"广东 珠海 香洲区","receiverAddress":"东大新城2栋301","receiverPostcode":"59300"}
  */
@@ -49,5 +50,6 @@
 @property (nonatomic, strong) AddressModel *address;
 @property (nonatomic, copy  ) NSString *company;
 @property (nonatomic, copy  ) NSString *position;
+@property (nonatomic, strong) SchoolModel *schoolModel;
 @end
 

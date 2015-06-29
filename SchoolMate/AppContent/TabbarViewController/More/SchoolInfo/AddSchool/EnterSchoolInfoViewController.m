@@ -7,6 +7,7 @@
 //
 
 #import "EnterSchoolInfoViewController.h"
+#import "SMDatePickPopView.h"
 
 @interface EnterSchoolInfoViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *table;
@@ -25,11 +26,13 @@
     [super viewDidLoad];
     
     [self setNavTitle:@"编辑学校"];
+    [self setRightMenuTitle:@"完成" andnorImage:nil selectedImage:nil];
     
+    SchoolTypeModel *model = [[SchoolTypeModel alloc]init];
     if (self.viewtype == ViewTypeEdit) {
-        self.schoolType.schoolTypeId = self.schoolModel.schoolType;
+        model.schoolTypeId = self.schoolModel.schoolType;
         NSString *string = @"";
-        switch (self.schoolType.schoolTypeId.integerValue) {
+        switch (model.schoolTypeId.integerValue) {
             case 1:
             {
                 string = @"小学";
@@ -53,10 +56,14 @@
             default:
                 break;
         }
-        self.schoolType.name = string;
+        model.name = string;
+        self.schoolType = model;
     }
     
     [self createContentView];
+}
+- (void)rightMenuPressed:(id)sender {
+    
 }
 - (void)createContentView {
     {
@@ -87,7 +94,7 @@
     
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = RGBCOLOR(240.0, 240.0, 240.0);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
@@ -106,7 +113,7 @@
             
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
             if (self.viewtype == ViewTypeEdit) {
-                [btn setTitle:self.schoolModel.schoolName forState:UIControlStateNormal];
+                [btn setTitle:self.schoolModel.graduationYear forState:UIControlStateNormal];
                 [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             } else if (self.viewtype == ViewTypeAdd) {
                 [btn setTitle:@"请选择" forState:UIControlStateNormal];
@@ -114,8 +121,11 @@
             }
             [btn setFrame:CGRectMake(CGRectGetMaxX(title.frame), 0.0, rect.size.width - CGRectGetMaxX(title.frame) - 10.0, rect.size.height)];
             [btn setBackgroundColor:[UIColor clearColor]];
+            
             [btn bk_addEventHandler:^(id sender) {
-                
+//                UIPickerView *view = [[UIPickerView alloc] initWithFrame:CGRectMake(0.0, KScreenHeight - 64.0 - 150.0, KScreenWidth, 150.0)];
+//                view.dataSource = self;
+//                view.delegate = self;
             } forControlEvents:UIControlEventTouchUpInside];
             [cell.contentView addSubview:btn];
         } else {
