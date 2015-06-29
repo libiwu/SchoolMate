@@ -137,19 +137,19 @@
 }
 #pragma mark - Request
 - (void)requestLogin {
-    [[AFHTTPRequestOperationManager manager] POST:@"http://120.24.169.36:8080/classmate/m/user/login"
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/login")
                                        parameters:@{@"mobileNo" : self.phoneTextField.text,
                                                     @"password" : self.pwdTextField.text}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
-                                                  [SMMessageHUD showMessage:@"登录成功" afterDelay:2.0];
+                                                  [SMMessageHUD showMessage:@"登录成功" afterDelay:1.0];
                                                   
                                                   UserInfoModel *model = [UserInfoModel objectWithKeyValues:responseObject[@"data"]];
                                                   
                                                   [GlobalManager shareGlobalManager].userInfo = model;
                                                                                                     
-                                                  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                                                       [self jumpTabbar];
                                                   });
                                               } else {
