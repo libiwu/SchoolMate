@@ -64,14 +64,14 @@
 #pragma mark - Functions
 - (void)refreshContentArray {
     self.contentArray = @[@[[GlobalManager shareGlobalManager].userInfo.headImageUrl,
-                            [GlobalManager shareGlobalManager].userInfo.nickName,
-                            [GlobalManager shareGlobalManager].userInfo.realName,
-                            [GlobalManager shareGlobalManager].userInfo.birthday,
-                            [GlobalManager shareGlobalManager].userInfo.gender],
-                          @[[GlobalManager shareGlobalManager].userInfo.userClass.schoolName],
-                          @[[GlobalManager shareGlobalManager].userInfo.position,
-                            [GlobalManager shareGlobalManager].userInfo.company,
-                            [GlobalManager shareGlobalManager].userInfo.address.receiverAddress]];
+                            [GlobalManager shareGlobalManager].userInfo.nickName ? [GlobalManager shareGlobalManager].userInfo.nickName : @"",
+                            [GlobalManager shareGlobalManager].userInfo.realName ? [GlobalManager shareGlobalManager].userInfo.realName : @"",
+                            [GlobalManager shareGlobalManager].userInfo.birthday ? [GlobalManager shareGlobalManager].userInfo.birthday : @(0),
+                            [GlobalManager shareGlobalManager].userInfo.gender ? [GlobalManager shareGlobalManager].userInfo.gender : @""],
+                          @[[GlobalManager shareGlobalManager].userInfo.userClass.schoolName ? [GlobalManager shareGlobalManager].userInfo.userClass.schoolName : @""],
+                          @[[GlobalManager shareGlobalManager].userInfo.position ? [GlobalManager shareGlobalManager].userInfo.position : @"",
+                            [GlobalManager shareGlobalManager].userInfo.company ? [GlobalManager shareGlobalManager].userInfo.company : @"",
+                            [GlobalManager shareGlobalManager].userInfo.address.receiverAddress ? [GlobalManager shareGlobalManager].userInfo.address.receiverAddress : @""]];
     
     [self.tableView reloadData];
 }
@@ -165,7 +165,9 @@
                     UserInfoCell *cell = (UserInfoCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
                     NSDateFormatter *ff = [[NSDateFormatter alloc]init];
                     [ff setDateFormat:kBirthdayDateFormat];
-                    [view.datePicker setDate:[ff dateFromString:cell.contentLabel.text] animated:NO];
+                    if (cell.contentLabel.text.length != 0) {
+                        [view.datePicker setDate:[ff dateFromString:cell.contentLabel.text] animated:NO];
+                    }
                     [view setValueChange:^(UIDatePicker *datePicker) {
                         [self requestChangeBirthday:datePicker.date indexPath:indexPath];
                     }];
@@ -377,17 +379,17 @@
 #pragma mark - Request
 #pragma mark 换头像
 - (void)uploadAvatar:(UIImage *)image {
-    NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
-    [myFormatter setDateFormat:@"yyyyMMddhhmmss"];
-    NSString *strTime = [myFormatter stringFromDate:[NSDate date]] ;
-    NSString *strName = [strTime stringByAppendingString:@".png"];
-    NSString *strPath = [CACHES_DIRECTORY stringByAppendingPathComponent:[@"/UserInfo" stringByAppendingPathComponent:strName]];
-    NSData *imageDatass = UIImageJPEGRepresentation(image, .5);
-    [imageDatass writeToFile:strPath atomically:YES];
-    
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/uploadHeadImg")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId}
                         constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                            NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
+                            [myFormatter setDateFormat:@"yyyyMMddhhmmss"];
+                            NSString *strTime = [myFormatter stringFromDate:[NSDate date]] ;
+                            NSString *strName = [strTime stringByAppendingString:@".png"];
+                            NSString *strPath = [CACHES_DIRECTORY stringByAppendingPathComponent:[@"/UserInfo" stringByAppendingPathComponent:strName]];
+                            NSData *imageDatass = UIImageJPEGRepresentation(image, .5);
+                            [imageDatass writeToFile:strPath atomically:YES];
+                            
                             [formData appendPartWithFileData:UIImagePNGRepresentation(image)
                                                         name:@"file"
                                                     fileName:strName

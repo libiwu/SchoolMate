@@ -7,6 +7,7 @@
 //
 
 #import "ContactAddressViewController.h"
+#import "IQKeyboardManager.h"
 
 @interface ContactAddressViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *table;
@@ -17,7 +18,11 @@
 @end
 
 @implementation ContactAddressViewController
-
+-(void)loadView
+{
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.view = scrollView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -26,7 +31,11 @@
     self.titleArray = @[@"收货人", @"手机号码", @"地区信息", @"详细地址", @"邮政编码"];
     self.placeholderArray = @[@"姓名", @"11位手机号", @"地区信息", @"街道门牌信息", @"邮政编码"];
     if (self.addressModel) {
-        self.contentArray = @[self.addressModel.receiverName, self.addressModel.receiverMobileNo, self.addressModel.receiverRegion, self.addressModel.receiverAddress, self.addressModel.receiverPostcode];
+        self.contentArray = @[self.addressModel.receiverName ? self.addressModel.receiverName : @"",
+                              self.addressModel.receiverMobileNo ? self.addressModel.receiverMobileNo : @"",
+                              self.addressModel.receiverRegion ? self.addressModel.receiverRegion : @"",
+                              self.addressModel.receiverAddress ? self.addressModel.receiverAddress : @"",
+                              self.addressModel.receiverPostcode ? self.addressModel.receiverPostcode : @""];
     } else {
         self.contentArray = @[@"", @"", @"", @"", @""];
     }
@@ -34,11 +43,19 @@
     
     self.view.backgroundColor = RGBCOLOR(255, 255, 255);
     
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setBackgroundColor:[UIColor clearColor]];
+    [btn setFrame:self.view.bounds];
+    [btn bk_addEventHandler:^(id sender) {
+        [self.view endEditing:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
     [self createContentView];
 }
 - (void)createContentView {
     {
-        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, KScreenWidth, KScreenHeight - 64.0) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, KScreenWidth, KScreenHeight - 64.0) style:UITableViewStyleGrouped];
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.backgroundColor = [UIColor clearColor];
@@ -47,7 +64,12 @@
         self.table = tableView;
     }
 }
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+//    [IQKeyboardManager enableKeyboardManger];
+//    [IQKeyBoardManager disableKeyboardManager];
+}
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.titleArray.count;

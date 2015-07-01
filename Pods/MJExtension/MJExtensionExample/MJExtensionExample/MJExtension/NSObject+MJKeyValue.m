@@ -133,7 +133,11 @@ static NSNumberFormatter *_numberFormatter;
                 MJType *type = property.type;
                 Class typeClass = type.typeClass;
                 // 4.赋值
-                [property setValue:[[[typeClass class] alloc]init] forObject:self];
+                if (typeClass == [NSString class]) {
+                    [property setValue:@"" forObject:self];
+                }else if (typeClass == [NSNumber class]) {
+                    [property setValue:[NSNumber numberWithInt:0] forObject:self];
+                }
                 return;
             }
                 

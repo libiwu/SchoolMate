@@ -121,14 +121,14 @@
     
     UILabel *class = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(school.frame), CGRectGetMaxY(school.frame), school.frame.size.width, 20.0)];
     NSString *classStr = model.schoolType.integerValue == 4 ? model.department : model.className;
-    [class setText:[NSString stringWithFormat:@"%@%@",classStr, @"毕业"]];
+    [class setText:classStr];
     [class setTextAlignment:NSTextAlignmentLeft];
     [class setFont:[UIFont systemFontOfSize:14.0]];
     [class setBackgroundColor:[UIColor clearColor]];
     [cell.contentView addSubview:class];
     
     UILabel *graduation = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(class.frame), CGRectGetMaxY(class.frame), school.frame.size.width, 20.0)];
-    [graduation setText:model.graduationYear];
+    [graduation setText:[NSString stringWithFormat:@"%@%@",model.graduationYear,@"毕业"]];
     [graduation setTextAlignment:NSTextAlignmentLeft];
     [graduation setBackgroundColor:[UIColor clearColor]];
     [graduation setFont:[UIFont systemFontOfSize:14.0]];

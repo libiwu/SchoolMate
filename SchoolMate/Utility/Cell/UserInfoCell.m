@@ -184,7 +184,11 @@
                 string = dic[@"content"];
             } else {
                 NSNumber *numer = dic[@"content"];
-                string = [SMTimeTool stringFrom_SM_DBTimeInterval:numer.doubleValue dateFormat:@"yyyy年MM月dd日"];
+                if (numer.integerValue == 0) {
+                    string = @"";
+                } else {
+                    string = [SMTimeTool stringFrom_SM_DBTimeInterval:numer.doubleValue dateFormat:@"yyyy年MM月dd日"];
+                }
             }
             [self.contentLabel setText:string];
             [self.contentLabel setHidden:NO];
