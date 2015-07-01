@@ -72,12 +72,7 @@ SaySomethingPictureCellDelegate
         [SMMessageHUD showMessage:@"请选择图片" afterDelay:1.0];
         return;
     }
-    
-    [SMMessageHUD showMessage:NSLocalizedString(@"发表成功", nil) afterDelay:1.0];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.navigationController popViewControllerAnimated:YES];
-    });
+    [self requestAddBlog];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -149,8 +144,6 @@ SaySomethingPictureCellDelegate
     [view addSubview:btn2];
     return view;
 }
-
-#pragma mark -
 - (void)setImagesArray:(NSMutableArray *)imagesArray{
     if (imagesArray != _imageArray) {
         
@@ -171,24 +164,37 @@ SaySomethingPictureCellDelegate
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
                                                     @"boardId" : _boardId,
                                                     @"content" : _sendText,
-                                                    @"fileList" : @"",
                                                     @"blogType" : _blogTypeStr,
                                                     @"photoDate" : @"",
                                                     @"photoLocation" : @"",
-                                                    @"addLocation" : @""
-                                                    }
-                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
-                                              if ([success isEqualToString:@"1"]) {
-                                                  
-                                                  
-                                              } else {
-                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
-                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
-                                              }
-                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
-                                          }];
+                                                    @"addLocation" : @""}
+                        constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                            [self.imageArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+
+                                NSData *imageDatass = UIImageJPEGRepresentation(obj, .5);
+                                
+                                NSString *fileName = [NSString stringWithFormat:@"fileName%ld.jpg",idx];
+                                
+                                [formData appendPartWithFileData:imageDatass
+                                                            name:@"fileList"
+                                                        fileName:fileName
+                                                        mimeType:@"image.jpg"];
+                            }];
+                        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                            if ([success isEqualToString:@"1"]) {
+                                [SMMessageHUD showMessage:NSLocalizedString(@"发表成功", nil) afterDelay:1.0];
+                                
+                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                    [self.navigationController popViewControllerAnimated:YES];
+                                });
+                            } else {
+                                NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                [SMMessageHUD showMessage:string afterDelay:2.0];
+                            }
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                        }];
 }
 
 #pragma mark - UITextViewDelegate
@@ -209,7 +215,7 @@ SaySomethingPictureCellDelegate
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 3;
+        return 2;
     }
     return 2;
 }
@@ -393,7 +399,7 @@ SaySomethingPictureCellDelegate
     return btn;
 }
 
-#pragma mark - 时间
+#pragma mark 时间
 - (UIView *)setUpCell10 {
     UIView *btn = [[UIView alloc]init];
     [btn setFrame:CGRectMake(0.0, 0.0, KScreenWidth, 44.0)];
@@ -446,7 +452,7 @@ SaySomethingPictureCellDelegate
     return btn;
 }
 
-#pragma mark - 地点
+#pragma mark 地点
 - (UIView *)setUpCell11 {
     UIView *btn = [[UIView alloc]init];
     [btn setFrame:CGRectMake(0.0, 0.0, KScreenWidth, 44.0)];

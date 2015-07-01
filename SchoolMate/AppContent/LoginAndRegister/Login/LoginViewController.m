@@ -40,7 +40,7 @@
         UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(90.0, 180.0, 180.0, 35.0)];
         [textField setBackgroundColor:[UIColor clearColor]];
         [textField setDelegate:self];
-//        [textField setText:@"18500191316"];
+        [textField setText:@"18500191316"];
         [textField setPlaceholder:NSLocalizedString(@"手机/邮箱/用户名", nil)];
         [textField setClearButtonMode:UITextFieldViewModeWhileEditing];
         [self.backImageView addSubview:textField];
@@ -52,7 +52,7 @@
         UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(90.0, 225.0, 180.0, 35.0)];
         [textField setBackgroundColor:[UIColor clearColor]];
         [textField setDelegate:self];
-//        [textField setText:@"111111"];
+        [textField setText:@"111111"];
         [textField setPlaceholder:NSLocalizedString(@"密码", nil)];
         [textField setClearButtonMode:UITextFieldViewModeWhileEditing];
         [textField setSecureTextEntry:YES];

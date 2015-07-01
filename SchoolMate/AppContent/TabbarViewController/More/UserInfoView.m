@@ -382,17 +382,17 @@
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/uploadHeadImg")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId}
                         constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                            NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
-                            [myFormatter setDateFormat:@"yyyyMMddhhmmss"];
-                            NSString *strTime = [myFormatter stringFromDate:[NSDate date]] ;
-                            NSString *strName = [strTime stringByAppendingString:@".png"];
-                            NSString *strPath = [CACHES_DIRECTORY stringByAppendingPathComponent:[@"/UserInfo" stringByAppendingPathComponent:strName]];
+//                            NSDateFormatter *myFormatter = [[NSDateFormatter alloc] init];
+//                            [myFormatter setDateFormat:@"yyyyMMddhhmmss"];
+//                            NSString *strTime = [myFormatter stringFromDate:[NSDate date]] ;
+//                            NSString *strName = [strTime stringByAppendingString:@".png"];
+//                            NSString *strPath = [CACHES_DIRECTORY stringByAppendingPathComponent:[@"/UserInfo" stringByAppendingPathComponent:strName]];
                             NSData *imageDatass = UIImageJPEGRepresentation(image, .5);
-                            [imageDatass writeToFile:strPath atomically:YES];
+//                            [imageDatass writeToFile:strPath atomically:YES];
                             
-                            [formData appendPartWithFileData:UIImagePNGRepresentation(image)
+                            [formData appendPartWithFileData:imageDatass
                                                         name:@"file"
-                                                    fileName:strName
+                                                    fileName:@"fileName.jpg"
                                                     mimeType:@"image.jpg"];
                         } success:^(AFHTTPRequestOperation *operation, id responseObject) {
                             NSString *success = [Tools filterNULLValue:responseObject[@"success"]];

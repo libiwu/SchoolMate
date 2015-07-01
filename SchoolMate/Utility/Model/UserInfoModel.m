@@ -15,10 +15,6 @@ MJCodingImplementation
 
 @implementation UserInfoModel
 MJCodingImplementation
-+ (NSDictionary *)objectClassInArray {
-    return @{@"AddressModel" : @"address",
-             @"SchoolModel" : @"userClass"};
-}
 //@property (nonatomic, strong) NSNumber *userId;
 //@property (nonatomic, copy  ) NSString *mobileNo;
 //@property (nonatomic, copy  ) NSString *email;

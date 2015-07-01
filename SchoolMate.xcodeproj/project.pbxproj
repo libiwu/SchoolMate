@@ -61,6 +61,8 @@
 		27F840121B3130D4008D589C /* ChangeAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F8400E1B3130D4008D589C /* ChangeAccountViewController.m */; };
 		27F840181B313124008D589C /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F840151B313124008D589C /* GroupViewController.m */; };
 		27F840191B313124008D589C /* NoteTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F840171B313124008D589C /* NoteTagViewController.m */; };
+		433297931B445941000E5C49 /* BBNPClassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 433297921B445941000E5C49 /* BBNPClassModel.m */; };
+		433297961B445D6C000E5C49 /* BBNPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 433297951B445D6C000E5C49 /* BBNPModel.m */; };
 		4394584C1B41922D00A04FA2 /* SMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4394584B1B41922D00A04FA2 /* SMPickerView.m */; };
 		43E967521B3FC2B900A3B7AA /* PositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E967511B3FC2B900A3B7AA /* PositionViewController.m */; };
 		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
@@ -184,6 +186,10 @@
 		27F840151B313124008D589C /* GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
 		27F840161B313124008D589C /* NoteTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTagViewController.h; sourceTree = "<group>"; };
 		27F840171B313124008D589C /* NoteTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTagViewController.m; sourceTree = "<group>"; };
+		433297911B445941000E5C49 /* BBNPClassModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBNPClassModel.h; sourceTree = "<group>"; };
+		433297921B445941000E5C49 /* BBNPClassModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNPClassModel.m; sourceTree = "<group>"; };
+		433297941B445D6C000E5C49 /* BBNPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBNPModel.h; sourceTree = "<group>"; };
+		433297951B445D6C000E5C49 /* BBNPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNPModel.m; sourceTree = "<group>"; };
 		4394584A1B41922D00A04FA2 /* SMPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPickerView.h; sourceTree = "<group>"; };
 		4394584B1B41922D00A04FA2 /* SMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPickerView.m; sourceTree = "<group>"; };
 		43E967501B3FC2B900A3B7AA /* PositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionViewController.h; sourceTree = "<group>"; };
@@ -660,6 +666,10 @@
 				DF098FFC1B37D1A300FA27D0 /* UserInfoModel.m */,
 				277765921B3E6DA200E136A7 /* SchoolModel.h */,
 				277765931B3E6DA200E136A7 /* SchoolModel.m */,
+				433297911B445941000E5C49 /* BBNPClassModel.h */,
+				433297921B445941000E5C49 /* BBNPClassModel.m */,
+				433297941B445D6C000E5C49 /* BBNPModel.h */,
+				433297951B445D6C000E5C49 /* BBNPModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -787,12 +797,14 @@
 				2720ECC21B2587990063DB79 /* NSString+Addition.m in Sources */,
 				2779062C1B253EAB00ECC732 /* RegisterViewController.m in Sources */,
 				27F840181B313124008D589C /* GroupViewController.m in Sources */,
+				433297931B445941000E5C49 /* BBNPClassModel.m in Sources */,
 				278DDCF61B3BD67400EBC973 /* SMTimeTool.m in Sources */,
 				27AD45031B2E9D7400C80C29 /* SMDatePickPopView.m in Sources */,
 				27D5CF9E1B26FFA5003341F3 /* SMNavigationPopView.m in Sources */,
 				DF7A4A981B314C330058F8A6 /* BBPlaceViewController.m in Sources */,
 				27AD453D1B2EC14C00C80C29 /* AssetsGroupsTabelView.m in Sources */,
 				2720ECAD1B254A7F0063DB79 /* FindSMViewController.m in Sources */,
+				433297961B445D6C000E5C49 /* BBNPModel.m in Sources */,
 				277906421B25496500ECC732 /* WhisperViewController.m in Sources */,
 				2777658D1B3E4B4500E136A7 /* ContactAddressViewController.m in Sources */,
 				27AD45071B2EA8C000C80C29 /* PublishNoteViewController.m in Sources */,
