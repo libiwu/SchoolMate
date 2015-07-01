@@ -42,6 +42,8 @@ SaySomethingPictureCellDelegate
 @property (nonatomic, strong) NSString       *timeString;
 ///地点
 @property (nonatomic, strong) NSString       *placeString;
+///黑板报博客类型 1：现况，2：怀旧
+@property (nonatomic, copy  ) NSString       *blogTypeStr;
 
 @end
 
@@ -114,14 +116,20 @@ SaySomethingPictureCellDelegate
     [btn2 setTitleColor:[UIColor colorWithWhite:0.459 alpha:1.000] forState:UIControlStateNormal];
     [btn2 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     
+    //黑板报博客类型， 1：现况，2：怀旧，默认为1
+    btn1.selected = YES;
+    _blogTypeStr = @"1";
+    
     [btn1 bk_addEventHandler:^(id sender) {
         btn1.selected = !btn1.selected;
         btn2.selected = !btn1.selected;
+        _blogTypeStr = btn1.selected ? @"1" : @"2";
     } forControlEvents:UIControlEventTouchUpInside];
     
     [btn2 bk_addEventHandler:^(id sender) {
         btn2.selected = !btn2.selected;
         btn1.selected = !btn2.selected;
+        _blogTypeStr = btn1.selected ? @"1" : @"2";
     } forControlEvents:UIControlEventTouchUpInside];
     
     CGFloat leftEdge = 30;
@@ -153,6 +161,34 @@ SaySomethingPictureCellDelegate
         
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     }
+}
+
+#pragma mark - Request
+#pragma mark 添加黑板报博客
+- (void)requestAddBlog {
+    WEAKSELF
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/save")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"boardId" : _boardId,
+                                                    @"content" : _sendText,
+                                                    @"fileList" : @"",
+                                                    @"blogType" : _blogTypeStr,
+                                                    @"photoDate" : @"",
+                                                    @"photoLocation" : @"",
+                                                    @"addLocation" : @""
+                                                    }
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  
+                                                  
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                          }];
 }
 
 #pragma mark - UITextViewDelegate

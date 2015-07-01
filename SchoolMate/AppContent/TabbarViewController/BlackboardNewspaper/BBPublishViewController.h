@@ -11,4 +11,7 @@
 
 @interface BBPublishViewController : SCBasicViewController
 
+///黑板报ID
+@property (copy, nonatomic) NSString *boardId;
+
 @end
