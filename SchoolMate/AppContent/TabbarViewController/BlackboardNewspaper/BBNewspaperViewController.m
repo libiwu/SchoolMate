@@ -16,8 +16,13 @@ static NSString *const reuseIdentity = @"Cell";
 
 @interface BBNewspaperViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) UILabel     *classNameLab;
+@property (strong, nonatomic) UITableView         *tableView;
+@property (strong, nonatomic) UILabel             *classNameLab;
+@property (strong, nonatomic) NSArray             *classNameArr;
+@property (strong, nonatomic) SMNavigationPopView *navPopView;
+@property (strong, nonatomic) NSMutableArray      *tempClassNameArr;
+///当前选择的黑板报id
+@property (copy, nonatomic) NSString *boardId;
 
 @end
 
@@ -26,9 +31,13 @@ static NSString *const reuseIdentity = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setNavTitle:NSLocalizedString(@"一班", nil) type:SCNavTitleTypeSelect];
+    _classNameArr = [NSArray array];
+    
+    [self setNavTitle:@"" type:SCNavTitleTypeSelect];
     
     [self creatContentView];
+    
+    [self requestGetClassList];
 }
 
 - (void)creatContentView {
@@ -66,16 +75,95 @@ static NSString *const reuseIdentity = @"Cell";
     }];
 }
 
-- (void)navigationClick:(UIButton *)btn {
-    SMNavigationPopView *view = [[SMNavigationPopView alloc]initWithDataArray:@[@"一班",@"二班",@"三班",@"四班"]];
-    [view setTableViewSelectBlock:^(NSUInteger index, NSString *string) {
-        [self setNavTitle:string type:SCNavTitleTypeSelect];
+#pragma mark - Request
+
+#pragma mark 黑板报班级列表
+- (void)requestGetClassList {
+    WEAKSELF
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/list")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  weakSelf.classNameArr = responseObject[@"data"];
+                                                  [weakSelf configureNavTitleData];
+                                                  
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                          }];
+}
+
+#pragma mark 黑板报博客列表
+- (void)requestBlackboardListWithBoardId:(NSString *)boardId {
+    WEAKSELF
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/list")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"boardId" : boardId}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  
+                                                  
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                          }];
+}
+
+#pragma mark -
+- (void)configureNavTitleData {
+    /**
+     {"schoolTypeId":1,"name":"小学"},
+     {"schoolTypeId":2,"name":"初中"},
+     {"schoolTypeId":3,"name":"高中"},
+     {"schoolTypeId":4,"name":"大学"}
+     */
+    __block NSMutableArray *tempArr = [NSMutableArray array];
+    [_classNameArr enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *schoolType = obj[@"schoolType"];
+        if ([schoolType integerValue] != 4) {
+            //显示班级
+            [tempArr addObject:obj[@"className"]];
+        }
+        else {
+            //显示学校名
+            [tempArr addObject:obj[@"schoolName"]];
+        }
     }];
-    [view show];
+    
+    self.tempClassNameArr = tempArr;
+    if (tempArr.count) {
+        [self setNavTitle:tempArr[0] type:SCNavTitleTypeSelect];
+        _boardId = _classNameArr[0][@"boardId"];
+        [self requestBlackboardListWithBoardId:_boardId];
+    }
+    
+}
+
+- (void)navigationClick:(UIButton *)btn {
+    
+    _navPopView = [[SMNavigationPopView alloc] initWithDataArray:_tempClassNameArr];
+    
+    WEAKSELF
+    [_navPopView setTableViewSelectBlock:^(NSUInteger index, NSString *string) {
+        [weakSelf setNavTitle:string type:SCNavTitleTypeSelect];
+        DLog(@"boardId:%@",weakSelf.classNameArr[index][@"boardId"]);
+        _boardId = weakSelf.classNameArr[index][@"boardId"];
+        [weakSelf requestBlackboardListWithBoardId:weakSelf.boardId];
+    }];
+    [_navPopView show];
 }
 
 - (void)leftMenuPressed:(id)sender {
     BBPublishViewController *vc = [[BBPublishViewController alloc] initWithHiddenTabBar:YES hiddenBackButton:NO];
+    vc.boardId = _boardId;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -120,12 +208,12 @@ static NSString *const reuseIdentity = @"Cell";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 60;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    return 60;
+//}
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return [self configureHeaderView];
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    return [self configureHeaderView];
+//}
 
 @end

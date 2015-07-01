@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>Pods-IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>Pods-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -57,6 +62,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>306DA9A4A1FE00D2317BCC72</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>32459A92D9591C7BA967E581</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>42CC244D1430C953EE4655F7</key>
 		<dict>
 			<key>primary</key>
@@ -77,12 +92,47 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>87C87FE7556249E7F77DF2F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8A1DAD13C463BE9665BBBF0D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9CD335F64E94EE929950556C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A14C83724620B4D151263D07</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A6DF7744B90653D074ACF3C1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0F4551977458DDBD189794C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BB9713E0B6F5CD90DA85CA53</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D69C2CEBD5B6E3077AEEB5B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F97223EE384E16397EF161EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
