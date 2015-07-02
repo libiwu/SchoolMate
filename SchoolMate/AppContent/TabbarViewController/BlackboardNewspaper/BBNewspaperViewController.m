@@ -22,7 +22,12 @@ static NSString *const reuseIdentity = @"Cell";
 @property (strong, nonatomic) SMNavigationPopView *navPopView;
 @property (strong, nonatomic) NSMutableArray      *tempClassNameArr;
 ///当前选择的黑板报id
-@property (copy, nonatomic) NSString *boardId;
+@property (copy, nonatomic  ) NSString            *boardId;
+
+///黑板报列表数据
+@property (strong, nonatomic) NSMutableArray      *dataArray;
+///cell高度
+@property (strong, nonatomic) NSMutableArray      *cellHeightArray;
 
 @end
 
@@ -32,6 +37,7 @@ static NSString *const reuseIdentity = @"Cell";
     [super viewDidLoad];
     
     _classNameArr = [NSArray array];
+    _cellHeightArray = [NSMutableArray array];
     
     [self setNavTitle:@"" type:SCNavTitleTypeSelect];
     
@@ -107,6 +113,17 @@ static NSString *const reuseIdentity = @"Cell";
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
                                                   
+                                                  NSArray *array = responseObject[@"data"];
+                                                  NSMutableArray *newArray = [NSMutableArray array];
+                                                  if (array.count != 0) {
+                                                      [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                                          NSDictionary *dic = obj;
+                                                          BlackBoardModel *model = [BlackBoardModel objectWithKeyValues:dic];
+                                                          [newArray addObject:model];
+                                                      }];
+                                                  }
+                                                  weakSelf.dataArray = newArray;
+                                                  [weakSelf figureHeightWithData:weakSelf.dataArray];
                                                   
                                               } else {
                                                   NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
@@ -191,21 +208,48 @@ static NSString *const reuseIdentity = @"Cell";
     
     return headerView;
 }
+
+#pragma mark - 计算高度
+- (void)figureHeightWithData:(NSArray *)array {
+    
+    [_cellHeightArray removeAllObjects];
+    
+    for (BlackBoardModel *model in array) {
+        CGFloat height = [NewspaperTableViewCell configureCellHeightWithModel:model];
+        //存储高度
+        [_cellHeightArray addObject:@(height)];
+    }
+    
+    //数据保存完之后刷新界面
+    [_tableView reloadData];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return _dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NewspaperTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentity forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.model = _dataArray[indexPath.row];
+//    [cell setContentWithModel:_dataArray[indexPath.row]];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     BBNewspaperDetailViewController *vc = [[BBNewspaperDetailViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return [self tableView:tableView cellForRowAtIndexPath:indexPath].frame.size.height;
+    return [_cellHeightArray[indexPath.row] floatValue];
 }
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
