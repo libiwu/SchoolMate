@@ -31,12 +31,16 @@ static NSString *const reuseIdentity = @"Cell";
 
 /*黑板报列表*/
 @property (nonatomic, strong) NSArray *dataArray;
+///cell高度
+@property (strong, nonatomic) NSMutableArray *cellHeightArray;
 @end
 
 @implementation BBNewspaperViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _cellHeightArray = [NSMutableArray array];
     
     [self creatContentView];
     
@@ -117,6 +121,23 @@ static NSString *const reuseIdentity = @"Cell";
 - (void)rightMenuPressed:(id)sender {
     
 }
+
+
+#pragma mark - 计算高度
+- (void)figureHeightWithData:(NSArray *)array {
+    
+    [_cellHeightArray removeAllObjects];
+    
+    for (BBNPModel *model in array) {
+        CGFloat height = [NewspaperTableViewCell configureCellHeightWithModel:model];
+        //存储高度
+        [_cellHeightArray addObject:@(height)];
+    }
+    
+    //数据保存完之后刷新界面
+    [_tableView reloadData];
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArray.count;
@@ -125,6 +146,7 @@ static NSString *const reuseIdentity = @"Cell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NewspaperTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentity forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.model = _dataArray[indexPath.row];
     return cell;
 }
 
@@ -132,6 +154,10 @@ static NSString *const reuseIdentity = @"Cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     BBNewspaperDetailViewController *vc = [[BBNewspaperDetailViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [_cellHeightArray[indexPath.row] floatValue];
 }
 
 #pragma mark - Request
@@ -204,7 +230,7 @@ static NSString *const reuseIdentity = @"Cell";
                                                       [newArray addObject:model];
                                                   }];
                                                   weakSelf.dataArray = newArray;
-                                                  [weakSelf.tableView reloadData];
+                                                  [weakSelf figureHeightWithData:newArray];
                                               } else {
                                                   NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
                                                   [SMMessageHUD showMessage:string afterDelay:2.0];

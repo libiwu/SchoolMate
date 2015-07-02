@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BBNPModel.h"
+
 
 @interface NewspaperTableViewCell : UITableViewCell
+
+@property (strong, nonatomic) BBNPModel *model;
++ (CGFloat)configureCellHeightWithModel:(BBNPModel *)model;
+- (void)setContentWithModel:(BBNPModel *)model;
 
 @end

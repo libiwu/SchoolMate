@@ -186,7 +186,7 @@ SaySomethingPictureCellDelegate
                                 [SMMessageHUD showMessage:NSLocalizedString(@"发表成功", nil) afterDelay:1.0];
                                 
                                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                    [self.navigationController popViewControllerAnimated:YES];
+                                    [weakSelf.navigationController popViewControllerAnimated:YES];
                                 });
                             } else {
                                 NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
