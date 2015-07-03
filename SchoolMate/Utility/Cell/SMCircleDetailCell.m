@@ -71,15 +71,15 @@
     [self.contentView addSubview:self.commentLabel];
     [self.contentView addSubview:self.lineImage];
 }
-- (void)setSMCircleDetailModel:(id)object indexPath:(NSIndexPath *)indexPath {
+- (void)setSMCircleDetailModel:(BBCommentModel *)model indexPath:(NSIndexPath *)indexPath {
     
-    [self.avatarView setImage:[UIImage imageNamed:@"headImage.png"]];
+    [self.avatarView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl] placeholderImage:nil];
     
-    [self.nameLabel setText:@"呆萌萌"];
+    [self.nameLabel setText:model.nickName];
     
-    [self.timeLabel setText:@"昨天 22:33"];
+    [self.timeLabel setText:[SMTimeTool stringFrom_SM_DBTimeInterval:model.addTime.integerValue dateFormat:@"yy-mm-dd     HH:mm"]];
     
-    [self.commentLabel setText:@"悬着这样的环境拍着,就是喜欢这种色调,自然拍摄出来就暖暖的了 ."];
+    [self.commentLabel setText:model.content];
     
     CGSize size = [self.commentLabel.text newSizeWithFont:self.commentLabel.font
                                         constrainedToSize:CGSizeMake(self.commentLabel.frame.size.width, 2000.0)

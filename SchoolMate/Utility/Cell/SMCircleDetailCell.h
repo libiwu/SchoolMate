@@ -8,9 +8,11 @@
 //  每条评论 cell
 
 #import <UIKit/UIKit.h>
+#import "BBCommentModel.h"
 
 @interface SMCircleDetailCell : UITableViewCell
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
-- (void)setSMCircleDetailModel:(id)object indexPath:(NSIndexPath *)indexPath;
+- (void)setSMCircleDetailModel:(BBCommentModel *)model indexPath:(NSIndexPath *)indexPath;
 @end

@@ -10,7 +10,7 @@
 #import "LoginViewController.h"
 #import "IQKeyboardManager.h"
 #import "ContactAddressViewController.h"
-
+#import "CommentViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -25,7 +25,7 @@
     LoginViewController *login = [[LoginViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:YES];
     
     UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:login];
-//    [[IQKeyboardManager sharedManager] disableInViewControllerClass:[ContactAddressViewController class]];
+    [[IQKeyboardManager sharedManager] disableInViewControllerClass:[CommentViewController class]];
 #ifdef __IPHONE_8_0
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge|UIUserNotificationTypeSound|UIUserNotificationTypeAlert categories:nil];

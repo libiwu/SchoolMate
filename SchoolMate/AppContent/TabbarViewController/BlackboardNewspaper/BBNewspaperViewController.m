@@ -45,6 +45,13 @@ static NSString *const reuseIdentity = @"Cell";
     [self creatContentView];
     
     [self requestGetClassList];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kPublishComplete
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      [self.tableView.header beginRefreshing];
+                                                  }];
 }
 
 - (void)creatContentView {
@@ -143,8 +150,25 @@ static NSString *const reuseIdentity = @"Cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NewspaperTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentity forIndexPath:indexPath];
+    BBNPModel *model = _dataArray[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.model = _dataArray[indexPath.row];
+    [cell setContentWithModel:model];
+    [cell setCommentAction:^(UIButton *btn) {
+        [self tableView:tableView didSelectRowAtIndexPath:indexPath];
+    }];
+    [cell setSupportAction:^(UIButton *btn) {
+        if ([model.isLike isEqualToString:@"0"]) {
+            btn.enabled = NO;
+            [self requestSupport:indexPath complete:^(BOOL success) {
+                btn.enabled = YES;
+            }];
+        } else {
+            btn.enabled = NO;
+            [self requestDeleteSupport:indexPath complete:^(BOOL success) {
+                btn.enabled = YES;
+            }];
+        }
+    }];
     return cell;
 }
 
@@ -242,5 +266,83 @@ static NSString *const reuseIdentity = @"Cell";
                                               [weakSelf.tableView.footer endRefreshing];
                                           }];
 }
-
+#pragma mark 稀饭（点赞）
+- (void)requestSupport:(NSIndexPath *)indexPath complete:(void(^)(BOOL success))complete {
+    /*
+     Param: {
+     userId:1　　　　　　　 （必填，当前用户ID）
+     boardBlogId:2　　　　　（必填，黑板报博客ID）
+     }
+     */
+    
+    NewspaperTableViewCell *cell = (NewspaperTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    BBNPModel *model = self.dataArray[indexPath.row];
+    cell.likeCountLab.text = [NSString stringWithFormat:@"%ld",model.likeCount.integerValue + 1];
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/like/save")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"boardBlogId" : model.boardBlogId}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  //表示已赞
+                                                  model.isLike = @"1";
+                                                  model.likeCount = [NSString stringWithFormat:@"%ld",model.likeCount.integerValue + 1];
+                                                  if (complete) {
+                                                      complete(NO);
+                                                  }
+                                              } else {
+                                                  if (complete) {
+                                                      complete(NO);
+                                                  }
+                                                  cell.likeCountLab.text = [NSString stringWithFormat:@"%ld",model.likeCount.integerValue - 1];
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              if (complete) {
+                                                  complete(NO);
+                                              }
+                                              cell.likeCountLab.text = [NSString stringWithFormat:@"%ld",model.likeCount.integerValue - 1];
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                          }];
+}
+- (void)requestDeleteSupport:(NSIndexPath *)indexPath complete:(void(^)(BOOL success))complete{
+    /*
+     Param: {
+     userId:1　　　　　　　 （必填，当前用户ID）
+     boardBlogId:2　　　　　（必填，黑板报博客ID）
+     }
+     */
+    
+    NewspaperTableViewCell *cell = (NewspaperTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    BBNPModel *model = self.dataArray[indexPath.row];
+    cell.likeCountLab.text = [NSString stringWithFormat:@"%ld",model.likeCount.integerValue - 1];
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/like/delete")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"boardBlogId" : model.boardBlogId}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  //表示已取消赞
+                                                  model.isLike = @"0";
+                                                  model.likeCount = [NSString stringWithFormat:@"%ld",model.likeCount.integerValue - 1];
+                                                  if (complete) {
+                                                      complete(YES);
+                                                  }
+                                              } else {
+                                                  cell.likeCountLab.text = [NSString stringWithFormat:@"%ld",model.likeCount.integerValue + 1];
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                                  if (complete) {
+                                                      complete(NO);
+                                                  }
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              cell.likeCountLab.text = [NSString stringWithFormat:@"%ld",model.likeCount.integerValue + 1];
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                              if (complete) {
+                                                  complete(NO);
+                                              }
+                                          }];
+}
 @end

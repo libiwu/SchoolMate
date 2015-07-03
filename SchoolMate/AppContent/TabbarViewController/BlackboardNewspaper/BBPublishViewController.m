@@ -17,6 +17,8 @@
 #define TimeTag  19921020
 #define PlaceTag 19921021
 
+NSString * const kPublishComplete = @"kPublishComplete_BB";
+
 static NSString * kCollectionCellIdentifier = @"SaySomethingPictureCell";
 
 @interface BBPublishViewController ()
@@ -78,6 +80,11 @@ SaySomethingPictureCellDelegate
     [super viewWillAppear:animated];
     
     [self.tableView reloadData];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.view endEditing:YES];
 }
 - (void)createContentView {
 
@@ -174,7 +181,7 @@ SaySomethingPictureCellDelegate
 
                                 NSData *imageDatass = UIImageJPEGRepresentation(obj, .5);
                                 
-                                NSString *fileName = [NSString stringWithFormat:@"fileName%ld.jpg",idx];
+                                NSString *fileName = [NSString stringWithFormat:@"fileName%ld.jpg",(unsigned long)idx];
                                 
                                 [formData appendPartWithFileData:imageDatass
                                                             name:@"fileList"
@@ -182,18 +189,19 @@ SaySomethingPictureCellDelegate
                                                         mimeType:@"image.jpg"];
                             }];
                         } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            [SMMessageHUD dismissLoading];
                             NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                             if ([success isEqualToString:@"1"]) {
                                 [SMMessageHUD showMessage:NSLocalizedString(@"发表成功", nil) afterDelay:1.0];
                                 
-                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:kPublishComplete object:nil];
                                     [weakSelf.navigationController popViewControllerAnimated:YES];
                                 });
                             } else {
                                 NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
                                 [SMMessageHUD showMessage:string afterDelay:2.0];
                             }
-                            [SMMessageHUD dismissLoading];
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                             [SMMessageHUD dismissLoading];
                             [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];

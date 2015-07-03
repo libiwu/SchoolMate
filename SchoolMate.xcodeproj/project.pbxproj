@@ -63,7 +63,10 @@
 		27F840191B313124008D589C /* NoteTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F840171B313124008D589C /* NoteTagViewController.m */; };
 		433297931B445941000E5C49 /* BBNPClassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 433297921B445941000E5C49 /* BBNPClassModel.m */; };
 		433297961B445D6C000E5C49 /* BBNPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 433297951B445D6C000E5C49 /* BBNPModel.m */; };
+		4376D8E71B4724E200268159 /* BBCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4376D8E61B4724E200268159 /* BBCommentModel.m */; };
+		4376D8EA1B472B7400268159 /* BBSupportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4376D8E91B472B7400268159 /* BBSupportModel.m */; };
 		4394584C1B41922D00A04FA2 /* SMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4394584B1B41922D00A04FA2 /* SMPickerView.m */; };
+		43D4C9E81B4705890077F649 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D4C9E71B4705890077F649 /* CommentViewController.m */; };
 		43E967521B3FC2B900A3B7AA /* PositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E967511B3FC2B900A3B7AA /* PositionViewController.m */; };
 		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
 		DF098FFD1B37D1A300FA27D0 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF098FFC1B37D1A300FA27D0 /* UserInfoModel.m */; };
@@ -190,8 +193,14 @@
 		433297921B445941000E5C49 /* BBNPClassModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNPClassModel.m; sourceTree = "<group>"; };
 		433297941B445D6C000E5C49 /* BBNPModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBNPModel.h; sourceTree = "<group>"; };
 		433297951B445D6C000E5C49 /* BBNPModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBNPModel.m; sourceTree = "<group>"; };
+		4376D8E51B4724E200268159 /* BBCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCommentModel.h; sourceTree = "<group>"; };
+		4376D8E61B4724E200268159 /* BBCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCommentModel.m; sourceTree = "<group>"; };
+		4376D8E81B472B7400268159 /* BBSupportModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSupportModel.h; sourceTree = "<group>"; };
+		4376D8E91B472B7400268159 /* BBSupportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBSupportModel.m; sourceTree = "<group>"; };
 		4394584A1B41922D00A04FA2 /* SMPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPickerView.h; sourceTree = "<group>"; };
 		4394584B1B41922D00A04FA2 /* SMPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPickerView.m; sourceTree = "<group>"; };
+		43D4C9E61B4705890077F649 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		43D4C9E71B4705890077F649 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		43E967501B3FC2B900A3B7AA /* PositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionViewController.h; sourceTree = "<group>"; };
 		43E967511B3FC2B900A3B7AA /* PositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionViewController.m; sourceTree = "<group>"; };
 		88CE2707A443E72094D81713 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -480,6 +489,7 @@
 		2779062F1B2548E900ECC732 /* BlackboardNewspaper */ = {
 			isa = PBXGroup;
 			children = (
+				43D4C9E51B47057A0077F649 /* CommentView */,
 				277906341B2548FF00ECC732 /* BBNewspaperViewController.h */,
 				277906351B2548FF00ECC732 /* BBNewspaperViewController.m */,
 				DF7A4A9A1B3151870058F8A6 /* BBPublishViewController.h */,
@@ -641,6 +651,15 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		43D4C9E51B47057A0077F649 /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				43D4C9E61B4705890077F649 /* CommentViewController.h */,
+				43D4C9E71B4705890077F649 /* CommentViewController.m */,
+			);
+			path = CommentView;
+			sourceTree = "<group>";
+		};
 		43E9674F1B3FC28500A3B7AA /* Position */ = {
 			isa = PBXGroup;
 			children = (
@@ -670,6 +689,10 @@
 				433297921B445941000E5C49 /* BBNPClassModel.m */,
 				433297941B445D6C000E5C49 /* BBNPModel.h */,
 				433297951B445D6C000E5C49 /* BBNPModel.m */,
+				4376D8E51B4724E200268159 /* BBCommentModel.h */,
+				4376D8E61B4724E200268159 /* BBCommentModel.m */,
+				4376D8E81B472B7400268159 /* BBSupportModel.h */,
+				4376D8E91B472B7400268159 /* BBSupportModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -817,8 +840,10 @@
 				277765A01B3E830900E136A7 /* EnterSchoolInfoViewController.m in Sources */,
 				27AD45161B2EC05B00C80C29 /* SCImagesViewerData.m in Sources */,
 				27AD45411B2EC14C00C80C29 /* PhotoViewController.m in Sources */,
+				43D4C9E81B4705890077F649 /* CommentViewController.m in Sources */,
 				274E65181B2833FB00D1267B /* UserInfoView.m in Sources */,
 				2779063C1B25492B00ECC732 /* MoreViewController.m in Sources */,
+				4376D8E71B4724E200268159 /* BBCommentModel.m in Sources */,
 				277765941B3E6DA200E136A7 /* SchoolModel.m in Sources */,
 				2720ECB91B257B810063DB79 /* SCTabViewController.m in Sources */,
 				277906291B253E9F00ECC732 /* LoginViewController.m in Sources */,
@@ -834,6 +859,7 @@
 				27AD45171B2EC05B00C80C29 /* SCImageViewController.m in Sources */,
 				27AD44F51B2E8DCD00C80C29 /* CheckTools.m in Sources */,
 				27AD44FA1B2E943B00C80C29 /* NickNameViewController.m in Sources */,
+				4376D8EA1B472B7400268159 /* BBSupportModel.m in Sources */,
 				27AD453C1B2EC14C00C80C29 /* AlbumContentsViewController.m in Sources */,
 				2779063F1B25495800ECC732 /* SMCircleViewController.m in Sources */,
 				27AD453B1B2EC14C00C80C29 /* AlbumContentsViewCell.m in Sources */,
@@ -960,7 +986,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "51be0179-9f07-44ae-a029-3ab748b2afa6";
 			};
 			name = Debug;
 		};
@@ -975,7 +1001,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "51be0179-9f07-44ae-a029-3ab748b2afa6";
 			};
 			name = Release;
 		};

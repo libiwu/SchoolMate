@@ -19,7 +19,11 @@
     [self setNavTitle:NSLocalizedString(@"地点", nil)];
     [self creatContentView];
 }
-
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.view endEditing:YES];
+}
 - (void)creatContentView {
     
     self.view.backgroundColor = RGBCOLOR(255.0, 255.0, 255.0);

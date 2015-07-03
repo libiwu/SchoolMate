@@ -10,14 +10,13 @@
 
 @interface NewspaperTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *lineImageV;
-@property (weak, nonatomic) IBOutlet UIView *rightMainBgView;
+
+
 @property (weak, nonatomic) IBOutlet UIView       *leftBgView;
 @property (weak, nonatomic) IBOutlet UIView       *rightBgView;
 @property (weak, nonatomic) IBOutlet UIView       *likeView;
 @property (weak, nonatomic) IBOutlet UIView       *commentView;
-///喜欢总数
-@property (weak, nonatomic) IBOutlet UILabel      *likeCountLab;
+
 ///评论总数
 @property (weak, nonatomic) IBOutlet UILabel      *commentCountLab;
 ///用户头像
@@ -59,27 +58,28 @@
     return height;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    [self setContentWithModel:_model];
-}
+//- (void)layoutSubviews {
+//    [super layoutSubviews];
+//    [self setContentWithModel:_model];
+//}
 
 - (void)setContentWithModel:(BBNPModel *)model {
     _likeCountLab.text    = model.likeCount;
     _commentCountLab.text = model.commentCount;
     _userNameLab.text     = model.nickName;
-    _userBornLab.text     = @"";
-    _userTagLab.text      = @"旅游";
+    _userBornLab.text     = [SMTimeTool stringFrom_SM_DBTimeInterval:model.addTime.doubleValue dateFormat:@"yyyy/mm/dd"];
+    _userTagLab.text      = [model.blogType isEqualToString:@"1"] ? @"现状" : @"怀旧";
+    _userTagLab.backgroundColor = [model.blogType isEqualToString:@"1"] ? RGBCOLOR(107, 195, 242) : [UIColor redColor];
     [_userHeaderImgV sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl]
-                       placeholderImage:[UIImage imageNamed:@"contentImage"]];
+                       placeholderImage:nil];
     
-    _sharePicScrollV.contentSize = CGSizeMake(199*[model.images count], 105);
+    _sharePicScrollV.contentSize = CGSizeMake(_sharePicScrollV.frame.size.width*[model.images count], 105);
     WEAKSELF
     [model.images enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         BBNPImageModel *model = obj;
-        UIImageView *sharePicImgV = [[UIImageView alloc] initWithFrame:CGRectMake(idx*199, 0, 199, 105)];
+        UIImageView *sharePicImgV = [[UIImageView alloc] initWithFrame:CGRectMake(idx*_sharePicScrollV.frame.size.width, 0, _sharePicScrollV.frame.size.width, _sharePicScrollV.frame.size.height)];
         [sharePicImgV sd_setImageWithURL:[NSURL URLWithString:model.imageUrl]
-                        placeholderImage:[UIImage imageNamed:@"contentImage"]];
+                        placeholderImage:nil];
         [weakSelf.sharePicScrollV addSubview:sharePicImgV];
     }];
     
@@ -88,40 +88,52 @@
     _contentLab.text = model.content;
     CGFloat contentHeight = [Tools getSizeOfString:model.content
                                            andFont:[UIFont systemFontOfSize:15]
-                                           andSize:CGSizeMake(197, 10000)].height;
+                                           andSize:CGSizeMake(_contentLab.frame.size.width, 10000)].height;
     _contentLab.frame = CGRectMake(CGRectGetMinX(_sharePicScrollV.frame),
                                    CGRectGetMaxY(_sharePicScrollV.frame)+8,
-                                   197,
+                                   _contentLab.frame.size.width,
                                    contentHeight);
     _likeView.frame = CGRectMake(CGRectGetMinX(_contentLab.frame),
                                  CGRectGetMaxY(_contentLab.frame)+8,
-                                 60,
+                                 _likeView.frame.size.width,
                                  19);
     _commentView.frame = CGRectMake(CGRectGetMaxX(_likeView.frame)+17,
                                     CGRectGetMinY(_likeView.frame),
-                                    60,
+                                    _leftBgView.frame.size.width,
                                     19);
     _leftBgView.frame = CGRectMake(0,
                                    0,
-                                   81,
+                                   _leftBgView.frame.size.width,
                                    contentHeight+defaultHeight);
     _rightBgView.frame = CGRectMake(CGRectGetMaxX(_leftBgView.frame),
                                     0,
-                                    239,
+                                    _rightBgView.frame.size.width,
                                     CGRectGetHeight(_leftBgView.frame));
     _lineImageV.frame = CGRectMake(67, 0, 3, CGRectGetHeight(_leftBgView.frame));
-    _rightMainBgView.frame = CGRectMake(0, 20, 212, CGRectGetHeight(_rightBgView.frame)-20);
+    _rightMainBgView.frame = CGRectMake(0, 20, _rightMainBgView.frame.size.width, CGRectGetHeight(_rightBgView.frame)-20);
 }
 
 #pragma mark - 喜欢
 - (IBAction)likeAction:(id)sender {
-    [SMMessageHUD showMessage:@"稀饭" afterDelay:1.0];
+//    [SMMessageHUD showMessage:@"稀饭" afterDelay:1.0];
+    if (self.supportBlock) {
+        self.supportBlock(sender);
+    }
 }
 
 #pragma mark - 评论
 - (IBAction)commentAction:(id)sender {
-    [SMMessageHUD showMessage:@"评论" afterDelay:1.0];
+//    [SMMessageHUD showMessage:@"评论" afterDelay:1.0];
+    if (self.commentBlock) {
+        self.commentBlock(sender);
+    }
 }
 
+- (void)setCommentAction:(CommentClick)comment {
+    self.commentBlock = comment;
+}
+- (void)setSupportAction:(SupportClick)support {
+    self.supportBlock = support;
+}
 @end
 

@@ -50,6 +50,7 @@
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSString *headImageUrl;
 @property (nonatomic, strong) NSArray *images;
+// 0 未赞    1 已赞
 @property (nonatomic, strong) NSString *isLike;
 @property (nonatomic, strong) NSString *likeCount;
 @property (nonatomic, strong) NSString *mobileNo;

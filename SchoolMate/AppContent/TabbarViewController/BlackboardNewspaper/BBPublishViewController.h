@@ -9,6 +9,8 @@
 
 #import "SCBasicViewController.h"
 
+extern NSString * const kPublishComplete;
+
 @interface BBPublishViewController : SCBasicViewController
 
 ///黑板报ID

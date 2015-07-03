@@ -32,7 +32,7 @@
 + (void)showLoading:(NSString *)string {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:AppWindow animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = string;
+    hud.labelText = string.length ? string : @"加载中...";
     hud.margin = 10.f;
 }
 + (void)dismissLoading {
