@@ -10,6 +10,8 @@
 
 @interface NewspaperTableViewCell ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *lineImageV;
+@property (weak, nonatomic) IBOutlet UIView *rightMainBgView;
 @property (weak, nonatomic) IBOutlet UIView       *leftBgView;
 @property (weak, nonatomic) IBOutlet UIView       *rightBgView;
 @property (weak, nonatomic) IBOutlet UIView       *likeView;
@@ -48,10 +50,10 @@
 
 + (CGFloat)configureCellHeightWithModel:(BBNPModel *)model {
     
-    CGFloat defaultHeight = 195;
+    CGFloat defaultHeight = 172;
     
     CGFloat contentHeight = [Tools getSizeOfString:model.content
-                                           andFont:[UIFont boldSystemFontOfSize:15]
+                                           andFont:[UIFont systemFontOfSize:15]
                                            andSize:CGSizeMake(197, 10000)].height;
     CGFloat height = defaultHeight+contentHeight;
     return height;
@@ -81,11 +83,11 @@
         [weakSelf.sharePicScrollV addSubview:sharePicImgV];
     }];
     
-    CGFloat defaultHeight = 195;
+    CGFloat defaultHeight = 172;
     
     _contentLab.text = model.content;
     CGFloat contentHeight = [Tools getSizeOfString:model.content
-                                           andFont:[UIFont boldSystemFontOfSize:15]
+                                           andFont:[UIFont systemFontOfSize:15]
                                            andSize:CGSizeMake(197, 10000)].height;
     _contentLab.frame = CGRectMake(CGRectGetMinX(_sharePicScrollV.frame),
                                    CGRectGetMaxY(_sharePicScrollV.frame)+8,
@@ -107,6 +109,8 @@
                                     0,
                                     239,
                                     CGRectGetHeight(_leftBgView.frame));
+    _lineImageV.frame = CGRectMake(67, 0, 3, CGRectGetHeight(_leftBgView.frame));
+    _rightMainBgView.frame = CGRectMake(0, 20, 212, CGRectGetHeight(_rightBgView.frame)-20);
 }
 
 #pragma mark - 喜欢
