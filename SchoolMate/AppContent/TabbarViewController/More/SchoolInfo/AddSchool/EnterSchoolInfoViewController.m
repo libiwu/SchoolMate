@@ -368,6 +368,7 @@
 }
 #pragma mark - Http
 - (void)requestUpdateSchoolInfo {
+    [SMMessageHUD showLoading:@"正在加载..."];
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/class/update")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
                                                     @"schoolType" : self.schoolType.schoolTypeId.stringValue,
@@ -378,6 +379,7 @@
                                                     @"className" : [NSString stringWithFormat:@"%@%@",self.editNianji,self.editBanji],
                                                     @"userClassId" : self.schoolModel.userClassId}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              [SMMessageHUD dismissLoading];
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
                                                   [SMMessageHUD showMessage:@"修改成功" afterDelay:1.0];
@@ -389,10 +391,12 @@
                                                   [SMMessageHUD showMessage:string afterDelay:2.0];
                                               }
                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD dismissLoading];
                                               [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                           }];
 }
 - (void)requestSaveSchoolInfo {
+    [SMMessageHUD showLoading:@"正在加载..."];
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/class/save")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
                                                     @"schoolType" : self.schoolType.schoolTypeId.stringValue,
@@ -402,6 +406,7 @@
                                                     @"major" : @"",
                                                     @"className" : [NSString stringWithFormat:@"%@%@",self.editNianji,self.editBanji]}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              [SMMessageHUD dismissLoading];
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
                                                   [SMMessageHUD showMessage:@"添加成功" afterDelay:1.0];
@@ -413,6 +418,7 @@
                                                   [SMMessageHUD showMessage:string afterDelay:2.0];
                                               }
                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD dismissLoading];
                                               [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                           }];
 }

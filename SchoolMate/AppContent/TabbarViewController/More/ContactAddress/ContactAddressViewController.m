@@ -98,6 +98,7 @@
     [btn setTitle:NSLocalizedString(@"保 存", nil) forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn bk_addEventHandler:^(id sender) {
+        [self.view endEditing:YES];
         [self requestChangeContactAddress];
     } forControlEvents:UIControlEventTouchUpInside];
     [btn setFrame:CGRectMake(40.0, 15.0, view.frame.size.width - 80.0, 35.0)];
@@ -203,7 +204,7 @@
         [SMMessageHUD showMessage:@"请输入邮政编码" afterDelay:1.5];
         return;
     }
-    
+    [SMMessageHUD showLoading:@"正在加载..."];
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/updateAddress")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
                                                     @"receiverName" : nameText.text,
@@ -212,6 +213,7 @@
                                                     @"receiverAddress" : addressText.text,
                                                     @"receiverPostcode" : postcodeText.text}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              [SMMessageHUD dismissLoading];
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
                                                   [SMMessageHUD showMessage:@"修改成功" afterDelay:1.0];
@@ -228,6 +230,7 @@
                                                   [SMMessageHUD showMessage:string afterDelay:2.0];
                                               }
                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD dismissLoading];
                                               [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                           }];
 }

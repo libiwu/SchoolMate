@@ -26,6 +26,8 @@
     [self createContentView];
     
     [self createBottomView];
+    
+    [self requestComment];
 }
 - (void)createContentView {
     
@@ -138,7 +140,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 150.0;
+        return [NewspaperTableViewCell configureCellHeightWithModel:self.bbnpModel];
     }
     return [self tableView:tableView cellForRowAtIndexPath:indexPath].frame.size.height;
 }
@@ -247,6 +249,7 @@
         
         cell.contentView.backgroundColor = [UIColor whiteColor];
 //        [cell setSMCircleModel:nil indexPath:indexPath];
+        cell.model = self.bbnpModel;
         
         return cell;
     } else {
@@ -265,5 +268,17 @@
         
         return cell;
     }
+}
+#pragma mark - Request
+#pragma mark 請求評論列表
+- (void)requestComment {
+    [SMMessageHUD showLoading:@""];
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/comment/list")
+                                       parameters:@{}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              
+                                          }];
 }
 @end

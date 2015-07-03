@@ -133,7 +133,6 @@ static NSString *const reuseIdentity = @"Cell";
         //存储高度
         [_cellHeightArray addObject:@(height)];
     }
-    
     //数据保存完之后刷新界面
     [_tableView reloadData];
 }
@@ -153,6 +152,7 @@ static NSString *const reuseIdentity = @"Cell";
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     BBNewspaperDetailViewController *vc = [[BBNewspaperDetailViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+    vc.bbnpModel = _dataArray[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

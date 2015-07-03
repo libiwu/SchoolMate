@@ -8,6 +8,10 @@
 
 #import "SMDatePickPopView.h"
 
+@interface SMDatePickPopView ()
+@property (nonatomic, strong) UIImageView    *backImage;
+@end
+
 @implementation SMDatePickPopView
 - (instancetype)init {
     self = [super init];
@@ -37,8 +41,10 @@
     backImage.backgroundColor = RGBACOLOR(110.0, 200.0, 243.0, 0.9);
     backImage.userInteractionEnabled = YES;
     [self addSubview:backImage];
+    self.backImage = backImage;
     
-    self.datePicker = ({
+    self.datePicker =
+    ({
         UIDatePicker *picker = [[UIDatePicker alloc]initWithFrame:CGRectMake(-20.0,
                                                                              -20.0,
                                                                              backImage.frame.size.width,
@@ -64,17 +70,28 @@
  *  显示
  */
 - (void)show {
+    self.backImage.transform = CGAffineTransformMakeScale(0.4, 0.4);
     [[UIApplication sharedApplication].keyWindow addSubview:self];
+    [UIView animateWithDuration:.3
+                     animations:^{
+                         self.backImage.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                     } completion:^(BOOL finished) {
+                         
+                     }];
 }
 /**
  *  隐藏
  */
 - (void)dismiss {
     
+    if (self.dismissBlock) {
+        self.dismissBlock(self.datePicker);
+    }
+    
     __weak SMDatePickPopView *weakSelf = self;
     
     [UIView animateWithDuration:.26 animations:^{
-        
+        self.backImage.transform = CGAffineTransformMakeScale(.4, .4);
         weakSelf.alpha = .0;
     } completion:^(BOOL finished) {
         
@@ -83,5 +100,8 @@
 }
 - (void)setValueChange:(DataPickerValueChange)block {
     _valueChangeBlock = block;
+}
+- (void)setDismiss:(DataPickerDismiss)dismissBlock {
+    _dismissBlock = dismissBlock;
 }
 @end

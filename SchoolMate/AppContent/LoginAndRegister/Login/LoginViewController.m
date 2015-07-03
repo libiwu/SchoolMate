@@ -137,10 +137,12 @@
 }
 #pragma mark - Request
 - (void)requestLogin {
+    [SMMessageHUD showLoading:@"正在加载..."];
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/login")
                                        parameters:@{@"mobileNo" : self.phoneTextField.text,
                                                     @"password" : self.pwdTextField.text}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              [SMMessageHUD dismissLoading];
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
                                                   [SMMessageHUD showMessage:@"登录成功" afterDelay:1.0];
@@ -157,6 +159,7 @@
                                                   [SMMessageHUD showMessage:string afterDelay:2.0];
                                               }
                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD dismissLoading];
                                               [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                           }];
 }

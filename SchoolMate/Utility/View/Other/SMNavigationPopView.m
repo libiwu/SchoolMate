@@ -119,7 +119,14 @@
  *  显示
  */
 - (void)show {
+    self.backView.transform = CGAffineTransformMakeScale(1.0, 0.0);
     [[UIApplication sharedApplication].keyWindow addSubview:self];
+    [UIView animateWithDuration:.3
+                     animations:^{
+                         self.backView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                     } completion:^(BOOL finished) {
+                         
+                     }];
 }
 /**
  *  隐藏
@@ -129,7 +136,7 @@
     __weak SMNavigationPopView *weakSelf = self;
     
     [UIView animateWithDuration:.26 animations:^{
-        
+        self.backView.transform = CGAffineTransformMakeScale(.4, .4);
         weakSelf.alpha = .0;
     } completion:^(BOOL finished) {
         

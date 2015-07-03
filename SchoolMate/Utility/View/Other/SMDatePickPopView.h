@@ -10,11 +10,12 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^DataPickerValueChange)(UIDatePicker *datePicker);
-
+typedef void(^DataPickerDismiss)(UIDatePicker *datePicker);
 @interface SMDatePickPopView : UIView
 
 @property (nonatomic, copy  ) DataPickerValueChange valueChangeBlock;
 @property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, copy  ) DataPickerDismiss dismissBlock;
 /**
  *  显示
  */
@@ -25,4 +26,5 @@ typedef void(^DataPickerValueChange)(UIDatePicker *datePicker);
 - (void)dismiss;
 
 - (void)setValueChange:(DataPickerValueChange)block;
+- (void)setDismiss:(DataPickerDismiss)dismissBlock;
 @end

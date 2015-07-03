@@ -162,6 +162,7 @@
      city:珠海
      district:香洲区
      */
+    
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/class/list")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {

@@ -10,4 +10,6 @@
 
 @interface SMMessageHUD : NSObject
 + (void)showMessage:(NSString *)string afterDelay:(NSTimeInterval)delay;
++ (void)showLoading:(NSString *)string;
++ (void)dismissLoading;
 @end

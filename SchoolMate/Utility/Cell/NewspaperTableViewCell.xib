@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -48,10 +48,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vIO-61-5NQ">
-                        <rect key="frame" x="81" y="0.0" width="239" height="212.5"/>
+                        <rect key="frame" x="81" y="0.0" width="239" height="213"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GYp-Hw-19e">
-                                <rect key="frame" x="0.0" y="2" width="212" height="202.5"/>
+                                <rect key="frame" x="0.0" y="2" width="212" height="203"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nz1-bg-L4G">
                                         <rect key="frame" x="7" y="176" width="60" height="19"/>
@@ -145,7 +145,7 @@
                 <outlet property="userNameLab" destination="7kh-YJ-x14" id="XFZ-QS-VVC"/>
                 <outlet property="userTagLab" destination="Xy3-N0-Dvo" id="StN-Y3-l1b"/>
             </connections>
-            <point key="canvasLocation" x="489" y="352.5"/>
+            <point key="canvasLocation" x="249" y="229.5"/>
         </tableViewCell>
     </objects>
     <resources>

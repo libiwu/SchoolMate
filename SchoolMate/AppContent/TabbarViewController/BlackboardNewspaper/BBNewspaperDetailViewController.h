@@ -8,7 +8,7 @@
 //  黑板报详情
 
 #import "SCBasicViewController.h"
-
+#import "BBNPModel.h"
 @interface BBNewspaperDetailViewController : SCBasicViewController
-
+@property (nonatomic, strong) BBNPModel *bbnpModel;
 @end

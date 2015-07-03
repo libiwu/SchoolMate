@@ -85,9 +85,11 @@
 }
 #pragma mark - Http
 - (void)requestSchoolType {
+    [SMMessageHUD showLoading:@"正在加载..."];
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/schoolType/list")
                                        parameters:@{}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              [SMMessageHUD dismissLoading];
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
                                                   NSMutableArray *array = [NSMutableArray array];
@@ -102,6 +104,7 @@
                                                   [SMMessageHUD showMessage:string afterDelay:2.0];
                                               }
                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD dismissLoading];
                                               [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                           }];
 }

@@ -69,6 +69,7 @@
     [btn setTitle:NSLocalizedString(@"保 存", nil) forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn bk_addEventHandler:^(id sender) {
+        [textField resignFirstResponder];
         [self requestChangeNickName];
     } forControlEvents:UIControlEventTouchUpInside];
     [btn setFrame:CGRectMake(40.0, CGRectGetMaxY(tipLabel.frame) + 5.0, KScreenWidth - 80.0, 35.0)];
@@ -80,6 +81,7 @@
 }
 
 - (void)requestChangeNickName {
+    [SMMessageHUD showLoading:@"正在加载..."];
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/update")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
                                                     @"nickName" :self.niceTextField.text,
@@ -91,18 +93,20 @@
                                                     @"signature" : [GlobalManager shareGlobalManager].userInfo.signature,
                                                     @"position" : [GlobalManager shareGlobalManager].userInfo.position}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
-                                              if ([success isEqualToString:@"1"]) {
-                                                  [SMMessageHUD showMessage:@"修改成功" afterDelay:2.0];
-                                                  
-                                                  [GlobalManager shareGlobalManager].userInfo.nickName = self.niceTextField.text;
-                                              
-                                                  [self.navigationController popViewControllerAnimated:YES];
-                                              } else {
-                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
-                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
-                                              }
+//                                              [SMMessageHUD dismissLoading];
+//                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+//                                              if ([success isEqualToString:@"1"]) {
+//                                                  [SMMessageHUD showMessage:@"修改成功" afterDelay:2.0];
+//                                                  
+//                                                  [GlobalManager shareGlobalManager].userInfo.nickName = self.niceTextField.text;
+//                                              
+//                                                  [self.navigationController popViewControllerAnimated:YES];
+//                                              } else {
+//                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+//                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+//                                              }
                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD dismissLoading];
                                               [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                           }];
 }

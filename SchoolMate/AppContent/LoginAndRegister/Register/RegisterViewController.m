@@ -102,10 +102,11 @@
         [SMMessageHUD showMessage:@"手机格式错误" afterDelay:1.0];
         return;
     }
-    
+    [SMMessageHUD showLoading:@"正在加载..."];
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/sendRegisterSecurityCode")
                                        parameters:@{@"mobileNo" : self.phoneTextField.text}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              [SMMessageHUD dismissLoading];
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
                                                   [SMMessageHUD showMessage:@"短信已发送" afterDelay:2.0];
@@ -114,6 +115,7 @@
                                                   [SMMessageHUD showMessage:string afterDelay:2.0];
                                               }
                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD dismissLoading];
                                               [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                           }];
 }
@@ -124,12 +126,13 @@
         [SMMessageHUD showMessage:@"密码格式不正确" afterDelay:1.0];
         return;
     }
-    
+    [SMMessageHUD showLoading:@"正在加载..."];
     [[AFHTTPRequestOperationManager manager] POST:@"http://120.24.169.36:8080/classmate/m/user/register"
                                        parameters:@{@"securityCode" : self.codeTextField.text,
                                                     @"mobileNo" : self.phoneTextField.text,
                                                     @"password" : self.pwdTextField.text}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              [SMMessageHUD dismissLoading];
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
                                                   [SMMessageHUD showMessage:@"注册成功" afterDelay:2.0];
@@ -141,6 +144,7 @@
                                                   [SMMessageHUD showMessage:string afterDelay:2.0];
                                               }
                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD dismissLoading];
                                               [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                           }];
 }

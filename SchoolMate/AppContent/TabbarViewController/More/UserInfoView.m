@@ -169,6 +169,13 @@
                         [view.datePicker setDate:[ff dateFromString:cell.contentLabel.text] animated:NO];
                     }
                     [view setValueChange:^(UIDatePicker *datePicker) {
+                        UserInfoCell *cell = (UserInfoCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+                        NSDateFormatter *ff = [[NSDateFormatter alloc]init];
+                        [ff setDateFormat:kBirthdayDateFormat];
+                        NSString *string = [ff stringFromDate:datePicker.date];
+                        cell.contentLabel.text = string;
+                    }];
+                    [view setDismiss:^(UIDatePicker *datePicker) {
                         [self requestChangeBirthday:datePicker.date indexPath:indexPath];
                     }];
                     [view show];

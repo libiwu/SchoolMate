@@ -160,6 +160,7 @@ SaySomethingPictureCellDelegate
 #pragma mark 添加黑板报博客
 - (void)requestAddBlog {
     WEAKSELF
+    [SMMessageHUD showLoading:@"正在加载..."];
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/save")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
                                                     @"boardId" : _boardId,
@@ -192,7 +193,9 @@ SaySomethingPictureCellDelegate
                                 NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
                                 [SMMessageHUD showMessage:string afterDelay:2.0];
                             }
+                            [SMMessageHUD dismissLoading];
                         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            [SMMessageHUD dismissLoading];
                             [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                         }];
 }
@@ -330,6 +333,12 @@ SaySomethingPictureCellDelegate
             lab.text = string;
             weakSelf.timeString = string;
         }];
+        [view setDismiss:^(UIDatePicker *datePicker) {
+            NSString *string = [ff stringFromDate:datePicker.date];
+            lab.text = string;
+            weakSelf.timeString = string;
+        }];
+        [view show];
         [view show];
         
     } else if (indexPath.section == 1 && indexPath.row == 1) {

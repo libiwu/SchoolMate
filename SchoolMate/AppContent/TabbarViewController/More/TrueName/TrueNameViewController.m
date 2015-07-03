@@ -73,6 +73,7 @@
         [btn setTitle:NSLocalizedString(@"公开", nil) forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn bk_addEventHandler:^(id sender) {
+            [textField resignFirstResponder];
             [self requestChangeRealName];
         } forControlEvents:UIControlEventTouchUpInside];
         [btn setFrame:CGRectMake(CGRectGetMaxX(rect) + 30.0, rect.origin.y, rect.size.width, rect.size.height)];
@@ -85,6 +86,7 @@
 }
 
 - (void)requestChangeRealName {
+    [SMMessageHUD showLoading:@"正在加载..."];
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/update")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
                                                     @"nickName" :self.realTextField.text,
@@ -96,6 +98,7 @@
                                                     @"signature" : [GlobalManager shareGlobalManager].userInfo.signature,
                                                     @"position" : [GlobalManager shareGlobalManager].userInfo.position}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              [SMMessageHUD dismissLoading];
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
                                                   [SMMessageHUD showMessage:@"修改成功" afterDelay:2.0];
@@ -108,6 +111,7 @@
                                                   [SMMessageHUD showMessage:string afterDelay:2.0];
                                               }
                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD dismissLoading];
                                               [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                           }];
 }
