@@ -55,7 +55,6 @@ static NSString *const reuseIdentity = @"Cell";
 
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, KScreenHeight-64-49) style:UITableViewStylePlain];
     _tableView.backgroundColor = [UIColor clearColor];
-    _tableView.rowHeight       = 150;
     _tableView.dataSource      = self;
     _tableView.delegate        = self;
     _tableView.separatorStyle  = UITableViewCellSeparatorStyleNone;
