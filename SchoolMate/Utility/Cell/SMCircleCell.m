@@ -93,7 +93,7 @@
     
     self.nameLabel.text = model.nickName;
     
-    self.timeLabel.text = [SMTimeTool stringFrom_SM_DBTimeInterval:model.createTime.integerValue dateFormat:@"yyyy-mm-dd HH:mm"];
+    self.timeLabel.text = [SMTimeTool stringFrom_SM_DBTimeInterval:model.createTime.doubleValue dateFormat:@"yyyy-MM-dd hh:mm:ss.SSS"];
     
 //    self.addressLabel.text = @"九州城 . 摄影 . 文艺 . 下午茶";
     

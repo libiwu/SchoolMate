@@ -14,7 +14,7 @@
     //因为时间
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:interval/1000];
     
-    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSTimeZone *zone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
     NSTimeInterval value = [zone secondsFromGMTForDate: date];
     NSDate *localeDate = [date  dateByAddingTimeInterval: value];
     
