@@ -14,5 +14,8 @@
 @property (nonatomic, weak) UIViewController *currentViewController;
 
 @property (nonatomic, strong) UserInfoModel *userInfo;
+//同学圈班级列表
+@property (nonatomic, strong) NSArray *classArray;
+
 + (instancetype)shareGlobalManager;
 @end

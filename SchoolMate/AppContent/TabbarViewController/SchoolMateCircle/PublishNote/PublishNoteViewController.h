@@ -9,6 +9,8 @@
 
 #import "SCBasicViewController.h"
 
+extern NSString * const kCirclePublishComplete;
+
 @interface PublishNoteViewController : SCBasicViewController
 
 @end

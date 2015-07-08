@@ -7,6 +7,9 @@
 //
 
 #import "NewspaperTableViewCell.h"
+#import "UIImageView+MJWebCache.h"
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
 
 @interface NewspaperTableViewCell ()
 
@@ -46,14 +49,13 @@
 
     // Configure the view for the selected state
 }
-
 + (CGFloat)configureCellHeightWithModel:(BBNPModel *)model {
     
     CGFloat defaultHeight = 172;
     
     CGFloat contentHeight = [Tools getSizeOfString:model.content
                                            andFont:[UIFont systemFontOfSize:15]
-                                           andSize:CGSizeMake(197, 10000)].height;
+                                           andSize:CGSizeMake(212.0, 10000.0)].height;
     CGFloat height = defaultHeight+contentHeight;
     return height;
 }
@@ -64,6 +66,12 @@
 //}
 
 - (void)setContentWithModel:(BBNPModel *)model {
+    self.bbnpModel = model;
+    if ([model.addUserId isEqualToString:[GlobalManager shareGlobalManager].userInfo.userId.stringValue]) {
+        self.deleteButton.hidden = NO;
+    } else {
+        self.deleteButton.hidden = YES;
+    }
     _likeCountLab.text    = model.likeCount;
     _commentCountLab.text = model.commentCount;
     _userNameLab.text     = model.nickName;
@@ -80,6 +88,11 @@
         UIImageView *sharePicImgV = [[UIImageView alloc] initWithFrame:CGRectMake(idx*_sharePicScrollV.frame.size.width, 0, _sharePicScrollV.frame.size.width, _sharePicScrollV.frame.size.height)];
         [sharePicImgV sd_setImageWithURL:[NSURL URLWithString:model.imageUrl]
                         placeholderImage:nil];
+//        sharePicImgV.clipsToBounds = YES;
+        sharePicImgV.contentMode = UIViewContentModeScaleAspectFill;
+        sharePicImgV.userInteractionEnabled = YES;
+        sharePicImgV.tag = idx + 10000;
+        [sharePicImgV addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImage:)]];
         [weakSelf.sharePicScrollV addSubview:sharePicImgV];
     }];
     
@@ -97,14 +110,18 @@
                                  CGRectGetMaxY(_contentLab.frame)+8,
                                  _likeView.frame.size.width,
                                  19);
-    _commentView.frame = CGRectMake(CGRectGetMaxX(_likeView.frame)+17,
+    _commentView.frame = CGRectMake(CGRectGetMaxX(_likeView.frame) + 10,
                                     CGRectGetMinY(_likeView.frame),
-                                    _leftBgView.frame.size.width,
+                                    _likeView.frame.size.width,
                                     19);
+    _deleteButton.frame = CGRectMake(CGRectGetMaxX(_commentView.frame) + 2,
+                                     CGRectGetMinY(_likeView.frame) - 5.5,
+                                     _likeView.frame.size.width,
+                                     30);
     _leftBgView.frame = CGRectMake(0,
                                    0,
                                    _leftBgView.frame.size.width,
-                                   contentHeight+defaultHeight);
+                                   contentHeight + defaultHeight);
     _rightBgView.frame = CGRectMake(CGRectGetMaxX(_leftBgView.frame),
                                     0,
                                     _rightBgView.frame.size.width,
@@ -112,8 +129,28 @@
     _lineImageV.frame = CGRectMake(67, 0, 3, CGRectGetHeight(_leftBgView.frame));
     _rightMainBgView.frame = CGRectMake(0, 20, _rightMainBgView.frame.size.width, CGRectGetHeight(_rightBgView.frame)-20);
 }
+#pragma mark -
+#pragma mark 点击查看大图
+- (void)tapImage:(UITapGestureRecognizer *)tap {
+    // 1.封装图片数据
+    NSMutableArray *photos = [NSMutableArray arrayWithCapacity:self.bbnpModel.images.count];
+    for (int i = 0; i<self.bbnpModel.images.count; i++) {
+        BBNPImageModel *model = self.bbnpModel.images[i];
+        // 替换为中等尺寸图片
+        MJPhoto *photo = [[MJPhoto alloc] init];
+        photo.url = [NSURL URLWithString:model.imageUrl]; // 图片路径
+        photo.srcImageView = (UIImageView *)[_sharePicScrollV viewWithTag:i + 10000]; // 来源于哪个UIImageView
+        [photos addObject:photo];
+    }
+    
+    // 2.显示相册
+    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
+    browser.currentPhotoIndex = tap.view.tag - 10000; // 弹出相册时显示的第一张图片是？
+    browser.photos = photos; // 设置所有的图片
+    [browser show];
+}
 
-#pragma mark - 喜欢
+#pragma mark  喜欢
 - (IBAction)likeAction:(id)sender {
 //    [SMMessageHUD showMessage:@"稀饭" afterDelay:1.0];
     if (self.supportBlock) {
@@ -121,19 +158,26 @@
     }
 }
 
-#pragma mark - 评论
+#pragma mark 评论
 - (IBAction)commentAction:(id)sender {
 //    [SMMessageHUD showMessage:@"评论" afterDelay:1.0];
     if (self.commentBlock) {
         self.commentBlock(sender);
     }
 }
-
+- (IBAction)deleteBtn:(id)sender {
+    if (self.deleteBlock) {
+        self.deleteBlock(sender);
+    }
+}
 - (void)setCommentAction:(CommentClick)comment {
     self.commentBlock = comment;
 }
 - (void)setSupportAction:(SupportClick)support {
     self.supportBlock = support;
+}
+- (void)setDeleteAction:(DeleteClick)deleteAction {
+    self.deleteBlock = deleteAction;
 }
 @end
 

@@ -142,7 +142,6 @@ static NSString *const reuseIdentity = @"Cell";
     //数据保存完之后刷新界面
     [_tableView reloadData];
 }
-
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArray.count;
@@ -168,6 +167,9 @@ static NSString *const reuseIdentity = @"Cell";
                 btn.enabled = YES;
             }];
         }
+    }];
+    [cell setDeleteAction:^(UIButton *btn) {
+        [self requestDeleteBlog:indexPath];
     }];
     return cell;
 }
@@ -343,6 +345,38 @@ static NSString *const reuseIdentity = @"Cell";
                                               if (complete) {
                                                   complete(NO);
                                               }
+                                          }];
+}
+#pragma mark 删除博客
+- (void)requestDeleteBlog:(NSIndexPath *)indexPath {
+    /*
+     Request URL:http://120.24.169.36:8080/classmate/m/board/blog/delete
+     Request Method:POST
+     Param: {
+     userId:1     （必填，当前用户ID）
+     boardBlogId:1    （必填，黑板报博客ID）
+     }
+     */
+    [SMMessageHUD showLoading:@""];
+    BBNPModel *model = self.dataArray[indexPath.row];
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/delete")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"boardBlogId" : model.boardBlogId}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              [SMMessageHUD dismissLoading];
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  NSMutableArray *array = [NSMutableArray arrayWithArray:self.dataArray];
+                                                  [array removeObjectAtIndex:indexPath.row];
+                                                  self.dataArray = array;
+                                                  [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD dismissLoading];
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                           }];
 }
 @end

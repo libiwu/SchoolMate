@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
@@ -36,10 +37,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当年." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xy3-N0-Dvo">
-                                <rect key="frame" x="14" y="156" width="25" height="11"/>
+                                <rect key="frame" x="14" y="156" width="38" height="13"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.47450980390000003" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -79,7 +80,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="稀饭" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tCh-5z-Lhu">
-                                                <rect key="frame" x="26" y="0.0" width="35" height="21"/>
+                                                <rect key="frame" x="26" y="0.0" width="35" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.98431372549999996" green="0.47450980390000003" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -114,7 +115,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="评论" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zet-er-3pm">
-                                                <rect key="frame" x="26" y="0.0" width="35" height="21"/>
+                                                <rect key="frame" x="26" y="0.0" width="35" height="19"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.4941176471" green="0.80392156859999997" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -144,6 +145,17 @@
                                         <rect key="frame" x="7" y="4" width="212" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </scrollView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pfl-Lp-HFd">
+                                        <rect key="frame" x="154" y="171" width="53" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="删除">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteBtn:" destination="7xw-yf-6vd" eventType="touchUpInside" id="uaN-ma-qww"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -157,6 +169,7 @@
                 <outlet property="commentCountLab" destination="iSi-C5-lnq" id="Up5-tq-DH1"/>
                 <outlet property="commentView" destination="LJz-Yg-6us" id="uF3-me-hGO"/>
                 <outlet property="contentLab" destination="KhH-Jg-c7a" id="zbz-bc-ao7"/>
+                <outlet property="deleteButton" destination="pfl-Lp-HFd" id="ltS-pm-jwa"/>
                 <outlet property="leftBgView" destination="fR3-r4-YdL" id="lyK-pC-w7K"/>
                 <outlet property="likeCountLab" destination="J7E-9m-cet" id="xT0-iW-yZr"/>
                 <outlet property="likeView" destination="nz1-bg-L4G" id="Z1n-uV-4Tn"/>
@@ -169,7 +182,7 @@
                 <outlet property="userNameLab" destination="7kh-YJ-x14" id="XFZ-QS-VVC"/>
                 <outlet property="userTagLab" destination="Xy3-N0-Dvo" id="StN-Y3-l1b"/>
             </connections>
-            <point key="canvasLocation" x="-338" y="186.5"/>
+            <point key="canvasLocation" x="-815" y="189.5"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -13,6 +13,7 @@
 
 #import "SMDatePickPopView.h"
 #import "BBPlaceViewController.h"
+#import "IQTextView.h"
 
 #define TimeTag  19921020
 #define PlaceTag 19921021
@@ -34,7 +35,9 @@ UIImagePickerControllerDelegate,
 SCImagesPickerControllerDelegate,
 SaySomethingPictureCellDelegate
 >
-
+{
+    IQTextView *_mainTextView;
+}
 @property (nonatomic, strong) UITableView    *tableView;
 
 @property (nonatomic, strong) NSMutableArray *imageArray;
@@ -104,14 +107,18 @@ SaySomethingPictureCellDelegate
     view.backgroundColor = [UIColor clearColor];
     //现状
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn1 setClipsToBounds:YES];
+    [btn1.layer setCornerRadius:3.0];
     [btn1 setTitle:NSLocalizedString(@"现状", nil) forState:UIControlStateNormal];
     [btn1 setBackgroundImage:[UIImage imageNamed:@"24"] forState:UIControlStateNormal];
-    [btn1 setBackgroundImage:[UIImage imageNamed:@"image02"] forState:UIControlStateSelected];
+    [btn1 setBackgroundImage:[[UIImage imageNamed:@"image02"] stretchableImageWithLeftCapWidth:2.0 topCapHeight:2.0] forState:UIControlStateSelected];
     [btn1 setTitleColor:[UIColor colorWithWhite:0.459 alpha:1.000] forState:UIControlStateNormal];
     [btn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     
     //怀旧
     UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn2 setClipsToBounds:YES];
+    [btn2.layer setCornerRadius:3.0];
     [btn2 setTitle:NSLocalizedString(@"怀旧", nil) forState:UIControlStateNormal];
     [btn2 setBackgroundImage:[UIImage imageNamed:@"24"] forState:UIControlStateNormal];
     [btn2 setBackgroundImage:[UIImage imageNamed:@"25"] forState:UIControlStateSelected];
@@ -123,15 +130,15 @@ SaySomethingPictureCellDelegate
     _blogTypeStr = @"1";
     
     [btn1 bk_addEventHandler:^(id sender) {
-        btn1.selected = !btn1.selected;
-        btn2.selected = !btn1.selected;
-        _blogTypeStr = btn1.selected ? @"1" : @"2";
+        btn1.selected = YES;
+        btn2.selected = NO;
+        _blogTypeStr = @"1";
     } forControlEvents:UIControlEventTouchUpInside];
     
     [btn2 bk_addEventHandler:^(id sender) {
-        btn2.selected = !btn2.selected;
-        btn1.selected = !btn2.selected;
-        _blogTypeStr = btn1.selected ? @"1" : @"2";
+        btn1.selected = NO;
+        btn2.selected = YES;
+        _blogTypeStr = @"2";
     } forControlEvents:UIControlEventTouchUpInside];
     
     CGFloat leftEdge = 30;
@@ -210,10 +217,10 @@ SaySomethingPictureCellDelegate
 
 #pragma mark - UITextViewDelegate
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-    if ([textView.text isEqualToString:@"这一刻的想法..."]) {
-        textView.text = @"";
-        textView.textColor = [UIColor blackColor];
-    }
+//    if ([textView.text isEqualToString:@"这一刻的想法..."]) {
+//        textView.text = @"";
+//        textView.textColor = [UIColor blackColor];
+//    }
     return YES;
 }
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView {
@@ -247,7 +254,7 @@ SaySomethingPictureCellDelegate
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 1) {
-        return 25.0;
+        return 0.0;
     } else {
         return 0.0;
     }
@@ -265,21 +272,23 @@ SaySomethingPictureCellDelegate
     [cell.contentView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [obj removeFromSuperview];
     }];
-    
+    cell.accessoryType = UITableViewCellAccessoryNone;
     if (indexPath.section == 0 && indexPath.row == 0) {
-        UITextView *textView = [[UITextView alloc]initWithFrame:CGRectMake(10.0, 10.0, 300.0, 100.0)];
+        IQTextView *textView = [[IQTextView alloc]initWithFrame:CGRectMake(10.0, 10.0, 300.0, 100.0)];
         textView.backgroundColor = [UIColor clearColor];
         textView.font = [UIFont systemFontOfSize:16.0];
-        if (self.sendText) {
+//        if (self.sendText) {
             textView.text = self.sendText;
             textView.textColor = [UIColor blackColor];
-        } else {
-            textView.text = @"这一刻的想法...";
-            textView.textColor = [UIColor lightGrayColor];
-        }
+//        } else {
+//            textView.text = @"这一刻的想法...";
+//            textView.textColor = [UIColor lightGrayColor];
+//        }
+        textView.placeholder = @"这一刻的想法...";
         textView.delegate = self;
         textView.scrollEnabled = NO;
         [cell.contentView addSubview:textView];
+        _mainTextView = textView;
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.section == 0 && indexPath.row == 1) {
@@ -306,17 +315,17 @@ SaySomethingPictureCellDelegate
     } else if (indexPath.section == 0 && indexPath.row == 2) {
         UIView *btn = [self setUpCell01];
         [cell.contentView addSubview:btn];
-        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.section == 1 && indexPath.row == 0) {
         UIView *btn = [self setUpCell10];
         [cell.contentView addSubview:btn];
-        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.section == 1 && indexPath.row == 1) {
         UIView *btn = [self setUpCell11];
         [cell.contentView addSubview:btn];
-        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
         return nil;
@@ -324,7 +333,9 @@ SaySomethingPictureCellDelegate
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [_mainTextView resignFirstResponder];
     
     if (indexPath.section == 0 && indexPath.row == 2) {
         [SMMessageHUD showMessage:@"所在位置" afterDelay:1.0];
@@ -458,7 +469,7 @@ SaySomethingPictureCellDelegate
                                                                               arrowH,
                                                                               arrowH)];
         [arrowView setImage:[UIImage imageNamed:@"youjiantou.png"]];
-        [btn addSubview:arrowView];
+//        [btn addSubview:arrowView];
     }
     
     {
@@ -511,7 +522,7 @@ SaySomethingPictureCellDelegate
                                                                               arrowH,
                                                                               arrowH)];
         [arrowView setImage:[UIImage imageNamed:@"youjiantou.png"]];
-        [btn addSubview:arrowView];
+//        [btn addSubview:arrowView];
     }
     return btn;
 }

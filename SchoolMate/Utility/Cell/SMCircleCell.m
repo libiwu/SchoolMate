@@ -8,6 +8,7 @@
 
 #import "SMCircleCell.h"
 #import "SMCircleDetailViewController.h"
+#import "CCBlogModel.h"
 
 @interface SMCircleCell ()
 @property (nonatomic, strong) UIImageView  *backView;
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) UILabel      *contentLabel;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView       *supportAndCommentView;
+@property (nonatomic, strong) UIButton     *deleteBtn;
 @end
 
 @implementation SMCircleCell
@@ -69,26 +71,33 @@
     self.supportAndCommentView = [[UIView alloc]init];
     self.supportAndCommentView.backgroundColor = [UIColor clearColor];
     
+    self.deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.deleteBtn.hidden = YES;
+    [self.deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
+    [self.deleteBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [self.deleteBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    
     [self.backView addSubview:self.avatarView];
     [self.backView addSubview:self.nameLabel];
     [self.backView addSubview:self.timeLabel];
-    [self.backView addSubview:self.addressLabel];
+//    [self.backView addSubview:self.addressLabel];
     [self.backView addSubview:self.contentLabel];
     [self.backView addSubview:self.scrollView];
     [self.backView addSubview:self.supportAndCommentView];
+    [self.backView addSubview:self.deleteBtn];
     [self.contentView addSubview:self.backView];
 }
 - (void)setSMCircleModel:(id)object indexPath:(NSIndexPath *)indexPath {
+    CCBlogModel *model = object;
+    [self.avatarView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl] placeholderImage:nil];
     
-    [self.avatarView setImage:[UIImage imageNamed:@"headImage.png"]];
+    self.nameLabel.text = model.nickName;
     
-    self.nameLabel.text = @"呆萌萌";
+    self.timeLabel.text = [SMTimeTool stringFrom_SM_DBTimeInterval:model.createTime.integerValue dateFormat:@"yyyy-mm-dd HH:mm"];
     
-    self.timeLabel.text = @"昨天 22:33";
+//    self.addressLabel.text = @"九州城 . 摄影 . 文艺 . 下午茶";
     
-    self.addressLabel.text = @"九州城 . 摄影 . 文艺 . 下午茶";
-    
-    self.contentLabel.text = @"悬着这样的环境拍着,就是喜欢这种色调,自然拍摄出来就暖暖的了 .";
+    self.contentLabel.text = model.content;
     
     CGSize size = [self.contentLabel.text newSizeWithFont:self.contentLabel.font
                                         constrainedToSize:CGSizeMake(self.contentLabel.frame.size.width, 2000.0)
@@ -97,27 +106,40 @@
                                            self.contentLabel.frame.origin.y,
                                            self.contentLabel.frame.size.width,
                                            size.height)];
-    
-    [self.scrollView setFrame:CGRectMake(self.scrollView.frame.origin.x,
-                                         CGRectGetMaxY(self.contentLabel.frame) + 5.0,
-                                         self.scrollView.frame.size.width,
-                                         self.scrollView.frame.size.height)];
-    [self.scrollView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [obj removeFromSuperview];
-    }];
-    UIImage *image = [UIImage imageNamed:@"contentImage.png"];
-    for (int i = 0; i < 3; i ++) {
-        UIImageView *iv = [[UIImageView alloc]initWithImage:image];
-        [iv setFrame:CGRectMake(self.scrollView.frame.size.width * i,
-                                0.0,
-                                self.scrollView.frame.size.width,
-                                self.scrollView.frame.size.height)];
-        [self.scrollView addSubview:iv];
+    if (model.images.count > 0) {
+        [self.scrollView setFrame:CGRectMake(self.scrollView.frame.origin.x,
+                                             CGRectGetMaxY(self.contentLabel.frame) + 5.0,
+                                             self.scrollView.frame.size.width,
+                                             self.scrollView.frame.size.height)];
+        [self.scrollView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [obj removeFromSuperview];
+        }];
+        for (int i = 0; i < model.images.count; i ++) {
+            CCBlogImageModel *mm = model.images[i];
+            UIImageView *iv = [[UIImageView alloc]init];
+            [iv sd_setImageWithURL:[NSURL URLWithString:mm.imageUrl] placeholderImage:nil];
+            [iv setFrame:CGRectMake(self.scrollView.frame.size.width * i,
+                                    0.0,
+                                    self.scrollView.frame.size.width,
+                                    self.scrollView.frame.size.height)];
+            [self.scrollView addSubview:iv];
+        }
+        [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width * model.images.count,
+                                                   self.scrollView.frame.size.height)];
+    } else {
+        [self.scrollView setFrame:CGRectMake(self.scrollView.frame.origin.x,
+                                             CGRectGetMaxY(self.contentLabel.frame) + 5.0,
+                                             self.scrollView.frame.size.width,
+                                             0.0)];
     }
-    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width * 3,
-                                               self.scrollView.frame.size.height)];
     
-    [self setUpSupport:@"26" comment:@"310" broadcast:@"733"];
+    [self setUpSupport:model.likeCount.stringValue comment:model.commentCount.stringValue broadcast:@"0"];
+    
+    self.deleteBtn.hidden = NO;
+    self.deleteBtn.frame = CGRectMake(CGRectGetMaxX(self.supportAndCommentView.frame),
+                                      self.supportAndCommentView.frame.origin.y,
+                                      50.0,
+                                      self.supportAndCommentView.frame.size.height);
     
     self.backView.frame = CGRectMake(self.backView.frame.origin.x,
                                      self.backView.frame.origin.y,
@@ -136,7 +158,7 @@
     UIImageView *supportView = [[UIImageView alloc]init];
 //    [supportView setBackgroundColor:[UIColor redColor]];
     [supportView setImage:[UIImage imageNamed:@"2"]];
-    [supportView setFrame:CGRectMake(20.0, 10.0, 30.0, 22.0)];
+    [supportView setFrame:CGRectMake(5.0, 10.0, 30.0, 22.0)];
     
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0.0, 0.0, supportView.frame.size.width, supportView.frame.size.height)];
     [label setText:support];
@@ -148,9 +170,10 @@
     
     UILabel *ss = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(supportView.frame) + 5.0,
                                                            supportView.frame.origin.y,
-                                                           40.0,
+                                                           35.0,
                                                            supportView.frame.size.height)];
     [ss setText:@"稀饭"];
+    [ss setFont:[UIFont systemFontOfSize:12]];
     [ss setTextColor:[UIColor redColor]];
     
     UIButton *supportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -173,7 +196,7 @@
     UIImageView *commentView = [[UIImageView alloc]init];
 //    [commentView setBackgroundColor:[UIColor blueColor]];
     [commentView setImage:[UIImage imageNamed:@"4"]];
-    [commentView setFrame:CGRectMake(CGRectGetMaxX(ss.frame) + 10.0,
+    [commentView setFrame:CGRectMake(CGRectGetMaxX(ss.frame) + 5.0,
                                      supportView.frame.origin.y,
                                      supportView.frame.size.width,
                                      supportView.frame.size.height)];
@@ -188,9 +211,10 @@
     
     UILabel *cc = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(commentView.frame) + 5.0,
                                                            commentView.frame.origin.y,
-                                                           40.0,
+                                                           35.0,
                                                            commentView.frame.size.height)];
     [cc setText:@"评论"];
+    [cc setFont:[UIFont systemFontOfSize:12]];
     [cc setTextColor:[UIColor blueColor]];
     
     UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -213,7 +237,7 @@
     UIImageView *broadcastView = [[UIImageView alloc]init];
 //    [broadcastView setBackgroundColor:[UIColor greenColor]];
     [broadcastView setImage:[UIImage imageNamed:@"5"]];
-    [broadcastView setFrame:CGRectMake(CGRectGetMaxX(cc.frame) + 10.0,
+    [broadcastView setFrame:CGRectMake(CGRectGetMaxX(cc.frame) + 5.0,
                                      supportView.frame.origin.y,
                                      supportView.frame.size.width,
                                      supportView.frame.size.height)];
@@ -228,9 +252,10 @@
     
     UILabel *dd = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(broadcastView.frame) + 5.0,
                                                            broadcastView.frame.origin.y,
-                                                           40.0,
+                                                           35.0,
                                                            broadcastView.frame.size.height)];
     [dd setText:@"广播"];
+    [dd setFont:[UIFont systemFontOfSize:12]];
     [dd setTextColor:[UIColor greenColor]];
     
     UIButton *broadcastBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -251,7 +276,7 @@
     
     self.supportAndCommentView.frame = CGRectMake(self.scrollView.frame.origin.x,
                                                   CGRectGetMaxY(self.scrollView.frame),
-                                                  self.scrollView.frame.size.width,
+                                                  CGRectGetMaxX(dd.frame) + 5.0,
                                                   CGRectGetMaxY(dd.frame) + 10.0);
     
     

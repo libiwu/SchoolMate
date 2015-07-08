@@ -9,5 +9,5 @@
 #import "BBSupportModel.h"
 
 @implementation BBSupportModel
-
+MJCodingImplementation
 @end

@@ -11,9 +11,19 @@
 #import "SMCircleDetailViewController.h"
 #import "SMNavigationPopView.h"
 #import "PublishNoteViewController.h"
+#import "BBNPClassModel.h"
+#import "CCBlogModel.h"
 
 @interface SMCircleViewController ()<UITableViewDataSource, UITableViewDelegate>
 
+@property (nonatomic, strong) UITableView *tableView;
+/*朋友圈班级列表*/
+@property (nonatomic, strong) NSArray *classArray;
+@property (nonatomic, strong) NSArray *classTitleArray;
+///当前选择id
+@property (copy, nonatomic) NSString *boardId;
+/*同学圈博客列表*/
+@property (nonatomic, strong) NSArray *dataArray;
 @end
 
 @implementation SMCircleViewController
@@ -25,7 +35,7 @@
      初三六班
      01计机一班
      */
-    [self setNavTitle:NSLocalizedString(@"初三六班", nil) type:SCNavTitleTypeSelect];
+//    [self setNavTitle:NSLocalizedString(@"初三六班", nil) type:SCNavTitleTypeSelect];
     
     self.view.backgroundColor = RGBACOLOR(234.0, 234.0, 234.0, 1.0);
     
@@ -40,6 +50,15 @@
     [rightbtn setImage:[UIImage imageNamed:@"27.png"] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightbtn];
     
+    [self requestClassList];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kCirclePublishComplete
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      [self.tableView.header beginRefreshing];
+                                                  }];
+    
     [self createContentView];
 }
 - (void)createContentView {
@@ -51,6 +70,7 @@
         tableView.separatorColor = [UIColor clearColor];
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.view addSubview:tableView];
+        self.tableView = tableView;
         
         __block UITableView *ta = tableView;
         [tableView addLegendHeaderWithRefreshingBlock:^{
@@ -63,17 +83,50 @@
 }
 - (void)navigationClick:(UIButton *)btn {
     SMNavigationPopView *view = [[SMNavigationPopView alloc]initWithDataArray:@[@"初三六班",@"高三六班",@"01计机一班"]];
+    WEAKSELF
     [view setTableViewSelectBlock:^(NSUInteger index, NSString *string) {
         [self setNavTitle:string type:SCNavTitleTypeSelect];
+        BBNPClassModel *model = weakSelf.classArray[index];
+        _boardId = model.boardId.stringValue;
+        [weakSelf requestBlogListWithBoardId:weakSelf.boardId upOrDown:@"0"];
     }];
     [view show];
+}
+#pragma mark - Functions
+- (void)configureNavTitleData {
+    /**
+     {"schoolTypeId":1,"name":"小学"},
+     {"schoolTypeId":2,"name":"初中"},
+     {"schoolTypeId":3,"name":"高中"},
+     {"schoolTypeId":4,"name":"大学"}
+     */
+    __block NSMutableArray *tempArr = [NSMutableArray array];
+    [self.classArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        BBNPClassModel *model = obj;
+        if ([model.schoolType integerValue] != 4) {
+            //显示班级
+            [tempArr addObject:model.className];
+        }
+        else {
+            //显示学校名
+            [tempArr addObject:model.schoolName];
+        }
+    }];
+    self.classTitleArray = tempArr;
+    if (tempArr.count) {
+        [self setNavTitle:self.classTitleArray[0] type:SCNavTitleTypeSelect];
+        BBNPClassModel *model = self.classArray.firstObject;
+        _boardId = model.boardId.stringValue;
+        [self requestBlogListWithBoardId:self.boardId upOrDown:@"0"];
+    }
+    
 }
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1.0;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10.0;
+    return self.dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [self tableView:tableView cellForRowAtIndexPath:indexPath].frame.size.height;
@@ -137,8 +190,8 @@
         
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    [cell setSMCircleModel:nil indexPath:indexPath];
+    CCBlogModel *model = self.dataArray[indexPath.row];
+    [cell setSMCircleModel:model indexPath:indexPath];
     
     return cell;
 }
@@ -146,7 +199,96 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     SMCircleDetailViewController *view = [[SMCircleDetailViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+    view.blogModel = self.dataArray[indexPath.row];
     [self.navigationController pushViewController:view animated:YES];
 }
+#pragma mark - request
+#pragma mark 请求班级列表
+- (void)requestClassList {
+    WEAKSELF
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/list")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  
+                                                  __block NSMutableArray *newArray = [NSMutableArray array];
+                                                  [responseObject[@"data"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                                      BBNPClassModel *model = [BBNPClassModel objectWithKeyValues:obj];
+                                                      [newArray addObject:model];
+                                                  }];
+                                                  weakSelf.classArray = newArray;
+                                                  [GlobalManager shareGlobalManager].classArray = newArray;
+                                                  [weakSelf configureNavTitleData];
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                          }];
+}
+#pragma mark 请求博客列表
+/**
+ *  @author libiwu, 15-07-08 01:07
+ *
+ *  请求黑板报博客列表
+ *
+ *  @param boardId     班级id
+ *  @param requestType 0:下拉刷新或第一次请求 1:加载更多
+ */
+- (void)requestBlogListWithBoardId:(NSString *)boardId upOrDown:(NSString *)requestType{
+    /*
+     Request URL:http://120.24.169.36:8080/classmate/m/user/blog/list
+     Request Method:POST
+     Param: {
+     userId:1                  （必填，当前用户ID）
+     userClassId:24            （必填，用户班级ID，如果搜索所有班级博客，为0）
+     orderBy:createTime        （选填，排序字段，默认为createTime - 微博添加时间）
+     orderType:desc            （选填，排序顺序，"desc" - 倒序 或者 "asc" - 升序，默认为desc）
+     offset:0                  （选填，记录开始索引，默认为0）
+     limit:5                   （选填，返回记录数，默认为5）
+     
+     }
+     */
+    WEAKSELF
+    NSString *offset = [NSString stringWithFormat:@"%lu",requestType.integerValue == 0 ? 0 : self.dataArray.count];
+    NSString *limit = [NSString stringWithFormat:@"%lu",requestType.integerValue == 0 ? 5 : self.dataArray.count + 5];
+    NSString *userClassId = _boardId;
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/blog/list")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"userClassId" : @"0",
+                                                    @"orderBy" : @"addTime",
+                                                    @"orderType" : @"asc",
+                                                    @"offset" : offset,
+                                                    @"limit" : limit}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  __block NSMutableArray *newArray = nil;
+                                                  if (requestType.integerValue == 0) {
+                                                      newArray = [NSMutableArray array];
+                                                  } else {
+                                                      newArray = [NSMutableArray arrayWithArray:self.dataArray];
+                                                  }
+                                                  [responseObject[@"data"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                                      CCBlogModel *model = [CCBlogModel objectWithKeyValues:obj];
+                                                      [newArray addObject:model];
+                                                  }];
+                                                  weakSelf.dataArray = newArray;
+                                                  [weakSelf.tableView reloadData];
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                              [weakSelf.tableView.header endRefreshing];
+                                              [weakSelf.tableView.footer endRefreshing];
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                              [weakSelf.tableView.header endRefreshing];
+                                              [weakSelf.tableView.footer endRefreshing];
+                                          }];
+}
+
 @end
 

@@ -246,7 +246,7 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        [cell setSMCircleModel:nil indexPath:indexPath];
+        [cell setSMCircleModel:self.blogModel indexPath:indexPath];
         
         return cell;
     } else {

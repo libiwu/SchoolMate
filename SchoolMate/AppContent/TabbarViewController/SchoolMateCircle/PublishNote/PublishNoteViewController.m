@@ -13,8 +13,10 @@
 
 #import "GroupViewController.h"
 #import "NoteTagViewController.h"
+#import "IQTextView.h"
 
 static NSString * kCollectionCellIdentifier = @"SaySomethingPictureCell";
+NSString * const  kCirclePublishComplete = @"kPublishComplete_Circle";
 
 @interface PublishNoteViewController ()
 <
@@ -29,22 +31,25 @@ UIImagePickerControllerDelegate,
 SCImagesPickerControllerDelegate,
 SaySomethingPictureCellDelegate
 >
-
+{
+    IQTextView *_mainTextView;
+    GroupViewController *_groupViewController;
+}
 
 @property (nonatomic, strong) UITableView *tableView;
-
+//图片
 @property (nonatomic, strong) NSMutableArray *imageArray;
-
+//文字
 @property (nonatomic, strong) NSString *sendText;
-
-@property (nonatomic, strong) NSString *groupString;
-
+//分组
+@property (nonatomic, strong) BBNPClassModel *bbnpClassModel;
+//标签（暂不用）
 @property (nonatomic, strong) NSMutableArray *tagArray;
 @end
 
 @implementation PublishNoteViewController
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:@"groupString"];
+//    [[NSNotificationCenter defaultCenter] removeObserver:@"groupString"];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,7 +59,7 @@ SaySomethingPictureCellDelegate
     [self setNavTitle:NSLocalizedString(@"发表笔记", nil)];
     
     [self setRightMenuTitle:@"发表" andnorImage: nil selectedImage:nil];
-    
+        
     [self createContentView];
 }
 - (void)rightMenuPressed:(id)sender {
@@ -69,11 +74,7 @@ SaySomethingPictureCellDelegate
         return;
     }
     
-    [SMMessageHUD showMessage:NSLocalizedString(@"发表成功", nil) afterDelay:1.0];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.navigationController popViewControllerAnimated:YES];
-    });
+    [self requestAddBlog];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -83,10 +84,10 @@ SaySomethingPictureCellDelegate
 - (void)createContentView {
     
     self.tagArray = [NSMutableArray array];
-    WEAKSELF
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"groupString" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-        weakSelf.groupString = note.object;
-    }];
+//    WEAKSELF
+//    [[NSNotificationCenter defaultCenter] addObserverForName:@"groupString" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+//        weakSelf.groupString = note.object;
+//    }];
     
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, KScreenWidth, KScreenHeight - 64.0) style:UITableViewStylePlain];
     _tableView.delegate = self;
@@ -108,13 +109,6 @@ SaySomethingPictureCellDelegate
 }
 
 #pragma mark - UITextViewDelegate
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
-    if ([textView.text isEqualToString:@"你在想什么...?"]) {
-        textView.text = @"";
-        textView.textColor = [UIColor blackColor];
-    }
-    return YES;
-}
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView {
     self.sendText = textView.text;
     return YES;
@@ -125,9 +119,9 @@ SaySomethingPictureCellDelegate
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 3;
+        return 2;
     }
-    return 2;
+    return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0 && indexPath.section == 0) {
@@ -146,7 +140,7 @@ SaySomethingPictureCellDelegate
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section == 1) {
-        return 25.0;
+        return 0.0;
     } else {
         return 0.0;
     }
@@ -164,21 +158,23 @@ SaySomethingPictureCellDelegate
     [cell.contentView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         [obj removeFromSuperview];
     }];
-    
+    cell.accessoryType = UITableViewCellAccessoryNone;
     if (indexPath.section == 0 && indexPath.row == 0) {
-        UITextView *textView = [[UITextView alloc]initWithFrame:CGRectMake(10.0, 10.0, 300.0, 100.0)];
+        IQTextView *textView = [[IQTextView alloc]initWithFrame:CGRectMake(10.0, 10.0, 300.0, 100.0)];
         textView.backgroundColor = [UIColor clearColor];
         textView.font = [UIFont systemFontOfSize:16.0];
-        if (self.sendText) {
+//        if (self.sendText) {
             textView.text = self.sendText;
             textView.textColor = [UIColor blackColor];
-        } else {
-            textView.text = @"你在想什么...?";
-            textView.textColor = [UIColor lightGrayColor];
-        }
+//        } else {
+//            textView.text = @"你在想什么...?";
+//            textView.textColor = [UIColor lightGrayColor];
+//        }
+        textView.placeholder = @"你在想什么...?";
         textView.delegate = self;
         textView.scrollEnabled = NO;
         [cell.contentView addSubview:textView];
+        _mainTextView = textView;
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.section == 0 && indexPath.row == 1) {
@@ -205,17 +201,17 @@ SaySomethingPictureCellDelegate
     } else if (indexPath.section == 0 && indexPath.row == 2) {
         UIView *btn = [self setUpCell01];
         [cell.contentView addSubview:btn];
-        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.section == 1 && indexPath.row == 0) {
         UIView *btn = [self setUpCell10];
         [cell.contentView addSubview:btn];
-        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else if (indexPath.section == 1 && indexPath.row == 1) {
         UIView *btn = [self setUpCell11];
         [cell.contentView addSubview:btn];
-        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
         return nil;
@@ -225,12 +221,18 @@ SaySomethingPictureCellDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    [_mainTextView resignFirstResponder];
     if (indexPath.section == 0 && indexPath.row == 2) {
         [SMMessageHUD showMessage:@"所在位置" afterDelay:1.0];
     } else if (indexPath.section == 1 && indexPath.row == 0) {
-        GroupViewController *vc = [[GroupViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
-        vc.groupString = self.groupString;
-        [self.navigationController pushViewController:vc animated:YES];
+        WEAKSELF
+        if (!_groupViewController) {
+            _groupViewController = [[GroupViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+        }
+        [_groupViewController setSelectBlock:^(BBNPClassModel *model, NSIndexPath *indexPath) {
+            weakSelf.bbnpClassModel = model;
+        }];
+        [self.navigationController pushViewController:_groupViewController animated:YES];
     } else if (indexPath.section == 1 && indexPath.row == 1) {
         NoteTagViewController *vc = [[NoteTagViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
         vc.tagArray = self.tagArray;
@@ -320,7 +322,7 @@ SaySomethingPictureCellDelegate
         leftView.backgroundColor = [UIColor clearColor];
         leftView.textAlignment = NSTextAlignmentRight;
         leftView.textColor = [UIColor blackColor];
-        leftView.text = self.groupString;
+        leftView.text = self.bbnpClassModel.schoolType.integerValue == 4 ? self.bbnpClassModel.schoolName : self.bbnpClassModel.className;
         [btn addSubview:leftView];
     }
     {
@@ -329,7 +331,7 @@ SaySomethingPictureCellDelegate
                                                                               arrowH,
                                                                               arrowH)];
         [arrowView setImage:[UIImage imageNamed:@"youjiantou.png"]];
-        [btn addSubview:arrowView];
+//        [btn addSubview:arrowView];
     }
     
     {
@@ -559,5 +561,70 @@ SaySomethingPictureCellDelegate
     [controller presentViewController:mediaUI animated:YES completion:nil];
     
     return YES;
+}
+#pragma mark - Request
+#pragma mark 添加黑板报博客
+- (void)requestAddBlog {
+    /*
+     Param: {
+     userId:1                           （必填，当前用户ID）
+     content：我们当时旅游的图片        （必填，博客内容）
+     fileList: file                     （必填，博客图片1）
+     fileList:file                      （可选填，博客图片2）
+     isPublic: 1                        （版本1暂时不用，是否公开， 0：私密，1：公开，默认为1）
+     location:广东省珠海市香洲区光大国贸（可选填，目前所在地点）
+     visibleType:1                      （必填，可见类型，1：所有人可见，2：某些班级可见，默认为1）
+     userClassIds:[14, 9]               （可选填，分享的用户班级ID列表，可以从接口:"m/user/class/list"中获取，用Json数组格式传递）
+     }
+     */
+    
+    NSString *visibleType = @"";
+    NSString *userClassIds = @"";
+    if (self.bbnpClassModel.boardId.integerValue == 0) {
+        visibleType = @"1";
+    } else {
+        visibleType = @"2";
+    }
+    userClassIds = [NSString stringWithFormat:@"[%@]",self.bbnpClassModel.boardId];
+    
+    WEAKSELF
+    [SMMessageHUD showLoading:@"正在加载..."];
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/blog/save")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"content" : _sendText,
+                                                    @"isPublic" : @"1",
+                                                    @"location" : @"",
+                                                    @"visibleType" : visibleType,
+                                                    @"userClassIds" : userClassIds}
+                        constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                            [self.imageArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                
+                                NSData *imageDatass = UIImageJPEGRepresentation(obj, .5);
+                                
+                                NSString *fileName = [NSString stringWithFormat:@"fileName%ld.jpg",(unsigned long)idx];
+                                
+                                [formData appendPartWithFileData:imageDatass
+                                                            name:@"fileList"
+                                                        fileName:fileName
+                                                        mimeType:@"image.jpg"];
+                            }];
+                        } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                            [SMMessageHUD dismissLoading];
+                            NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                            if ([success isEqualToString:@"1"]) {
+                                [SMMessageHUD showMessage:NSLocalizedString(@"发表成功", nil) afterDelay:1.0];
+                                
+                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:kCirclePublishComplete object:nil];
+                                    [weakSelf.navigationController popViewControllerAnimated:YES];
+                                });
+                            } else {
+                                NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                [SMMessageHUD showMessage:string afterDelay:2.0];
+                            }
+                        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                            [SMMessageHUD dismissLoading];
+                            [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                        }];
 }
 @end

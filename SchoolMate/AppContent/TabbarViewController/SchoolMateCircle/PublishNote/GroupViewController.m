@@ -7,6 +7,7 @@
 //
 
 #import "GroupViewController.h"
+#import "BBNPClassModel.h"
 
 @interface GroupViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSIndexPath *selectIndexPath;
@@ -21,9 +22,28 @@
     [super viewDidLoad];
     
     [self setNavTitle:NSLocalizedString(@"分组", nil)];
-    
-    self.dataArray = @[@"广播",@"同班可见",@"同级可见",@"同校可见"];
-    
+        
+    /*
+     @property (nonatomic, strong) NSNumber *boardId;
+     @property (nonatomic, strong) NSString *className;
+     @property (nonatomic, strong) NSNumber *createTime;
+     @property (nonatomic, strong) NSNumber *createUserId;
+     @property (nonatomic, strong) NSString *graduationYear;
+     @property (nonatomic, strong) NSString *name;
+     @property (nonatomic, strong) NSString *schoolName;
+     @property (nonatomic, strong) NSNumber *schoolType;
+     */
+    BBNPClassModel *model = [BBNPClassModel objectWithKeyValues:@{@"boardId" : @"0",
+                                                                  @"className" : @"所有人可见",
+                                                                  @"createTime" : @"",
+                                                                  @"createUserId" : @"",
+                                                                  @"graduationYear" : @"",
+                                                                  @"name" : @"",
+                                                                  @"schoolName" : @"",
+                                                                  @"schoolType" : @""}];
+    NSMutableArray *newArray = [NSMutableArray arrayWithArray:[GlobalManager shareGlobalManager].classArray];
+    [newArray insertObject:model atIndex:0];
+    self.dataArray = newArray;
     {
         UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0.0, 0.0, KScreenWidth, KScreenHeight - 64.0) style:UITableViewStylePlain];
         tableView.delegate = self;
@@ -32,8 +52,22 @@
         tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self.view addSubview:tableView];
     }
+    
+    [self setRightMenuTitle:@"完成" andnorImage:nil selectedImage:nil];
 }
-
+- (void)rightMenuPressed:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if (self.selectBlock) {
+        self.selectBlock(self.dataArray[self.selectIndexPath.row], self.selectIndexPath);
+    }
+}
+- (void)setSelectBlock:(SelectBlock)selectBlock {
+    _selectBlock = selectBlock;
+}
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -60,14 +94,9 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.textLabel.text = self.dataArray[indexPath.row];
+    BBNPClassModel *model = (BBNPClassModel *)self.dataArray[indexPath.row];
     
-    if ([self.groupString isEqualToString:cell.textLabel.text]) {
-        self.selectIndexPath = indexPath;
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+    cell.textLabel.text = model.schoolType.integerValue == 4 ? model.schoolName : model.className;
     
     UIImageView *lineImage = [[UIImageView alloc]initWithFrame:CGRectMake(0.0, 43.5, tableView.frame.size.width, .5)];
     lineImage.backgroundColor = [UIColor lightGrayColor];
@@ -76,19 +105,14 @@
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    {
+    if (self.selectIndexPath) {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:self.selectIndexPath];
         
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-    {
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        
-        self.groupString = cell.textLabel.text;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"groupString" object:self.groupString];
-    }
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     self.selectIndexPath = indexPath;
 }

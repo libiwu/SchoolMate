@@ -8,7 +8,11 @@
 //  笔记分组 (广播,同班可见,同级可见,同校可见)
 
 #import "SCBasicViewController.h"
+#import "BBNPClassModel.h"
+
+typedef void(^SelectBlock)(BBNPClassModel *model,NSIndexPath *indexPath);
 
 @interface GroupViewController : SCBasicViewController
-@property (nonatomic, strong) NSString *groupString;
+@property (nonatomic, copy  ) SelectBlock selectBlock;
+- (void)setSelectBlock:(SelectBlock)selectBlock;
 @end

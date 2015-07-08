@@ -57,6 +57,7 @@
     [btn setTitle:NSLocalizedString(@"保 存", nil) forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [btn bk_addEventHandler:^(id sender) {
+        [textField resignFirstResponder];
         [SMMessageHUD showMessage:NSLocalizedString(@"修改成功", nil) afterDelay:1.0];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (_block) {
