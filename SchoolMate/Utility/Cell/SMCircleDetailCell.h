@@ -9,10 +9,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BBCommentModel.h"
-
+#import "CCCommentModel.h"
 @interface SMCircleDetailCell : UITableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
-- (void)setSMCircleDetailModel:(BBCommentModel *)model indexPath:(NSIndexPath *)indexPath;
+- (void)setSMCircleDetailModel:(id)object indexPath:(NSIndexPath *)indexPath;
 @end

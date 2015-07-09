@@ -193,6 +193,10 @@
     CCBlogModel *model = self.dataArray[indexPath.row];
     [cell setSMCircleModel:model indexPath:indexPath];
     
+    [cell.deleteBtn bk_addEventHandler:^(id sender) {
+        [self requestDeleteBlog:indexPath];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -258,8 +262,8 @@
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/blog/list")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
                                                     @"userClassId" : @"0",
-                                                    @"orderBy" : @"addTime",
-                                                    @"orderType" : @"asc",
+                                                    @"orderBy" : @"createTime",
+                                                    @"orderType" : @"desc",
                                                     @"offset" : offset,
                                                     @"limit" : limit}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -289,6 +293,37 @@
                                               [weakSelf.tableView.footer endRefreshing];
                                           }];
 }
-
+#pragma mark 删除博客
+- (void)requestDeleteBlog:(NSIndexPath *)indexPath {
+    /*
+     Request URL:http://120.24.169.36:8080/classmate/m/user/blog/delete
+     Request Method:POST
+     Param: {
+     userId:1          （必填，当前用户ID）
+     userBlogId:2      （必填，用户博客ID）
+     }
+     */
+    [SMMessageHUD showLoading:@""];
+    CCBlogModel *model = self.dataArray[indexPath.row];
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/blog/delete")
+                                       parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
+                                                    @"userBlogId" : model.userBlogId}
+                                          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                              [SMMessageHUD dismissLoading];
+                                              NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
+                                              if ([success isEqualToString:@"1"]) {
+                                                  NSMutableArray *array = [NSMutableArray arrayWithArray:self.dataArray];
+                                                  [array removeObjectAtIndex:indexPath.row];
+                                                  self.dataArray = array;
+                                                  [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                                              } else {
+                                                  NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
+                                                  [SMMessageHUD showMessage:string afterDelay:2.0];
+                                              }
+                                          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                              [SMMessageHUD dismissLoading];
+                                              [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
+                                          }];
+}
 @end
 

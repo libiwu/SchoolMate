@@ -9,6 +9,8 @@
 #import "SMCircleCell.h"
 #import "SMCircleDetailViewController.h"
 #import "CCBlogModel.h"
+#import "MJPhoto.h"
+#import "MJPhotoBrowser.h"
 
 @interface SMCircleCell ()
 @property (nonatomic, strong) UIImageView  *backView;
@@ -19,7 +21,7 @@
 @property (nonatomic, strong) UILabel      *contentLabel;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView       *supportAndCommentView;
-@property (nonatomic, strong) UIButton     *deleteBtn;
+@property (nonatomic, strong) CCBlogModel *blogModel;
 @end
 
 @implementation SMCircleCell
@@ -66,6 +68,8 @@
                                                                     0.0,
                                                                     self.backView.frame.size.width,
                                                                     235.0)];
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.pagingEnabled = YES;
     
     self.supportAndCommentView = [[UIView alloc]init];
@@ -88,12 +92,18 @@
     [self.contentView addSubview:self.backView];
 }
 - (void)setSMCircleModel:(id)object indexPath:(NSIndexPath *)indexPath {
+    self.blogModel = object;
     CCBlogModel *model = object;
+    if ([model.userId.stringValue isEqualToString:[GlobalManager shareGlobalManager].userInfo.userId.stringValue]) {
+        self.deleteBtn.hidden = NO;
+    } else {
+        self.deleteBtn.hidden = YES;
+    }
     [self.avatarView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl] placeholderImage:nil];
     
     self.nameLabel.text = model.nickName;
     
-    self.timeLabel.text = [SMTimeTool stringFrom_SM_DBTimeInterval:model.createTime.doubleValue dateFormat:@"yyyy-MM-dd hh:mm:ss.SSS"];
+    self.timeLabel.text = [SMTimeTool stringFrom_SM_DBTimeInterval:model.createTime.doubleValue dateFormat:@"MM-dd hh:mm"];
     
 //    self.addressLabel.text = @"九州城 . 摄影 . 文艺 . 下午茶";
     
@@ -122,6 +132,11 @@
                                     0.0,
                                     self.scrollView.frame.size.width,
                                     self.scrollView.frame.size.height)];
+            iv.clipsToBounds = YES;
+            iv.contentMode = UIViewContentModeScaleAspectFill;
+            iv.userInteractionEnabled = YES;
+            iv.tag = i + 10000;
+            [iv addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImage:)]];
             [self.scrollView addSubview:iv];
         }
         [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width * model.images.count,
@@ -135,7 +150,6 @@
     
     [self setUpSupport:model.likeCount.stringValue comment:model.commentCount.stringValue broadcast:@"0"];
     
-    self.deleteBtn.hidden = NO;
     self.deleteBtn.frame = CGRectMake(CGRectGetMaxX(self.supportAndCommentView.frame),
                                       self.supportAndCommentView.frame.origin.y,
                                       50.0,
@@ -177,14 +191,15 @@
     [ss setTextColor:[UIColor redColor]];
     
     UIButton *supportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [supportBtn setFrame:CGRectMake(CGRectGetMaxX(ss.frame) + 10.0,
+    [supportBtn setFrame:CGRectMake(CGRectGetMinX(supportView.frame),
                                     supportView.frame.origin.y,
                                     CGRectGetMaxX(ss.frame) - CGRectGetMinX(supportView.frame),
                                     ss.frame.size.height)];
     [supportBtn setBackgroundColor:[UIColor clearColor]];
     [supportBtn bk_addEventHandler:^(id sender) {
-        NSLog(@"稀饭");
+        NSLog(@"点击稀饭");
         SMCircleDetailViewController *view = [[SMCircleDetailViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+        view.blogModel = self.blogModel;
         [CurrentViewController.navigationController pushViewController:view animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     
@@ -218,7 +233,7 @@
     [cc setTextColor:[UIColor blueColor]];
     
     UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [commentBtn setFrame:CGRectMake(CGRectGetMaxX(ss.frame) + 10.0,
+    [commentBtn setFrame:CGRectMake(CGRectGetMinX(commentView.frame),
                                     commentView.frame.origin.y,
                                     CGRectGetMaxX(cc.frame) - CGRectGetMinX(commentView.frame),
                                     cc.frame.size.height)];
@@ -226,6 +241,7 @@
     [commentBtn bk_addEventHandler:^(id sender) {
         NSLog(@"点击评论");
         SMCircleDetailViewController *view = [[SMCircleDetailViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+        view.blogModel = self.blogModel;
         [CurrentViewController.navigationController pushViewController:view animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     
@@ -259,7 +275,7 @@
     [dd setTextColor:[UIColor greenColor]];
     
     UIButton *broadcastBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [broadcastBtn setFrame:CGRectMake(CGRectGetMaxX(ss.frame) + 10.0,
+    [broadcastBtn setFrame:CGRectMake(CGRectGetMinX(broadcastView.frame),
                                     broadcastView.frame.origin.y,
                                     CGRectGetMaxX(dd.frame) - CGRectGetMinX(broadcastView.frame),
                                     dd.frame.size.height)];
@@ -267,6 +283,7 @@
     [broadcastBtn bk_addEventHandler:^(id sender) {
         NSLog(@"点击广播");
         SMCircleDetailViewController *view = [[SMCircleDetailViewController alloc]initWithHiddenTabBar:YES hiddenBackButton:NO];
+        view.blogModel = self.blogModel;
         [CurrentViewController.navigationController pushViewController:view animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     
@@ -281,4 +298,25 @@
     
     
 }
+
+#pragma mark - 点击查看大图
+- (void)tapImage:(UITapGestureRecognizer *)tap {
+    // 1.封装图片数据
+    NSMutableArray *photos = [NSMutableArray arrayWithCapacity:self.blogModel.images.count];
+    for (int i = 0; i<self.blogModel.images.count; i++) {
+        CCBlogImageModel *model = self.blogModel.images[i];
+        // 替换为中等尺寸图片
+        MJPhoto *photo = [[MJPhoto alloc] init];
+        photo.url = [NSURL URLWithString:model.imageUrl]; // 图片路径
+        photo.srcImageView = (UIImageView *)[self.scrollView viewWithTag:self.scrollView.contentOffset.x/self.scrollView.frame.size.width + 10000]; // 来源于哪个UIImageView
+        [photos addObject:photo];
+    }
+    
+    // 2.显示相册
+    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
+    browser.currentPhotoIndex = tap.view.tag - 10000; // 弹出相册时显示的第一张图片是？
+    browser.photos = photos; // 设置所有的图片
+    [browser show];
+}
+
 @end

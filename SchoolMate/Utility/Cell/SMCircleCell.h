@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SMCircleCell : UITableViewCell
+//删除按钮
+@property (nonatomic, strong) UIButton     *deleteBtn;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 

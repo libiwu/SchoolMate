@@ -432,8 +432,8 @@
      limit : 20            （选填，返回记录数，默认为20）
      }
      */
-    NSString *offset = [NSString stringWithFormat:@"%lu",upOrdown.integerValue == 0 ? 0 : self.commentArray.count];
-    NSString *limit = [NSString stringWithFormat:@"%lu",upOrdown.integerValue == 0 ? 10 : self.commentArray.count + 10];
+    NSString *offset = [NSString stringWithFormat:@"%lu",upOrdown.integerValue == 0 ? 0 : self.supportArray.count];
+    NSString *limit = [NSString stringWithFormat:@"%lu",upOrdown.integerValue == 0 ? 10 : self.supportArray.count + 10];
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/like/list")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
                                                     @"boardBlogId" : self.bbnpModel.boardBlogId,
@@ -449,7 +449,7 @@
                                                   if (upOrdown.integerValue == 0) {
                                                       newArray = [NSMutableArray array];
                                                   } else {
-                                                      newArray = [NSMutableArray arrayWithArray:self.commentArray];
+                                                      newArray = [NSMutableArray arrayWithArray:self.supportArray];
                                                   }
                                                   [responseObject[@"data"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                                                       BBSupportModel *model = [BBSupportModel objectWithKeyValues:obj];

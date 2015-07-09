@@ -82,13 +82,15 @@
                        placeholderImage:nil];
     
     _sharePicScrollV.contentSize = CGSizeMake(_sharePicScrollV.frame.size.width*[model.images count], 105);
+    _sharePicScrollV.showsHorizontalScrollIndicator = NO;
+    _sharePicScrollV.showsVerticalScrollIndicator = NO;
     WEAKSELF
     [model.images enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         BBNPImageModel *model = obj;
         UIImageView *sharePicImgV = [[UIImageView alloc] initWithFrame:CGRectMake(idx*_sharePicScrollV.frame.size.width, 0, _sharePicScrollV.frame.size.width, _sharePicScrollV.frame.size.height)];
         [sharePicImgV sd_setImageWithURL:[NSURL URLWithString:model.imageUrl]
                         placeholderImage:nil];
-//        sharePicImgV.clipsToBounds = YES;
+        sharePicImgV.clipsToBounds = YES;
         sharePicImgV.contentMode = UIViewContentModeScaleAspectFill;
         sharePicImgV.userInteractionEnabled = YES;
         sharePicImgV.tag = idx + 10000;
@@ -139,7 +141,7 @@
         // 替换为中等尺寸图片
         MJPhoto *photo = [[MJPhoto alloc] init];
         photo.url = [NSURL URLWithString:model.imageUrl]; // 图片路径
-        photo.srcImageView = (UIImageView *)[_sharePicScrollV viewWithTag:i + 10000]; // 来源于哪个UIImageView
+        photo.srcImageView = (UIImageView *)[_sharePicScrollV viewWithTag:_sharePicScrollV.contentOffset.x/_sharePicScrollV.frame.size.width + 10000]; // 来源于哪个UIImageView
         [photos addObject:photo];
     }
     

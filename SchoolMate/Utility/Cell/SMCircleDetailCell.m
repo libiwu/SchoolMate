@@ -71,15 +71,33 @@
     [self.contentView addSubview:self.commentLabel];
     [self.contentView addSubview:self.lineImage];
 }
-- (void)setSMCircleDetailModel:(BBCommentModel *)model indexPath:(NSIndexPath *)indexPath {
+- (void)setSMCircleDetailModel:(id)object indexPath:(NSIndexPath *)indexPath {
     
-    [self.avatarView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl] placeholderImage:nil];
+    NSString *headImageUrl = @"";
+    NSString *nickName = @"";
+    NSString *addTime = @"";
+    NSString *content = @"";
+    if ([object isKindOfClass:[BBCommentModel class]]) {
+        BBCommentModel *model = object;
+        headImageUrl = model.headImageUrl;
+        nickName = model.nickName;
+        addTime = model.addTime;
+        content = model.content;
+    } else {
+        CCCommentModel *model = object;
+        headImageUrl = model.headImageUrl;
+        nickName = model.nickName;
+        addTime = model.addTime.stringValue;
+        content = model.content;
+    }
     
-    [self.nameLabel setText:model.nickName];
+    [self.avatarView sd_setImageWithURL:[NSURL URLWithString:headImageUrl] placeholderImage:nil];
     
-    [self.timeLabel setText:[SMTimeTool stringFrom_SM_DBTimeInterval:model.addTime.integerValue dateFormat:@"yy-mm-dd     HH:mm"]];
+    [self.nameLabel setText:nickName];
     
-    [self.commentLabel setText:model.content];
+    [self.timeLabel setText:[SMTimeTool stringFrom_SM_DBTimeInterval:addTime.integerValue dateFormat:@"yy-mm-dd     HH:mm"]];
+    
+    [self.commentLabel setText:content];
     
     CGSize size = [self.commentLabel.text newSizeWithFont:self.commentLabel.font
                                         constrainedToSize:CGSizeMake(self.commentLabel.frame.size.width, 2000.0)

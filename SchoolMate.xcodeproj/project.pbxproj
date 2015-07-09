@@ -75,6 +75,8 @@
 		43628FF41B4923CB009D7D70 /* UIImageView+MJWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 43628FF31B4923CB009D7D70 /* UIImageView+MJWebCache.m */; };
 		43628FF71B492503009D7D70 /* SDWebImageManager+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 43628FF61B492503009D7D70 /* SDWebImageManager+MJ.m */; };
 		436290001B4C3C07009D7D70 /* CCBlogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 43628FFF1B4C3C07009D7D70 /* CCBlogModel.m */; };
+		436290031B4EDBB5009D7D70 /* CCCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 436290021B4EDBB5009D7D70 /* CCCommentModel.m */; };
+		436290061B4EDC81009D7D70 /* CCSupportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 436290051B4EDC81009D7D70 /* CCSupportModel.m */; };
 		4376D8E71B4724E200268159 /* BBCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4376D8E61B4724E200268159 /* BBCommentModel.m */; };
 		4376D8EA1B472B7400268159 /* BBSupportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4376D8E91B472B7400268159 /* BBSupportModel.m */; };
 		4394584C1B41922D00A04FA2 /* SMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4394584B1B41922D00A04FA2 /* SMPickerView.m */; };
@@ -227,6 +229,10 @@
 		43628FF61B492503009D7D70 /* SDWebImageManager+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDWebImageManager+MJ.m"; sourceTree = "<group>"; };
 		43628FFE1B4C3C07009D7D70 /* CCBlogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBlogModel.h; sourceTree = "<group>"; };
 		43628FFF1B4C3C07009D7D70 /* CCBlogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBlogModel.m; sourceTree = "<group>"; };
+		436290011B4EDBB5009D7D70 /* CCCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCCommentModel.h; sourceTree = "<group>"; };
+		436290021B4EDBB5009D7D70 /* CCCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCCommentModel.m; sourceTree = "<group>"; };
+		436290041B4EDC81009D7D70 /* CCSupportModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSupportModel.h; sourceTree = "<group>"; };
+		436290051B4EDC81009D7D70 /* CCSupportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSupportModel.m; sourceTree = "<group>"; };
 		4376D8E51B4724E200268159 /* BBCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBCommentModel.h; sourceTree = "<group>"; };
 		4376D8E61B4724E200268159 /* BBCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBCommentModel.m; sourceTree = "<group>"; };
 		4376D8E81B472B7400268159 /* BBSupportModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBSupportModel.h; sourceTree = "<group>"; };
@@ -757,6 +763,10 @@
 				4376D8E91B472B7400268159 /* BBSupportModel.m */,
 				43628FFE1B4C3C07009D7D70 /* CCBlogModel.h */,
 				43628FFF1B4C3C07009D7D70 /* CCBlogModel.m */,
+				436290011B4EDBB5009D7D70 /* CCCommentModel.h */,
+				436290021B4EDBB5009D7D70 /* CCCommentModel.m */,
+				436290041B4EDC81009D7D70 /* CCSupportModel.h */,
+				436290051B4EDC81009D7D70 /* CCSupportModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -887,6 +897,7 @@
 				2779062C1B253EAB00ECC732 /* RegisterViewController.m in Sources */,
 				43628FF71B492503009D7D70 /* SDWebImageManager+MJ.m in Sources */,
 				43628FEB1B492094009D7D70 /* MJPhotoToolbar.m in Sources */,
+				436290031B4EDBB5009D7D70 /* CCCommentModel.m in Sources */,
 				27F840181B313124008D589C /* GroupViewController.m in Sources */,
 				433297931B445941000E5C49 /* BBNPClassModel.m in Sources */,
 				278DDCF61B3BD67400EBC973 /* SMTimeTool.m in Sources */,
@@ -940,6 +951,7 @@
 				DF7A4A941B3141ED0058F8A6 /* CompanyViewController.m in Sources */,
 				27F840121B3130D4008D589C /* ChangeAccountViewController.m in Sources */,
 				27AD44FD1B2E944500C80C29 /* TrueNameViewController.m in Sources */,
+				436290061B4EDC81009D7D70 /* CCSupportModel.m in Sources */,
 				43628FEC1B492094009D7D70 /* MJPhotoView.m in Sources */,
 				436290001B4C3C07009D7D70 /* CCBlogModel.m in Sources */,
 				27AD45421B2EC14C00C80C29 /* SCImagesPickerController.m in Sources */,

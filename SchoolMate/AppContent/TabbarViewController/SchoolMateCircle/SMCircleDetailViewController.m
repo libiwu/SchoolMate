@@ -11,19 +11,17 @@
 #import "SMCircleDetailCell.h"
 #import "MJRefresh.h"
 
-#import "NewspaperTableViewCell.h"
-
-
 #import "CommentViewController.h"
-#import "BBCommentModel.h"
-#import "BBSupportModel.h"
+#import "CCSupportModel.h"
+#import "CCCommentModel.h"
 
 @interface SMCircleDetailViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-//当前选择的是评论（1）还是稀饭（2）
+//当前选择的是评论（1）还是稀饭（2）还是广播（3）
 @property (nonatomic, assign) NSString *commentOrSupport;
 @property (nonatomic, strong) NSArray *commentArray;
 @property (nonatomic, strong) NSArray *supportArray;
+@property (nonatomic, strong) NSArray *boardcastArray;
 @end
 
 @implementation SMCircleDetailViewController
@@ -62,15 +60,19 @@
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
         if ([weakSelf.commentOrSupport isEqualToString:@"1"]) {
             [weakSelf requestComment:@"0"];
-        } else {
+        } else if ([weakSelf.commentOrSupport isEqualToString:@"2"]) {
             [weakSelf requestSupport:@"0"];
+        } else {
+            
         }
     }];
     [self.tableView addLegendFooterWithRefreshingBlock:^{
         if ([weakSelf.commentOrSupport isEqualToString:@"1"]) {
             [weakSelf requestComment:@"1"];
-        } else {
+        } else if ([weakSelf.commentOrSupport isEqualToString:@"2"]){
             [weakSelf requestSupport:@"1"];
+        } else {
+            
         }
     }];
     
@@ -136,10 +138,10 @@
 
     } forControlEvents:UIControlEventTouchUpInside];
     [zhaopian bk_addEventHandler:^(id sender) {
-        CommentViewController *vc = [[CommentViewController alloc] init];
-        vc.bbnpModel = weakSelf.bbnpModel;
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
-        [weakSelf presentViewController:nav animated:YES completion:nil];
+//        CommentViewController *vc = [[CommentViewController alloc] init];
+//        vc.bbnpModel = weakSelf.bbnpModel;
+//        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+//        [weakSelf presentViewController:nav animated:YES completion:nil];
     } forControlEvents:UIControlEventTouchUpInside];
     [daoguo bk_addEventHandler:^(id sender) {
         UIButton *btn = sender;
@@ -176,6 +178,11 @@
                 return self.supportArray.count ? self.supportArray.count : 1;
             }
                 break;
+            case 3:
+            {
+                return self.boardcastArray.count ? self.boardcastArray.count : 1;
+            }
+                break;
             default:
                 break;
         }
@@ -210,9 +217,20 @@
         
         UILabel *gbLabel = [[UILabel alloc]initWithFrame:biji.frame];
         gbLabel.backgroundColor = [UIColor clearColor];
-        [gbLabel setText:@"广播 32"];
         [gbLabel setTextAlignment:NSTextAlignmentCenter];
-        [gbLabel setTextColor:[UIColor lightGrayColor]];
+        NSString *gbString = @"";
+        if (self.boardcastArray && self.boardcastArray.count) {
+            gbString = [NSString stringWithFormat:@"广播 %lu",(unsigned long)self.boardcastArray.count];
+        } else {
+            gbString = self.blogModel.likeCount.stringValue;
+        }
+        [gbLabel setText:gbString];
+        [gbLabel setTextAlignment:NSTextAlignmentCenter];
+        if ([self.commentOrSupport isEqualToString:@"3"]) {
+            [gbLabel setTextColor:[UIColor blackColor]];
+        } else {
+            [gbLabel setTextColor:[UIColor lightGrayColor]];
+        }
         
         //评论
         UIButton *zhaopian = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -220,7 +238,13 @@
         
         UILabel *zpLabel = [[UILabel alloc]initWithFrame:zhaopian.frame];
         zpLabel.backgroundColor = [UIColor clearColor];
-        [zpLabel setText:[NSString stringWithFormat:@"评论 %lu",(unsigned long)(self.commentArray.count ? self.commentArray.count : self.blogModel.commentCount.intValue)]];
+        NSString *zpString = @"";
+        if (self.commentArray && self.commentArray.count) {
+            zpString = [NSString stringWithFormat:@"广播 %lu",(unsigned long)self.commentArray.count];
+        } else {
+            zpString = self.blogModel.commentCount.stringValue;
+        }
+        [zpLabel setText:zpString];
         [zpLabel setTextAlignment:NSTextAlignmentCenter];
         if ([self.commentOrSupport isEqualToString:@"1"]) {
             [zpLabel setTextColor:[UIColor blackColor]];
@@ -234,7 +258,13 @@
         
         UILabel *dgLabel = [[UILabel alloc]initWithFrame:daoguo.frame];
         dgLabel.backgroundColor = [UIColor clearColor];
-        [dgLabel setText:[NSString stringWithFormat:@"稀饭 %lu",(unsigned long)(self.supportArray.count ? self.supportArray.count : self.blogModel.likeCount.intValue)]];
+        NSString *dgString = @"";
+        if (self.supportArray && self.supportArray.count) {
+            dgString = [NSString stringWithFormat:@"广播 %lu",(unsigned long)self.supportArray.count];
+        } else {
+            dgString = self.blogModel.likeCount.stringValue;
+        }
+        [dgLabel setText:dgString];
         [dgLabel setTextAlignment:NSTextAlignmentCenter];
         if ([self.commentOrSupport isEqualToString:@"2"]) {
             [dgLabel setTextColor:[UIColor blackColor]];
@@ -267,6 +297,18 @@
             [gbLabel setTextColor:[UIColor blackColor]];
             [zpLabel setTextColor:[UIColor lightGrayColor]];
             [dgLabel setTextColor:[UIColor lightGrayColor]];
+            
+            if ([self.commentOrSupport isEqualToString:@"3"]) {
+                return ;
+            }
+            if (self.supportArray.count == 0) {
+                self.commentOrSupport = @"3";
+//                [self requestSupport:@"0"];
+            } else {
+                self.commentOrSupport = @"3";
+                
+            }
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
         } forControlEvents:UIControlEventTouchUpInside];
         [zhaopian bk_addEventHandler:^(id sender) {
             [gbLabel setTextColor:[UIColor lightGrayColor]];
@@ -318,7 +360,8 @@
         return cell;
     } else {
         if (([self.commentOrSupport isEqualToString:@"1"] && self.commentArray.count == 0) ||
-            ([self.commentOrSupport isEqualToString:@"2"] && self.supportArray.count == 0)) {
+            ([self.commentOrSupport isEqualToString:@"2"] && self.supportArray.count == 0) ||
+            ([self.commentOrSupport isEqualToString:@"3"] && self.supportArray.count == 0)) {
             
             static NSString *identifier = @"csCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -356,7 +399,7 @@
             [cell.contentView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 [obj removeFromSuperview];
             }];
-            BBSupportModel *model = self.supportArray[indexPath.row];
+            CCSupportModel *model = self.supportArray[indexPath.row];
             
             UIImageView *imageView = [[UIImageView alloc]init];
             [imageView sd_setImageWithURL:[NSURL URLWithString:model.headImageUrl] placeholderImage:nil];
@@ -369,7 +412,6 @@
                                                                           50.0)];
             textLabel.text = model.nickName;
             textLabel.textColor = [UIColor grayColor];
-            //            textLabel.font = [UIFont systemFontOfSize:1];
             [cell.contentView addSubview:textLabel];
             
             cell.frame = CGRectMake(0, 0, tableView.frame.size.width, 50.0);
@@ -388,20 +430,23 @@
 - (void)requestComment:(NSString *)upOrdown {
     [SMMessageHUD showLoading:@""];
     /*
+     用户博客评论列表
+     Request URL:http://120.24.169.36:8080/classmate/m/user/blog/comment/list
+     Request Method:POST
      Param: {
-     userId : 1            （必填，当前用户ID）
-     userBlogId : 1        （必填，用户博客ID）
-     orderBy : addTime     （选填，排序字段，默认为addTime - 评论添加时间）
-     orderType : desc      （选填，排序顺序，"desc" - 倒序 或者 "asc" - 升序，默认为desc）
-     offset : 0            （选填，记录开始索引，默认为0）
-     limit : 20            （选填，返回记录数，默认为20）
+     userId:1            （必填，当前用户ID）
+     userBlogId:1        （必填，用户博客ID）
+     orderBy:addTime     （选填，排序字段，默认为addTime - 评论添加时间）
+     orderType:desc      （选填，排序顺序，"desc" - 倒序 或者 "asc" - 升序，默认为desc）
+     offset:0            （选填，记录开始索引，默认为0）
+     limit:20            （选填，返回记录数，默认为20）
      }
      */
     NSString *offset = [NSString stringWithFormat:@"%lu",upOrdown.integerValue == 0 ? 0 : self.commentArray.count];
     NSString *limit = [NSString stringWithFormat:@"%lu",upOrdown.integerValue == 0 ? 10 : self.commentArray.count + 10];
-    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/comment/list")
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/blog/comment/list")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
-                                                    @"boardBlogId" : self.blogModel.boardBlogId,
+                                                    @"userBlogId" : self.blogModel.userBlogId,
                                                     @"orderBy" : @"addTime",
                                                     @"orderType" : @"desc",
                                                     @"offset" : offset,
@@ -417,14 +462,13 @@
                                                       newArray = [NSMutableArray arrayWithArray:self.commentArray];
                                                   }
                                                   [responseObject[@"data"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                                      BBCommentModel *model = [BBCommentModel objectWithKeyValues:obj];
+                                                      CCCommentModel *model = [CCCommentModel objectWithKeyValues:obj];
                                                       [newArray addObject:model];
                                                   }];
                                                   self.commentArray = newArray;
-                                                  self.commentOrSupport
-                                                  = @"1";
+                                                  self.commentOrSupport = @"1";
                                                   
-                                                  self.bbnpModel.commentCount = [NSString stringWithFormat:@"%lu",(unsigned long)self.commentArray.count];
+                                                  self.blogModel.commentCount = [NSNumber numberWithInteger:self.commentArray.count];
                                                   [self.tableView reloadData];
                                               } else {
                                                   NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
@@ -444,20 +488,22 @@
 - (void)requestSupport:(NSString *)upOrdown{
     [SMMessageHUD showLoading:@""];
     /*
+     Request URL:http://localhost:8080/classmate/m/user/blog/like/list
+     Request Method:POST
      Param: {
-     userId : 1           （必填，当前用户ID）
-     boardBlogId : 12     （必填，黑板报博客ID）
-     orderBy : addTime     （选填，排序字段，默认为addTime - 点赞时间）
-     orderType : desc      （选填，排序顺序，"desc" - 倒序 或者 "asc" - 升序，默认为desc）
-     offset : 0            （选填，记录开始索引，默认为0）
-     limit : 20            （选填，返回记录数，默认为20）
+     userId:1            （必填，当前用户ID）
+     userBlogId:1        （必填，用户博客ID）
+     orderBy:addTime     （选填，排序字段，默认为addTime - 点赞时间）
+     orderType:desc      （选填，排序顺序，"desc" - 倒序 或者 "asc" - 升序，默认为desc）
+     offset:0            （选填，记录开始索引，默认为0）
+     limit:20            （选填，返回记录数，默认为20）
      }
      */
-    NSString *offset = [NSString stringWithFormat:@"%u",upOrdown.integerValue == 0 ? 0 : self.commentArray.count];
-    NSString *limit = [NSString stringWithFormat:@"%u",upOrdown.integerValue == 0 ? 10 : self.commentArray.count + 10];
-    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/like/list")
+    NSString *offset = [NSString stringWithFormat:@"%lu",upOrdown.integerValue == 0 ? 0 : self.supportArray.count];
+    NSString *limit = [NSString stringWithFormat:@"%lu",upOrdown.integerValue == 0 ? 10 : self.supportArray.count + 10];
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/blog/like/list")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
-                                                    @"boardBlogId" : self.blogModel.boardBlogId,
+                                                    @"userBlogId" : self.blogModel.userBlogId,
                                                     @"orderBy" : @"addTime",
                                                     @"orderType" : @"desc",
                                                     @"offset" : offset,
@@ -470,10 +516,10 @@
                                                   if (upOrdown.integerValue == 0) {
                                                       newArray = [NSMutableArray array];
                                                   } else {
-                                                      newArray = [NSMutableArray arrayWithArray:self.commentArray];
+                                                      newArray = [NSMutableArray arrayWithArray:self.supportArray];
                                                   }
                                                   [responseObject[@"data"] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                                      BBSupportModel *model = [BBSupportModel objectWithKeyValues:obj];
+                                                      CCSupportModel *model = [CCSupportModel objectWithKeyValues:obj];
                                                       [newArray addObject:model];
                                                   }];
                                                   self.supportArray = newArray;
@@ -495,22 +541,25 @@
 #pragma mark 稀饭（点赞）
 - (void)requestSupportComplete:(void(^)(BOOL success))complete {
     /*
+     Request URL:http://120.24.169.36:8080/classmate/m/user/blog/like/save
+     Request Method:POST
      Param: {
-     userId:1　　　　　　　 （必填，当前用户ID）
-     boardBlogId:2　　　　　（必填，黑板报博客ID）
+     userId:1
+     userBlogId:1
      }
      */
-    NewspaperTableViewCell *cell = (NewspaperTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    cell.likeCountLab.text = [NSString stringWithFormat:@"%d",self.blogModel.likeCount.integerValue + 1];
-    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/like/save")
+//    SMCircleCell *cell = (SMCircleCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    self.blogModel.likeCount = [NSNumber numberWithInteger:self.blogModel.likeCount.integerValue + 1];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+    [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/blog/like/save")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
-                                                    @"boardBlogId" : self.blogModel.boardBlogId}
+                                                    @"userBlogId" : self.blogModel.userBlogId}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
                                                   //表示已赞
-                                                  self.bbnpModel.isLike = @"1";
-                                                  self.bbnpModel.likeCount = [NSString stringWithFormat:@"%ld",self.bbnpModel.likeCount.integerValue + 1];
+                                                  self.blogModel.isLike = @(1);
+                                                  self.blogModel.likeCount = [NSNumber numberWithInteger:self.blogModel.likeCount.integerValue + 1];
                                                   if (complete) {
                                                       complete(NO);
                                                   }
@@ -519,7 +568,8 @@
                                                   if (complete) {
                                                       complete(NO);
                                                   }
-                                                  cell.likeCountLab.text = [NSString stringWithFormat:@"%ld",self.bbnpModel.likeCount.integerValue - 1];
+                                                  self.blogModel.likeCount = [NSNumber numberWithInteger:self.blogModel.likeCount.integerValue - 1];
+                                                  [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
                                                   NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
                                                   [SMMessageHUD showMessage:string afterDelay:2.0];
                                               }
@@ -527,34 +577,39 @@
                                               if (complete) {
                                                   complete(NO);
                                               }
-                                              cell.likeCountLab.text = [NSString stringWithFormat:@"%ld",self.bbnpModel.likeCount.integerValue - 1];
+                                              self.blogModel.likeCount = [NSNumber numberWithInteger:self.blogModel.likeCount.integerValue - 1];
+                                              [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
                                               [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                           }];
 }
 - (void)requestDeleteSupportComplete:(void(^)(BOOL success))complete{
     /*
+     Request URL:http://120.24.169.36:8080/classmate/m/user/blog/like/delete
+     Request Method:POST
      Param: {
-     userId:1　　　　　　　 （必填，当前用户ID）
-     boardBlogId:2　　　　　（必填，黑板报博客ID）
+     userId:1
+     userBlogId:1
      }
      */
-    NewspaperTableViewCell *cell = (NewspaperTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    cell.likeCountLab.text = [NSString stringWithFormat:@"%d",self.blogModel.likeCount.integerValue - 1];
+//    SMCircleCell *cell = (SMCircleCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    self.blogModel.likeCount = [NSNumber numberWithInteger:self.blogModel.likeCount.integerValue - 1];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/board/blog/like/delete")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
-                                                    @"boardBlogId" : self.blogModel.boardBlogId}
+                                                    @"userBlogId" : self.blogModel.userBlogId}
                                           success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                               NSString *success = [Tools filterNULLValue:responseObject[@"success"]];
                                               if ([success isEqualToString:@"1"]) {
                                                   //表示已取消赞
-                                                  self.bbnpModel.isLike = @"0";
-                                                  self.bbnpModel.likeCount = [NSString stringWithFormat:@"%ld",self.bbnpModel.likeCount.integerValue - 1];
+                                                  self.blogModel.isLike = @(0);
+                                                  self.blogModel.likeCount = [NSNumber numberWithInteger:self.blogModel.likeCount.integerValue - 1];
                                                   if (complete) {
                                                       complete(YES);
                                                   }
                                                   [self requestSupport:@"0"];
                                               } else {
-                                                  cell.likeCountLab.text = [NSString stringWithFormat:@"%ld",self.bbnpModel.likeCount.integerValue + 1];
+                                                  self.blogModel.likeCount = [NSNumber numberWithInteger:self.blogModel.likeCount.integerValue + 1];
+                                                  [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
                                                   NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
                                                   [SMMessageHUD showMessage:string afterDelay:2.0];
                                                   if (complete) {
@@ -562,7 +617,8 @@
                                                   }
                                               }
                                           } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                              cell.likeCountLab.text = [NSString stringWithFormat:@"%ld",self.bbnpModel.likeCount.integerValue + 1];
+                                              self.blogModel.likeCount = [NSNumber numberWithInteger:self.blogModel.likeCount.integerValue + 1];
+                                              [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
                                               [SMMessageHUD showMessage:@"网络错误" afterDelay:1.0];
                                               if (complete) {
                                                   complete(NO);
