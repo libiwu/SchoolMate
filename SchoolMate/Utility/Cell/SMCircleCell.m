@@ -67,7 +67,7 @@
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0.0,
                                                                     0.0,
                                                                     self.backView.frame.size.width,
-                                                                    235.0)];
+                                                                    200.0)];
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.pagingEnabled = YES;
@@ -103,7 +103,7 @@
     
     self.nameLabel.text = model.nickName;
     
-    self.timeLabel.text = [SMTimeTool stringFrom_SM_DBTimeInterval:model.createTime.doubleValue dateFormat:@"MM-dd hh:mm"];
+    self.timeLabel.text = [SMTimeTool stringFrom_SM_DBTimeInterval:model.createTime.doubleValue dateFormat:@"MM-dd HH:mm"];
     
 //    self.addressLabel.text = @"九州城 . 摄影 . 文艺 . 下午茶";
     

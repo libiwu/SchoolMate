@@ -82,6 +82,8 @@
 		4394584C1B41922D00A04FA2 /* SMPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4394584B1B41922D00A04FA2 /* SMPickerView.m */; };
 		43D4C9E81B4705890077F649 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43D4C9E71B4705890077F649 /* CommentViewController.m */; };
 		43E967521B3FC2B900A3B7AA /* PositionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43E967511B3FC2B900A3B7AA /* PositionViewController.m */; };
+		43F3F8D71B502CC600528E06 /* SMImageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F3F8D61B502CC600528E06 /* SMImageTool.m */; };
+		43F3F8DA1B502D7B00528E06 /* UIImage+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F3F8D91B502D7B00528E06 /* UIImage+Addition.m */; };
 		597262C962F123EAB325DDF1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88CE2707A443E72094D81713 /* libPods.a */; };
 		DF098FFD1B37D1A300FA27D0 /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF098FFC1B37D1A300FA27D0 /* UserInfoModel.m */; };
 		DF7A4A7B1B3025690058F8A6 /* testView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF7A4A7A1B3025690058F8A6 /* testView.xib */; };
@@ -243,6 +245,10 @@
 		43D4C9E71B4705890077F649 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		43E967501B3FC2B900A3B7AA /* PositionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionViewController.h; sourceTree = "<group>"; };
 		43E967511B3FC2B900A3B7AA /* PositionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionViewController.m; sourceTree = "<group>"; };
+		43F3F8D51B502CC600528E06 /* SMImageTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMImageTool.h; sourceTree = "<group>"; };
+		43F3F8D61B502CC600528E06 /* SMImageTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMImageTool.m; sourceTree = "<group>"; };
+		43F3F8D81B502D7B00528E06 /* UIImage+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Addition.h"; sourceTree = "<group>"; };
+		43F3F8D91B502D7B00528E06 /* UIImage+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Addition.m"; sourceTree = "<group>"; };
 		88CE2707A443E72094D81713 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		890E34B51E5FAB64DA2FEA07 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DF098FFB1B37D1A300FA27D0 /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
@@ -311,6 +317,8 @@
 				27AD44FF1B2E976000C80C29 /* SMMessageHUD.m */,
 				278DDCF41B3BD67400EBC973 /* SMTimeTool.h */,
 				278DDCF51B3BD67400EBC973 /* SMTimeTool.m */,
+				43F3F8D51B502CC600528E06 /* SMImageTool.h */,
+				43F3F8D61B502CC600528E06 /* SMImageTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -354,6 +362,8 @@
 				43628FEF1B49218F009D7D70 /* MBProgressHUD+Add.m */,
 				2720ECC01B2587990063DB79 /* NSString+Addition.h */,
 				2720ECC11B2587990063DB79 /* NSString+Addition.m */,
+				43F3F8D81B502D7B00528E06 /* UIImage+Addition.h */,
+				43F3F8D91B502D7B00528E06 /* UIImage+Addition.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -949,6 +959,7 @@
 				43628FE81B492094009D7D70 /* MJPhotoBrowser.m in Sources */,
 				27AD45151B2EC05B00C80C29 /* SCImageScrollView.m in Sources */,
 				DF7A4A941B3141ED0058F8A6 /* CompanyViewController.m in Sources */,
+				43F3F8DA1B502D7B00528E06 /* UIImage+Addition.m in Sources */,
 				27F840121B3130D4008D589C /* ChangeAccountViewController.m in Sources */,
 				27AD44FD1B2E944500C80C29 /* TrueNameViewController.m in Sources */,
 				436290061B4EDC81009D7D70 /* CCSupportModel.m in Sources */,
@@ -962,6 +973,7 @@
 				27AD45281B2EC08500C80C29 /* SaySomethingPictureCell.m in Sources */,
 				DF7A4A7E1B31244F0058F8A6 /* BBNewspaperDetailViewController.m in Sources */,
 				2720ECC71B258DF40063DB79 /* SMCircleCell.m in Sources */,
+				43F3F8D71B502CC600528E06 /* SMImageTool.m in Sources */,
 				DF7A4A9C1B3151870058F8A6 /* BBPublishViewController.m in Sources */,
 				277765A11B3E830900E136A7 /* SchoolTypeViewController.m in Sources */,
 				43628FF11B49218F009D7D70 /* MBProgressHUD+Add.m in Sources */,

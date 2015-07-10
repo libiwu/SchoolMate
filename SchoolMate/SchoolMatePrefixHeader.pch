@@ -34,4 +34,5 @@
 #import "CheckTools.h"
 #import "SMMessageHUD.h"
 #import "SMTimeTool.h"
+#import "SMImageTool.h"
 #endif

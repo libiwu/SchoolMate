@@ -72,17 +72,16 @@
         [self.view addSubview:tableView];
         self.tableView = tableView;
         
-        __block UITableView *ta = tableView;
         [tableView addLegendHeaderWithRefreshingBlock:^{
-            [ta.header endRefreshing];
+            [self requestBlogListWithBoardId:self.boardId upOrDown:@"0"];
         }];
         [tableView addLegendFooterWithRefreshingBlock:^{
-            [ta.footer endRefreshing];
+            [self requestBlogListWithBoardId:self.boardId upOrDown:@"1"];
         }];
     }
 }
 - (void)navigationClick:(UIButton *)btn {
-    SMNavigationPopView *view = [[SMNavigationPopView alloc]initWithDataArray:@[@"初三六班",@"高三六班",@"01计机一班"]];
+    SMNavigationPopView *view = [[SMNavigationPopView alloc]initWithDataArray:self.classTitleArray];
     WEAKSELF
     [view setTableViewSelectBlock:^(NSUInteger index, NSString *string) {
         [self setNavTitle:string type:SCNavTitleTypeSelect];
@@ -221,6 +220,18 @@
                                                       BBNPClassModel *model = [BBNPClassModel objectWithKeyValues:obj];
                                                       [newArray addObject:model];
                                                   }];
+                                                  
+                                                  //手动添加全部选项
+                                                  BBNPClassModel *model = [BBNPClassModel objectWithKeyValues:@{@"boardId" : @"0",
+                                                                                                                @"className" : @"全部",
+                                                                                                                @"createTime" : @"",
+                                                                                                                @"createUserId" : @"",
+                                                                                                                @"graduationYear" : @"",
+                                                                                                                @"name" : @"",
+                                                                                                                @"schoolName" : @"",
+                                                                                                                @"schoolType" : @""}];
+                                                  [newArray insertObject:model atIndex:0];
+                                                  
                                                   weakSelf.classArray = newArray;
                                                   [GlobalManager shareGlobalManager].classArray = newArray;
                                                   [weakSelf configureNavTitleData];
@@ -258,10 +269,9 @@
     WEAKSELF
     NSString *offset = [NSString stringWithFormat:@"%lu",requestType.integerValue == 0 ? 0 : self.dataArray.count];
     NSString *limit = [NSString stringWithFormat:@"%lu",requestType.integerValue == 0 ? 5 : self.dataArray.count + 5];
-    NSString *userClassId = _boardId;
     [[AFHTTPRequestOperationManager manager] POST:kSMUrl(@"/classmate/m/user/blog/list")
                                        parameters:@{@"userId" : [GlobalManager shareGlobalManager].userInfo.userId,
-                                                    @"userClassId" : @"0",
+                                                    @"userClassId" : boardId,
                                                     @"orderBy" : @"createTime",
                                                     @"orderType" : @"desc",
                                                     @"offset" : offset,

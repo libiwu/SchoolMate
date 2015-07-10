@@ -599,7 +599,14 @@ SaySomethingPictureCellDelegate
                         constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
                             [self.imageArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                                 
-                                NSData *imageDatass = UIImageJPEGRepresentation(obj, .5);
+                                NSData *imageDatass = [SMImageTool compressImage:obj
+                                                                      andQuality:1.0
+                                                                      andMaxSize:CGSizeMake(300, 100)
+                                                                andMaxDataLength:100];
+                                
+//                                UIImage *image = [Tools scaleToSize:obj size:CGSizeMake(75, 50)];
+//                                
+//                                NSData *imageDatass = UIImageJPEGRepresentation(image, .5);
                                 
                                 NSString *fileName = [NSString stringWithFormat:@"fileName%ld.jpg",(unsigned long)idx];
                                 

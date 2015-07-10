@@ -142,7 +142,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="1eA-DT-b1f">
-                                        <rect key="frame" x="7" y="4" width="212" height="105"/>
+                                        <rect key="frame" x="7" y="4" width="212" height="106"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </scrollView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pfl-Lp-HFd">
@@ -182,7 +182,7 @@
                 <outlet property="userNameLab" destination="7kh-YJ-x14" id="XFZ-QS-VVC"/>
                 <outlet property="userTagLab" destination="Xy3-N0-Dvo" id="StN-Y3-l1b"/>
             </connections>
-            <point key="canvasLocation" x="-815" y="189.5"/>
+            <point key="canvasLocation" x="-892" y="188.5"/>
         </tableViewCell>
     </objects>
     <resources>
