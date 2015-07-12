@@ -12,6 +12,7 @@
 @interface GroupViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSIndexPath *selectIndexPath;
 @property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, assign) BOOL  didSelect;
 @end
 
 @implementation GroupViewController
@@ -22,7 +23,7 @@
     [super viewDidLoad];
     
     [self setNavTitle:NSLocalizedString(@"分组", nil)];
-        
+    self.didSelect = NO;
     /*
      @property (nonatomic, strong) NSNumber *boardId;
      @property (nonatomic, strong) NSString *className;
@@ -61,7 +62,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    if (self.selectBlock) {
+    if (self.selectBlock && self.didSelect) {
         self.selectBlock(self.dataArray[self.selectIndexPath.row], self.selectIndexPath);
     }
 }
@@ -105,6 +106,7 @@
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.didSelect = YES;
     if (self.selectIndexPath) {
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:self.selectIndexPath];
         

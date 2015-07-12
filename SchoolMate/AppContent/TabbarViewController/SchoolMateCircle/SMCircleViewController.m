@@ -220,7 +220,7 @@
                                                       BBNPClassModel *model = [BBNPClassModel objectWithKeyValues:obj];
                                                       [newArray addObject:model];
                                                   }];
-                                                  
+                                                  [GlobalManager shareGlobalManager].classArray = [NSArray arrayWithArray:newArray];
                                                   //手动添加全部选项
                                                   BBNPClassModel *model = [BBNPClassModel objectWithKeyValues:@{@"boardId" : @"0",
                                                                                                                 @"className" : @"全部",
@@ -233,7 +233,7 @@
                                                   [newArray insertObject:model atIndex:0];
                                                   
                                                   weakSelf.classArray = newArray;
-                                                  [GlobalManager shareGlobalManager].classArray = newArray;
+                                                  
                                                   [weakSelf configureNavTitleData];
                                               } else {
                                                   NSString *string = [Tools filterNULLValue:responseObject[@"message"]];
